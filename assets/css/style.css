@@ -449,6 +449,55 @@ body.nav-active {
     gap: 10px;
 }
 
+.contact {
+    padding-block-end: 0;
+}
+
+.contact-card {
+    background-color: hsla(345, 57%, 97%, 1);
+    padding: 32px;
+    border-radius: 8px;
+    display: grid;
+    gap: 40px;
+}
+
+.contact .section-title {
+    margin-block-start: 20px;
+}
+
+.input-field {
+    background-color: hsla(0, 0%, 100%, 1);
+    color: hsla(220, 12%, 43%, 1);
+    font-size: 1.5rem;
+    padding: 14px 18px;
+    border-radius: 6px;
+    outline: none;
+    margin-block-end: 20px;
+}
+
+.input-field::placeholder {
+    color: hsla(219, 10%, 62%, 1);
+}
+
+textarea.input-field {
+    min-height: 120px;
+    height: 120px;
+    max-height: 240px;
+    resize: vertical;
+}
+
+.footer {
+    padding-block: 40px;
+}
+
+.copyright {
+    margin-block-end: 12px;
+}
+
+.footer .social-link {
+    color: hsla(219, 22%, 26%, 1);
+}
+
 @media (min-width: 575px) {
     .container {
         max-width: 540px;
