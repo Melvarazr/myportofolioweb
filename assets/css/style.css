@@ -168,6 +168,33 @@ body.nav-active {
     gap: 30px;
 }
 
+[data-reveal] {
+    opacity: 0;
+    transition: 0.75s ease;
+}
+
+[data-reveal="top"] {
+    transform: translateY(-30px);
+}
+
+[data-reveal="bottom"] {
+    transform: translateY(30px);
+}
+
+[data-reveal="left"] {
+    transform: translateX(-30px);
+}
+
+[data-reveal="right"] {
+    transform: translateX(30px);
+}
+
+[data-reveal].revealed {
+    transform: translate(0);
+    opacity: 1;
+}
+
+
 .header {
     position: absolute;
     top: 0;
@@ -512,16 +539,16 @@ body.nav-active {
     }
 
     .navbar-link {
-        color: var(--charcoal);
-        transition: var(--transition-1);
+        color: hsla(219, 22%, 26%, 1);
+        transition: 0.25s ease;
     }
 
     .navbar-link:is(:hover, :focus-visible) { 
-        color: var(--cinnamon-satin); 
+        color: hsla(344, 53%, 62%, 1); 
     }
 
     .navbar .social-link {
-        color: var(--charcoal);
+        color: hsla(219, 22%, 26%, 1);
         font-size: 1.8rem;
     }
 
@@ -531,7 +558,7 @@ body.nav-active {
         left: 50%;
         transform: translateX(-50%);
         padding-inline: 16px;
-        border-radius: var(--radius-8);
+        border-radius: 8px;
     }
 
     .header.active {
@@ -542,7 +569,7 @@ body.nav-active {
     }
 
     .hero { 
-        padding-block-start: calc(var(--section-padding) + 80px); 
+        padding-block-start: calc(90px + 80px); 
     }
 
     .hero .container {
@@ -592,7 +619,7 @@ body.nav-active {
     }
 
     .project-card-1 .card-content { 
-        padding-block-end: var(--padding); 
+        padding-block-end: 24px; 
     }
 
     .project-card-2 .card-content { 
