@@ -366,6 +366,56 @@ body.nav-active {
     margin-block: 16px 10px;
 }
 
+.project {
+    border-block: 1px solid hsla(222, 23%, 71%, 0.2);
+}
+
+.project .title-wrapper {
+    margin-block-end: 40px;
+}
+
+.project .btn {
+    margin-block-start: 24px;
+}
+
+.project .grid-list {
+    gap: 40px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.project-card-1,
+.project-card-2,
+:is(.project-card-3, .project-card-4) .card-content {
+    padding: 24px;
+}
+
+.project-card .card-title {
+    margin-block: 16px;
+}
+
+.project-card .card-text {
+    margin-block-end: 20px;
+}
+
+.project-card .btn-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+.project-card .btn-text:is(:hover, :focus-visible) {
+    gap: 10px;
+}
+
 @media (min-width: 575px) {
     .container {
         max-width: 540px;
