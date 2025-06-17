@@ -44,3 +44,38 @@ for (let i = 0, len = revealDelayElements.length; i < len; i++) {
 
 window.addEventListener("scroll", reveal);
 window.addEventListener("load", reveal);
+
+const handleParallax = function() {
+  const scrolled = window.pageYOffset;
+  const parallaxElements = document.querySelectorAll('.experience-item');
+  
+  parallaxElements.forEach((element, index) => {
+      const speed = 0.1 + (index * 0.05);
+      const yPos = -(scrolled * speed);
+      element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+  });
+}
+
+// Smooth scroll reveal
+window.addEventListener('scroll', () => {
+  revealElementOnScroll();
+  requestAnimationFrame(handleParallax);
+});
+
+window.addEventListener('load', revealElementOnScroll);
+
+// Auto-reveal for demo purposes
+setTimeout(() => {
+  revealElements.forEach(el => el.classList.add('revealed'));
+}, 500);
+
+// Add interactive hover sound effect (optional)
+document.querySelectorAll('.experience-item').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+      item.style.transform = 'translateY(-8px) translateX(5px) scale(1.02)';
+  });
+  
+  item.addEventListener('mouseleave', () => {
+      item.style.transform = 'translateY(0) translateX(0) scale(1)';
+  });
+});
