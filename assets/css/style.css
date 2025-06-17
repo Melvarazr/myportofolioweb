@@ -167,11 +167,6 @@ body.nav-active {
     gap: 30px;
 }
 
-.grid-list-about {
-    display: flex;
-    gap: 50px;
-}
-
 [data-reveal] {
     opacity: 0;
     transition: 0.75s ease;
