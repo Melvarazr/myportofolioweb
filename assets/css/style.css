@@ -1271,6 +1271,20 @@ body.nav-active {
     padding: 24px;
 }
 
+.project-card-1 {
+    padding-block-end: 0;
+}
+
+.project :is(.project-card-3, .project-card-4) {
+    gap: 0;
+}
+
+.project-card .card-tag {
+  font-size: 1.4 rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .project-card .card-title {
     margin-block: 16px;
 }
@@ -1290,6 +1304,8 @@ body.nav-active {
 .project-card .btn-text:is(:hover, :focus-visible) {
     gap: 10px;
 }
+
+
 
 .contact {
     padding-block-end: 0;
@@ -1607,7 +1623,7 @@ textarea.input-field {
     }
 
     .project-card-1 .card-content { 
-        padding-block-end: 24px; 
+        padding-block-end: 120px; 
     }
 
     .project-card-2 .card-content { 
