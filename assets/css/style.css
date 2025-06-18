@@ -1005,7 +1005,7 @@ body.nav-active {
 
 .skills-container {
     display: grid;
-    gap: 60px;
+    gap: 50px;
 }
 
 /* Technical Skills Section */
@@ -1609,7 +1609,7 @@ textarea.input-field {
     }
 
     .skills-container {
-        gap: 80px;
+        gap: 20px;
     }
 }
 
