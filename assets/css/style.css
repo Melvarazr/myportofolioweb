@@ -1012,7 +1012,7 @@ body.nav-active {
 .technical-skills {
     background-color: hsla(0, 0%, 100%, 1);
     border-radius: 16px;
-    padding: 40px;
+    padding: 20px;
     box-shadow: 0 10px 40px hsla(216, 14%, 14%, 0.08);
     margin-top: 50px;
 }
