@@ -40,6 +40,7 @@ const reveal = function () {
 
 for (let i = 0, len = revealDelayElements.length; i < len; i++) {
   revealDelayElements[i].style.transitionDelay = revealDelayElements[i].dataset.revealDelay;
+  revealDelayElements[i].style.animationDelay = revealDelayElements[i].dataset.revealDelay;
 }
 
 window.addEventListener("scroll", reveal);
@@ -64,12 +65,10 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('load', revealElementOnScroll);
 
-// Auto-reveal for demo purposes
 setTimeout(() => {
   revealElements.forEach(el => el.classList.add('revealed'));
 }, 500);
 
-// Add interactive hover sound effect (optional)
 document.querySelectorAll('.experience-item').forEach(item => {
   item.addEventListener('mouseenter', () => {
       item.style.transform = 'translateY(-8px) translateX(5px) scale(1.02)';
