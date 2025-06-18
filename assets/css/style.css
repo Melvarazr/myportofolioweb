@@ -1287,6 +1287,16 @@ body.nav-active {
 
 .project-card .card-title {
     margin-block: 16px;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: hsla(219, 22%, 26%, 1);
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, 
+        hsla(219, 22%, 26%, 1) 0%, 
+        hsla(267, 37%, 73%, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .project-card .card-text {
