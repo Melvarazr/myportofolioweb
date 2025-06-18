@@ -309,7 +309,7 @@ body.nav-active {
 
 .hero {
     padding-block-start: calc(90px + 50px);
-    background-color: hsla(220, 20%, 97%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
 }
 
 .hero .container {
@@ -358,7 +358,7 @@ body.nav-active {
 
 
 .about {
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
     padding-block: 40px;
 }
 
@@ -432,7 +432,7 @@ body.nav-active {
 
 /* Education Section Styles */
 .education {
-    background-color: hsla(220, 20%, 97%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
     padding: 40px 0;
 }
 
@@ -698,7 +698,7 @@ body.nav-active {
 }
 
 .work-experience {
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
     padding-block: 40px;
 }
 
@@ -949,7 +949,7 @@ body.nav-active {
 /* Enhanced Skills Tags */
 
 #Skills {
-    background-color: hsla(220, 20%, 97%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
     padding: 40px 0;
 }
 
@@ -1236,7 +1236,7 @@ body.nav-active {
 }
 
 #Project {
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
     padding: 40px 0;
 }
 
@@ -1293,7 +1293,7 @@ body.nav-active {
 
 .contact {
     padding-block-end: 0;
-    background-color: hsla(220, 20%, 97%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
 }
 
 .contact-card {
@@ -1336,7 +1336,7 @@ textarea.input-field {
 
 .footer {
     padding-block: 40px;
-    background-color: hsla(220, 20%, 97%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
 }
 
 .copyright {
