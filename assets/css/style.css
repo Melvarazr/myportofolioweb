@@ -359,7 +359,7 @@ body.nav-active {
 
 .about {
     background-color: hsla(0, 0%, 100%, 1);
-    padding-block: 90px;
+    padding-block: 40px;
 }
 
 .about .wrapper {
@@ -433,7 +433,7 @@ body.nav-active {
 /* Education Section Styles */
 .education {
     background-color: hsla(220, 20%, 97%, 1);
-    padding: 90px 0;
+    padding: 40px 0;
 }
 
 .education-timeline {
@@ -699,7 +699,7 @@ body.nav-active {
 
 .work-experience {
     background-color: hsla(0, 0%, 100%, 1);
-    padding-block: 90px;
+    padding-block: 40px;
 }
 
 .experience-timeline {
@@ -1235,6 +1235,11 @@ body.nav-active {
     line-height: 1.5;
 }
 
+#Project {
+    background-color: hsla(0, 0%, 100%, 1);
+    padding: 40px 0;
+}
+
 .project {
     border-block: 1px solid hsla(222, 23%, 71%, 0.2);
     background-color: hsla(0, 0%, 100%, 1);
@@ -1288,6 +1293,7 @@ body.nav-active {
 
 .contact {
     padding-block-end: 0;
+    background-color: hsla(220, 20%, 97%, 1);
 }
 
 .contact-card {
@@ -1323,8 +1329,14 @@ textarea.input-field {
     resize: vertical;
 }
 
+.message-logo {
+    width: 50px;
+    height: 50px;
+}
+
 .footer {
     padding-block: 40px;
+    background-color: hsla(220, 20%, 97%, 1);
 }
 
 .copyright {
