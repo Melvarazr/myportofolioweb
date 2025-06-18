@@ -132,7 +132,7 @@
                         <div data-reveal="left">
                             <h2 class="h2 section-title">About Me</h2>
                             <p class="section-text" style="font-size: 17px;">
-                                A highly motivated student from Universitas Indonesia majoring in Information Systems, I possess a strong foundation in discipline, consistency, and effective time management. With a passion for IT, particularly in UI/UX, I have honed my skills in various tools such as Figma, draw.io, Canva, and programming languages like Python. I have organizational experience in UI/UX and have worked on projects such as mockup design. These experiences have reinforced my ability to collaborate in teams and take responsibility for my contributions. Additionally, I have developed a keen interest in product management, aiming to bridge the gap between technical solutions and user needs to drive business value. My dedication to continuous improvement and problem-solving sets me apart, and I am confident that my skills and drive will make a significant impact in any role I undertake
+                                An Information Systems student at Universitas Indonesia with a strong interest in product and project management. I enjoy connecting technical solutions with business needs and have experience in planning product features, working with different teams, and turning business ideas into clear development plans. My project management skills are supported by my knowledge in UI/UX design using tools like Figma, draw.io, and Canva, plus programming experience with Python. Through various team projects and design work, I've learned how to manage stakeholders, coordinate timelines, and make decisions based on data. My combination of technical skills, design understanding, and planning abilities helps me create products that satisfy both users and business goals.
                             </p>
                         </div>
 
@@ -151,11 +151,11 @@
                             <li class="progress-item">
                                 <div class="label-wrapper">
                                     <p>UI/UX Designer</p>
-                                    <span class="span">75 %</span>
+                                    <span class="span">90 %</span>
                                 </div>
 
                                 <div class="progress">
-                                    <div class="progress-fill" style="width: 75%; background-color: #b0d4c1;"></div>
+                                    <div class="progress-fill" style="width: 90%; background-color: #b0d4c1;"></div>
                                 </div>
                             </li>
 
@@ -173,20 +173,33 @@
                     </div>
 
                     <ul class="grid-list">
-                        <li data-reveal="bottom">
+                        <li data-reveal="bottom" data-reveal-delay="0.25s">
                             <div class="about-card">
                                 <div class="card-icon">
                                     <img src="./assets/image/project_manager.png" alt="Project Manager">
                                 </div>
 
-                                <h3 class="h4 card-title">Project/Product Manager</h3>
+                                <h3 class="h4 card-title">Project Manager</h3>
                                 <p class="card-text">
-                                    Experienced in managing projects from initiation to completion, coordinating cross-functional teams, and implementing agile methodologies to drive product success.
+                                    Skilled in leading and coordinating projects from conception to delivery. Experienced in stakeholder management, resource allocation, timeline planning, and risk mitigation to ensure successful project outcomes.
                                 </p>
                             </div>
                         </li>
 
                         <li data-reveal="bottom" data-reveal-delay="0.5s">
+                            <div class="about-card">
+                                <div class="card-icon">
+                                    <img src="./assets/image/product_manager.png" alt="Product Manager">
+                                </div>
+
+                                <h3 class="h4 card-title">Product Manager</h3>
+                                <p class="card-text">
+                                    Focused on driving product strategy and delivering user-centered solutions. Experienced in market research, user analytics, product roadmapping, and cross-functional collaboration to maximize product value and user satisfaction.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li data-reveal="bottom" data-reveal-delay="0.75s">
                             <div class="about-card">
                                 <div class="card-icon">
                                     <img src="./assets/image/ui/ux_designer.png" alt="UI/UX Designer">
@@ -199,7 +212,7 @@
                             </div>
                         </li>
 
-                        <li data-reveal="bottom" data-reveal-delay="0.75s">
+                        <li data-reveal="bottom" data-reveal-delay="1s">
                             <div class="about-card">
                                 <div class="card-icon">
                                     <img src="./assets/image/Programming.png" alt="Programming">
@@ -215,12 +228,48 @@
                 </div>
             </section>
 
+            <section class="section education" aria-label="education" id="Education">
+                <div class="container">
+                    <div data-reveal="top">
+                        <h2 class="h2 section-title">Education</h2>
+                        <p class="section-text">
+                            My educational journey and academic achievements that have shaped my knowledge and skills
+                        </p>
+                    </div>
+
+                    <div class="education-timeline">
+                        <div class="education-item" data-reveal="right" data-reveal-delay="0.5s">
+                            <div class="education-header">
+                                <div class="education-info">
+                                    <h3 class="degree-title">Bachelor of Information Systems</h3>
+                                    <p class="institution-name">Universitas Indonesia</p>
+                                </div>
+                                <span class="education-duration">2022 - Present</span>
+                            </div>
+                            <p class="education-description">
+                                Currently pursuing a Bachelor's degree in Information Systems at Universitas Indonesia, focusing on the intersection of technology and business processes. The program provides comprehensive knowledge in system analysis, design, and implementation.
+                            </p>
+                            <ul class="achievements">
+                                <li>Specialized in UI/UX Design and Product Management</li>
+                                <li>Active participation in technology-related projects and competitions</li>
+                                <li>Strong foundation in programming languages including Python and JavaScript</li>
+                                <li>Developed expertise in project management tools and methodologies</li>
+                            </ul>
+                            <div class="gpa-section">
+                                <span class="gpa-label">Current GPA:</span>
+                                <span class="gpa-value">3.14/4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="section work-experience" aria-label="work experience" id="Work">
                 <div class="container">
                     <div data-reveal="top">
                         <h2 class="h2 section-title">Work Experience</h2>
                         <p class="section-text">
-                            Tes
+                            A collection of my work experience, including internships and projects that have helped me grow professionally
                         </p>
                     </div>
 
@@ -533,6 +582,62 @@
             typeSpeed: 100,
             backSpeed: 50,
             backDelay: 500,
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.education-item').forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.style.transform = 'translateY(-8px) translateX(5px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', () => {
+                    item.style.transform = 'translateY(0) translateX(0) scale(1)';
+                });
+            });
+            
+            const gpaValues = document.querySelectorAll('.gpa-value');
+            
+            const animateGPA = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const gpaElement = entry.target;
+                        const finalValue = gpaElement.textContent;
+                        gpaElement.textContent = '0.0/4.0';
+                        
+                        let startValue = 0;
+                        const endValue = parseFloat(finalValue);
+                        const duration = 2000;
+                        const startTime = performance.now();
+                        
+                        const updateGPA = (currentTime) => {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const currentValue = startValue + (endValue - startValue) * progress;
+                            
+                            if (finalValue.includes('/100')) {
+                                gpaElement.textContent = currentValue.toFixed(1) + '/100';
+                            } else {
+                                gpaElement.textContent = currentValue.toFixed(1) + '/4.0';
+                            }
+                            
+                            if (progress < 1) {
+                                requestAnimationFrame(updateGPA);
+                            }
+                        };
+                        
+                        requestAnimationFrame(updateGPA);
+                        observer.unobserve(gpaElement);
+                    }
+                });
+            };
+            
+            const gpaObserver = new IntersectionObserver(animateGPA, {
+                threshold: 0.7
+            });
+            
+            gpaValues.forEach(gpa => {
+                gpaObserver.observe(gpa);
+            });
         });
     </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

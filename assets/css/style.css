@@ -356,6 +356,12 @@ body.nav-active {
     gap: 12px;
 }
 
+
+.about {
+    background-color: hsla(0, 0%, 100%, 1);
+    padding-block: 90px;
+}
+
 .about .wrapper {
     display: grid;
     gap: 50px;
@@ -424,14 +430,283 @@ body.nav-active {
     margin-block: 16px 10px;
 }
 
-.work-experience {
+/* Education Section Styles */
+.education {
     background-color: hsla(220, 20%, 97%, 1);
+    padding: 90px 0;
+}
+
+.education-timeline {
+    position: relative;
+    padding-left: 40px;
+    z-index: 1;
+    margin-top: 50px;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, 
+        hsla(210, 100%, 60%, 1) 0%, 
+        hsla(210, 100%, 60%, 0.8) 25%,
+        hsla(190, 90%, 65%, 0.8) 50%,
+        hsla(220, 95%, 70%, 0.8) 75%,
+        hsla(200, 80%, 75%, 0.3) 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 20px hsla(280, 70%, 70%, 0.3);
+}
+
+.education-item {
+    position: relative;
+    margin-bottom: 60px;
+    background: linear-gradient(145deg, 
+        hsla(0, 0%, 100%, 0.9) 0%, 
+        hsla(0, 0%, 100%, 0.7) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid hsla(0, 0%, 100%, 0.3);
+    box-shadow: 
+        0 20px 40px hsla(216, 14%, 14%, 0.08),
+        0 1px 0 hsla(0, 0%, 100%, 0.8) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.education-item::before {
+    content: '';
+    position: absolute;
+    left: -41px;
+    top: 30px;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, 
+        hsla(210, 100%, 60%, 1) 0%, 
+        hsla(210, 100%, 70%, 1) 100%);
+    border-radius: 50%;
+    border: 4px solid hsla(0, 0%, 100%, 1);
+    box-shadow: 
+        0 0 0 4px hsla(210, 100%, 60%, 0.2),
+        0 0 20px hsla(210, 100%, 60%, 0.4);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.education-item:nth-child(2)::before {
+    background: linear-gradient(135deg, hsla(150, 60%, 50%, 1) 0%, hsla(150, 60%, 60%, 1) 100%);
+    box-shadow: 0 0 0 4px hsla(150, 60%, 50%, 0.2), 0 0 20px hsla(150, 60%, 50%, 0.4);
+}
+
+.education-item:nth-child(3)::before {
+    background: linear-gradient(135deg, hsla(30, 100%, 60%, 1) 0%, hsla(30, 100%, 70%, 1) 100%);
+    box-shadow: 0 0 0 4px hsla(30, 100%, 60%, 0.2), 0 0 20px hsla(30, 100%, 60%, 0.4);
+}
+
+.education-item:hover {
+    transform: translateY(-8px) translateX(5px);
+    box-shadow: 
+        0 30px 60px hsla(216, 14%, 14%, 0.15),
+        0 1px 0 hsla(0, 0%, 100%, 0.9) inset;
+}
+
+.education-item:hover::before {
+    transform: scale(1.3);
+    box-shadow: 
+        0 0 0 6px hsla(210, 100%, 60%, 0.3),
+        0 0 30px hsla(210, 100%, 60%, 0.6);
+}
+
+.education-item::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, 
+        hsla(210, 100%, 60%, 0.03) 0%, 
+        transparent 50%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.education-item:hover::after {
+    opacity: 1;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.education-info {
+    flex: 1;
+}
+
+.degree-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: hsla(219, 22%, 26%, 1);
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, 
+        hsla(219, 22%, 26%, 1) 0%, 
+        hsla(210, 100%, 60%, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.institution-name {
+    font-size: 1.9rem;
+    color: hsla(210, 100%, 60%, 1);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.institution-name::before {
+    content: '🎓';
+    font-size: 1.4rem;
+}
+
+.education-duration {
+    background: linear-gradient(135deg, 
+        hsla(210, 100%, 60%, 1) 0%, 
+        hsla(210, 100%, 70%, 1) 100%);
+    color: hsla(0, 0%, 100%, 1);
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px hsla(210, 100%, 60%, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-duration::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        hsla(0, 0%, 100%, 0.2) 50%, 
+        transparent 100%);
+    transition: left 0.6s ease;
+}
+
+.education-item:hover .education-duration::before {
+    left: 100%;
+}
+
+.education-description {
+    color: hsla(220, 12%, 43%, 1);
+    margin-bottom: 24px;
+    line-height: 1.7;
+    font-size: 1.7rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.education-description::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(135deg, 
+        hsla(210, 100%, 60%, 1) 0%, 
+        hsla(210, 100%, 70%, 1) 100%);
+    border-radius: 2px;
+}
+
+.achievements {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+}
+
+.achievements li {
+    position: relative;
+    padding: 12px 0 12px 40px;
+    margin-bottom: 8px;
+    color: hsla(220, 12%, 43%, 1);
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.achievements li:hover {
+    background-color: hsla(210, 100%, 60%, 0.05);
+    transform: translateX(5px);
+}
+
+.achievements li::before {
+    content: '🏆';
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.achievements li:hover::before {
+    transform: rotate(20deg) scale(1.2);
+}
+
+.gpa-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background: hsla(210, 100%, 60%, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid hsla(210, 100%, 60%, 1);
+}
+
+.gpa-label {
+    font-weight: 700;
+    color: hsla(219, 22%, 26%, 1);
+    font-size: 1.5rem;
+}
+
+.gpa-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: hsla(210, 100%, 60%, 1);
+    background: linear-gradient(135deg, 
+        hsla(210, 100%, 60%, 1) 0%, 
+        hsla(210, 100%, 70%, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.work-experience {
+    background-color: hsla(0, 0%, 100%, 1);
+    padding-block: 90px;
 }
 
 .experience-timeline {
     position: relative;
     padding-left: 40px;
     z-index: 1;
+    margin-top: 50px;
 }
 
 .experience-timeline::before {
@@ -444,9 +719,9 @@ body.nav-active {
     background: linear-gradient(to bottom, 
         hsla(344, 53%, 62%, 1) 0%, 
         hsla(344, 53%, 62%, 0.8) 25%,
-        hsla(210, 100%, 60%, 0.8) 50%,
-        hsla(150, 60%, 50%, 0.8) 75%,
-        hsla(30, 100%, 60%, 0.3) 100%);
+        hsla(324, 43%, 67%, 0.8) 50%,
+        hsla(354, 47%, 72%, 0.8) 75%,
+        hsla(334, 32%, 77%, 0.3) 100%);
     border-radius: 2px;
     box-shadow: 0 0 20px hsla(344, 53%, 62%, 0.3);
 }
@@ -672,6 +947,12 @@ body.nav-active {
 }
 
 /* Enhanced Skills Tags */
+
+#Skills {
+    background-color: hsla(220, 20%, 97%, 1);
+    padding: 90px;
+}
+
 .skills-tags {
     display: flex;
     flex-wrap: wrap;
@@ -704,7 +985,6 @@ body.nav-active {
     background: linear-gradient(135deg, 
         hsla(344, 53%, 62%, 1) 0%, 
         hsla(344, 53%, 72%, 1) 100%);
-    transition: left 0.3s ease;
     z-index: -1;
 }
 
@@ -734,6 +1014,7 @@ body.nav-active {
     border-radius: 16px;
     padding: 40px;
     box-shadow: 0 10px 40px hsla(216, 14%, 14%, 0.08);
+    margin-top: 50px;
 }
 
 .skills-grid {
@@ -816,25 +1097,46 @@ body.nav-active {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 24px;
 }
 
 .skill-item {
-    background-color: hsla(0, 0%, 100%, 1);
+    background: linear-gradient(135deg, 
+        hsla(220, 20%, 97%, 1) 0%, 
+        hsla(0, 0%, 100%, 1) 100%);
     color: hsla(219, 22%, 26%, 1);
     padding: 8px 16px;
     border-radius: 20px;
-    font-size: 1.4rem;
-    font-weight: 500;
-    border: 1px solid hsla(216, 14%, 14%, 0.1);
-    transition: all 0.3s ease;
-    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: 1px solid hsla(344, 53%, 62%, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        hsla(344, 53%, 62%, 1) 0%, 
+        hsla(344, 53%, 72%, 1) 100%);
+    z-index: -1;
 }
 
 .skill-item:hover {
-    background-color: hsla(344, 53%, 62%, 1);
     color: hsla(0, 0%, 100%, 1);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px hsla(344, 53%, 62%, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px hsla(344, 53%, 62%, 0.3);
+    border-color: hsla(344, 53%, 62%, 1);
+}
+
+.skill-item:hover::before {
+    left: 0;
 }
 
 /* Progress bars for main skills */
@@ -935,7 +1237,7 @@ body.nav-active {
 
 .project {
     border-block: 1px solid hsla(222, 23%, 71%, 0.2);
-    background-color: hsla(220, 20%, 97%, 1);
+    background-color: hsla(0, 0%, 100%, 1);
 }
 
 .project .title-wrapper {
@@ -1112,12 +1414,6 @@ textarea.input-field {
         margin-bottom: 40px;
     }
 
-    .experience-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
-
     .job-title {
         font-size: 2.2rem;
     }
@@ -1148,6 +1444,43 @@ textarea.input-field {
 
     .skill-category {
         padding: 20px;
+    }
+
+    .education-timeline {
+        padding-left: 25px;
+    }
+
+    .education-timeline::before {
+        left: 12px;
+    }
+
+    .education-item::before {
+        left: -28px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .education-item {
+        padding: 25px;
+        margin-bottom: 40px;
+    }
+
+    .degree-title {
+        font-size: 2.2rem;
+    }
+
+    .institution-name {
+        font-size: 1.7rem;
+    }
+
+    .education-duration {
+        align-self: flex-start;
+    }
+
+    .gpa-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
 
@@ -1342,3 +1675,22 @@ textarea.input-field {
 .experience-item:nth-child(2) { animation-delay: 0.2s; }
 .experience-item:nth-child(3) { animation-delay: 0.3s; }
 .experience-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.education-item {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+.education-item:nth-child(1) { animation-delay: 0.1s; }
+.education-item:nth-child(2) { animation-delay: 0.2s; }
+.education-item:nth-child(3) { animation-delay: 0.3s; }
