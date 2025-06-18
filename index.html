@@ -9,6 +9,8 @@
     <meta name="title" content="Melvara - Portofolio Project Manager & Product Manager">
     <meta name="description" content="Ini Portofolio Melvara Zafirah Ramsi">
 
+    <link rel="shortcut icon" href="./assets/image/weblogo.png" type="image/x-icon">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700display=swap">
@@ -38,23 +40,23 @@
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">About</a>
+                        <a href="#about" class="navbar-link">About</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Projects</a>
+                        <a href="#Work" class="navbar-link">Work</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Work</a>
+                        <a href="#Skills" class="navbar-link">Skills</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Skills</a>
+                        <a href="#Project" class="navbar-link">Projects</a>
                     </li>
 
                     <li>
-                        <a href="#" class="navbar-link">Contact</a>
+                        <a href="#Contact" class="navbar-link">Contact</a>
                     </li>
                 </ul>
 
@@ -113,7 +115,7 @@
                         </h1>
 
                         <h2 class="section-text" data-reveal="top" data-reveal-delay="0.75s">
-                            I Am Into <span style="color: #4D317B;">Project/Product Manager!</span>
+                            I Am Into <span style="color: #4D317B;" id="typing-text"></span>
                         </h2>
 
                         <div class="btn-wrapper" data-reveal="top" data-reveal-delay="1s">
@@ -124,7 +126,7 @@
                 </div>
             </section>
 
-            <section class="section about" aria-label="about">
+            <section class="section about" aria-label="about" id="about">
                 <div class="container">
                     <div class="wrapper">
                         <div data-reveal="left">
@@ -213,7 +215,7 @@
                 </div>
             </section>
 
-            <section class="section work-experience" aria-label="work experience">
+            <section class="section work-experience" aria-label="work experience" id="Work">
                 <div class="container">
                     <div data-reveal="top">
                         <h2 class="h2 section-title">Work Experience</h2>
@@ -250,10 +252,10 @@
                 </div>
             </section>
 
-            <section class="section skills" aria-label="skills">
+            <section class="section skills" aria-label="skills" id="Skills">
                 <div class="container">
                     <div data-reveal="top">
-                        <h2 class="h2 section-title">Skills</h2>
+                        <h2 class="h2 section-title">Skills & Abilities</h2>
                         <p class="section-text">
                             A combination of technical and soft skills that I have developed through experience and education
                         </p>
@@ -267,21 +269,12 @@
                                 <div class="skill-category">
                                     <h4 class="category-title">
                                         <span class="category-icon">📊</span>
-                                        Project Management
+                                        Project/Product Manager
                                     </h4>
                                     <div class="skills-list">
                                         <span class="skill-item">JIRA</span>
                                         <span class="skill-item">Risk Management</span>
                                         <span class="skill-item">Budget Planning</span>
-                                    </div>
-                                </div>
-
-                                <div class="skill-category">
-                                    <h4 class="category-title">
-                                        <span class="category-icon">📱</span>
-                                        Product Management
-                                    </h4>
-                                    <div class="skills-list">
                                         <span class="skill-item">Product Strategy</span>
                                         <span class="skill-item">Market Research</span>
                                         <span class="skill-item">User Analytics</span>
@@ -363,7 +356,7 @@
                 </div>
             </section>
 
-            <section class="section project" aria-labelledby="project-label">
+            <section class="section project" aria-labelledby="project-label" id="Project">
                 <div class="container">
                     <div class="title-wrapper" data-reveal="top">
                         <div>
@@ -469,7 +462,7 @@
                 </div>
             </section>
 
-            <section class="section contact" aria-label="contact">
+            <section class="section contact" aria-label="contact" id="Contact">
                 <div class="container">
                     <div class="contact-card">
                         <div class="contact-content" data-reveal="left">
@@ -531,9 +524,19 @@
             </ul>
         </div>
     </footer>
-</body>
 
-<script src="./assets/js/script.js"></script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed("#typing-text", {
+            strings: ["Project Manager", "Product Manager", "UI/UX Designer"],
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 500,
+        });
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
 </html>
