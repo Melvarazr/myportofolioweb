@@ -359,7 +359,7 @@ body.nav-active {
 
 .about {
     background-color: hsla(344, 20%, 98%, 1);
-    padding-block: 40px;
+    padding-block: 120px;
 }
 
 .about .wrapper {
@@ -433,7 +433,7 @@ body.nav-active {
 /* Education Section Styles */
 .education {
     background-color: hsla(344, 20%, 98%, 1);
-    padding: 40px 0;
+    padding: 120px 0;
 }
 
 .education-timeline {
@@ -699,7 +699,7 @@ body.nav-active {
 
 .work-experience {
     background-color: hsla(344, 20%, 98%, 1);
-    padding-block: 40px;
+    padding-block: 120px;
 }
 
 .experience-timeline {
@@ -950,7 +950,7 @@ body.nav-active {
 
 #Skills {
     background-color: hsla(344, 20%, 98%, 1);
-    padding: 40px 0;
+    padding: 120px 0;
 }
 
 .skills-tags {
@@ -1237,7 +1237,7 @@ body.nav-active {
 
 #Project {
     background-color: hsla(344, 20%, 98%, 1);
-    padding: 40px 0;
+    padding: 120px 0;
 }
 
 .project {

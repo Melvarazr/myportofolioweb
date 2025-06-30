@@ -109,8 +109,7 @@
             <section class="section hero" aria-label="home">
                 <div class="container">
                     <figure class="hero-banner">
-                        <img src="./assets/image/foto_utama.jpg" width="400" height="400" alt="Julia" class="w-100"
-              data-reveal="top">
+                        <img src="./assets/image/foto_utama.jpg" width="400" height="400" alt="Julia" class="w-100" data-reveal="top">
                     </figure>
 
                     <div class="hero-content">
@@ -124,6 +123,7 @@
 
                         <div class="btn-wrapper" data-reveal="top" data-reveal-delay="1s">
                             <a href="https://docs.google.com/document/d/1BOqf_3tkV9giA3w6iDDI_MYndxFKc1qxCfWSsRx7x4w/edit?usp=sharing" target="_blank" class="btn btn-primary">Resume</a>
+                            <a href="#Project" class="btn btn-secondary">View My Project</a>
                             <a href="https://wa.me/08119891905" target="_blank" class="btn btn-secondary">Contact Me</a>
                         </div>
                     </div>
@@ -504,14 +504,33 @@
                             </p>
                         </div>
 
-                        <form action="" class="contact-form" data-reveal="right">
+                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" data-reveal="right" id="contactForm">
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="ecb1d2d0-8920-4726-844c-ef744fd2bd79">
+                            
+                            <!-- Honeypot field for spam protection -->
+                            <input type="checkbox" name="botcheck" id="" style="display: none;">
+                            
+                            <!-- Redirect URL after successful submission (optional) -->
+                            <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                            
+                            <!-- Additional form configuration -->
+                            <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+                            <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                            
                             <div class="input-wrapper">
                                 <input type="text" name="name" placeholder="Name *" required class="input-field">
-                                <input type="email" name="email_address" placeholder="Email *" required class="input-field">
+                                <input type="email" name="email" placeholder="Email *" required class="input-field">
                             </div>
 
                             <textarea name="message" placeholder="Message *" required class="input-field"></textarea>
-                            <button type="submit" class="btn btn-secondary">Send Message</button>
+                            
+                            <button type="submit" class="btn btn-secondary" id="submitBtn">
+                                <span id="btnText">Send Message</span>
+                            </button>
+                            
+                            <!-- Status message container -->
+                            <div class="form-status" id="formStatus"></div>
                         </form>
                     </div>
                 </div>
