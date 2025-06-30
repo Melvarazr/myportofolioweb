@@ -159,17 +159,7 @@ body.nav-active {
 }
 
 .section-title {
-    margin-block: 16px;
-    font-weight: 700;
-    color: hsla(219, 22%, 26%, 1);
-    margin-bottom: 16px;
-    background: linear-gradient(135deg, 
-        hsla(219, 22%, 26%, 1) 0%, 
-        hsla(267, 37%, 73%, 1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.3;
+    margin-block-end: 16px;
 }
 
 .grid-list {
@@ -317,16 +307,104 @@ body.nav-active {
     opacity: 0.8;
 }
 
-.hero .section-text {
-    margin-block: 24px 36px;
-}
-
-.hero {
-    padding-block-start: calc(90px + 80px);
+/* Projects page specific styles */
+.projects-hero {
+    padding-block: 200px 60px;
     text-align: center;
 }
 
-.hero-title {
+.projects-hero .section-title {
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, 
+        hsla(219, 22%, 26%, 1) 0%, 
+        hsla(344, 53%, 62%, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.projects-hero .section-text {
+    font-size: 1.8rem;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.projects-section {
+    padding-block: 80px;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    color: hsla(220, 12%, 43%, 1);
+    border: 2px solid hsla(220, 12%, 43%, 0.3);
+    padding: 12px 24px;
+    border-radius: 100px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background-color: hsla(344, 53%, 62%, 1);
+    color: white;
+    border-color: hsla(344, 53%, 62%, 1);
+    transform: translateY(-2px);
+}
+
+.projects-grid {
+    display: grid;
+    gap: 40px;
+    margin-top: 40px;
+    justify-content: center;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                opacity 0.3s ease, 
+                transform 0.3s ease;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px hsla(216, 14%, 14%, 0.1);
+}
+
+.project-card-1,
+.project-card-2,
+:is(.project-card-3, .project-card-4) .card-content {
+    padding: 32px;
+}
+
+.project :is(.project-card-3, .project-card-4) {
+    gap: 0;
+}
+
+.project-card .card-tag {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.project-card-1 .card-title {
     margin-block: 16px;
     font-size: 2.6rem;
     font-weight: 700;
@@ -341,174 +419,98 @@ body.nav-active {
     line-height: 1.3;
 }
 
-.hero-image {
-    margin-block-start: 50px;
-}
-
-.hero-img {
-    width: 100%;
-    max-width: 800px;
-    margin-inline: auto;
-    border-radius: 12px;
-}
-
-.content-section {
-    max-width: 800px;
-    margin-inline: auto;
-}
-
-.content-header {
-    margin-block-end: 32px;
-}
-
-.content-body {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.breakdown-list {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.breakdown-item {
-    background: white;
-    border-radius: 16px;
-    padding: 32px;
-    box-shadow: 0 4px 20px hsla(216, 14%, 14%, 0.08);
-    transition: all 0.3s ease;
-    border-left: 4px solid hsla(267, 37%, 73%, 1);
-}
-
-.breakdown-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px hsla(216, 14%, 14%, 0.12);
-}
-
-.item-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    margin-bottom: 20px;
-}
-
-.item-number {
-    background: hsla(267, 37%, 73%, 1);
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.project-card-2 .card-title {
+    margin-block: 16px;
+    font-size: 2.6rem;
     font-weight: 700;
-    font-size: 1.8rem;
-    flex-shrink: 0;
-}
-
-.item-title {
     color: hsla(219, 22%, 26%, 1);
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin: 0;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, 
+        hsla(219, 22%, 26%, 1) 0%, 
+        hsla(344, 53%, 62%, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     line-height: 1.3;
 }
 
-.item-description {
-    font-size: 1.8rem;
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: 1.6;
-    margin-bottom: 24px;
+    max-height: 5em;
+}
+
+.project-card .card-text {
+    margin-block-end: 24px;
+    line-height: 1.6;
     color: hsla(220, 12%, 43%, 1);
 }
 
-.read-more-btn {
-    color: hsla(267, 37%, 73%, 1);
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
-    transition: all 0.25s ease;
-    border-bottom: 2px solid transparent;
+    margin-bottom: 24px;
 }
 
-.read-more-btn:hover {
-    transform: translateX(4px);
-    border-bottom-color: hsla(267, 37%, 73%, 1);
+.tech-tag {
+    background-color: hsla(344, 53%, 62%, 0.1);
+    color: hsla(344, 53%, 62%, 1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
-.read-more-btn::after {
-    content: '→';
-    font-size: 1.4rem;
-    transition: transform 0.25s ease;
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
 }
 
-.read-more-btn:hover::after {
-    transform: translateX(4px);
+.project-date {
+    font-size: 1.3rem;
+    color: hsla(220, 12%, 43%, 0.8);
+    font-weight: 500;
 }
 
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 16px;
-}
-
-.tool-item {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 15px hsla(216, 14%, 14%, 0.08);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.tool-item:hover {
-    transform: translateY(-4px);
-    border-color: hsla(267, 37%, 73%, 1);
-    box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.12);
-}
-
-.tool-icon {
-    width: 48px;
-    height: 48px;
-    margin: 0 auto 12px auto;
-    background: hsla(344, 53%, 62%, 0.1);
-    border-radius: 8px;
+.project-card .btn-text {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.tool-name {
-    font-size: 1.6rem;
+    gap: 8px;
     font-weight: 700;
-    color: hsla(219, 22%, 26%, 1);
-    margin-bottom: 8px;
-}
-
-.tool-description {
-    font-size: 1.4rem;
-    color: hsla(220, 12%, 43%, 1);
-    line-height: 1.4;
-}
-
-.tool-link {
-    color: hsla(267, 37%, 73%, 1);
+    transition: all 0.3s ease;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.25s ease;
 }
 
-.tool-link:hover {
-    text-decoration: underline;
+.project-card .btn-text:is(:hover, :focus-visible) {
+    gap: 12px;
 }
 
+.card-banner {
+    margin: 0;
+    overflow: hidden;
+}
+
+.card-banner img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Footer */
 .footer {
     padding-block: 40px;
     background-color: hsla(344, 20%, 98%, 1);
@@ -532,11 +534,11 @@ body.nav-active {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: hsla(267, 37%, 73%, 1);
+    color: hsla(344, 53%, 62%, 1);
     font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid hsla(267, 37%, 73%, 1);
+    border: 2px solid hsla(344, 53%, 62%, 1);
     padding: 16px 32px;
     border-radius: 100px;
     transition: all 0.25s ease;
@@ -545,7 +547,7 @@ body.nav-active {
 }
 
 .back-btn:hover {
-    background-color: hsla(267, 37%, 73%, 1);
+    background-color: hsla(344, 53%, 62%, 1);
     color: white;
     transform: translateY(-4px);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.15);
@@ -561,6 +563,7 @@ body.nav-active {
     transform: translateX(-4px);
 }
 
+/* Responsive Styles */
 @media (min-width: 575px) {
     .container {
         max-width: 540px;
@@ -583,62 +586,36 @@ body.nav-active {
         justify-content: space-between;
         align-items: center;
     }
-    
-    .hero-subtitle {
-        font-size: 2rem;
-    }
-    
-    .content-text {
-        font-size: 1.8rem;
-    }
-    
-    .competitor-grid {
-        grid-template-columns: 1fr 1fr;
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        justify-content: center;
     }
 
-    .breakdown-item {
-        padding: 24px;
+    .project-card {
+        max-width: 500px;
     }
 
-    .item-header {
-        gap: 16px;
+    .filter-buttons {
+        gap: 12px;
     }
 
-    .item-number {
-        width: 36px;
-        height: 36px;
-        font-size: 1.6rem;
-    }
-
-    .item-title {
-        font-size: 2rem;
-    }
-
-    .item-description {
-        font-size: 1.6rem;
-    }
-
-    .tools-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 16px;
-    }
-    
-    .tool-item {
-        padding: 16px;
-    }
-    
-    .tool-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-    
-    .tool-name {
+    .filter-btn {
         font-size: 1.4rem;
+        padding: 10px 20px;
     }
-    
-    .tool-description {
-        font-size: 1.2rem;
+
+    .project-content {
+        padding: 20px;
+    }
+
+    .project-title {
+        font-size: 2rem;
+    }
+
+    .projects-hero {
+        padding-block: 200px 40px;
     }
 
     .back-section {
@@ -654,7 +631,6 @@ body.nav-active {
 }
 
 @media (min-width: 992px) {
-
     :root {
         --section-padding: 120px;
     }
@@ -712,14 +688,6 @@ body.nav-active {
         max-width: unset;
         border-radius: 0;
     }
-
-    .hero-title {
-        font-size: calc(3.6rem + 1.5vw);
-    }
-    
-    .hero-subtitle {
-        font-size: 2.2rem;
-    }
 }
 
 @media (min-width: 1200px) {
@@ -733,9 +701,5 @@ body.nav-active {
     .container,
     .header { 
         max-width: 1320px; 
-    }
-
-    .hero .section-text {
-        font-size: 2.4rem;
     }
 }

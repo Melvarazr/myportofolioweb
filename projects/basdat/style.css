@@ -165,7 +165,7 @@ body.nav-active {
     margin-bottom: 16px;
     background: linear-gradient(135deg, 
         hsla(219, 22%, 26%, 1) 0%, 
-        hsla(267, 37%, 73%, 1) 100%);
+        hsla(344, 53%, 62%, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -334,7 +334,7 @@ body.nav-active {
     margin-bottom: 16px;
     background: linear-gradient(135deg, 
         hsla(219, 22%, 26%, 1) 0%, 
-        hsla(267, 37%, 73%, 1) 100%);
+        hsla(344, 53%, 62%, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -379,7 +379,7 @@ body.nav-active {
     padding: 32px;
     box-shadow: 0 4px 20px hsla(216, 14%, 14%, 0.08);
     transition: all 0.3s ease;
-    border-left: 4px solid hsla(267, 37%, 73%, 1);
+    border-left: 4px solid hsla(344, 53%, 62%, 1);
 }
 
 .breakdown-item:hover {
@@ -395,7 +395,7 @@ body.nav-active {
 }
 
 .item-number {
-    background: hsla(267, 37%, 73%, 1);
+    background: hsla(344, 53%, 62%, 1);
     color: white;
     width: 40px;
     height: 40px;
@@ -424,7 +424,7 @@ body.nav-active {
 }
 
 .read-more-btn {
-    color: hsla(267, 37%, 73%, 1);
+    color: hsla(344, 53%, 62%, 1);
     font-size: 1.6rem;
     font-weight: 700;
     text-decoration: none;
@@ -437,7 +437,7 @@ body.nav-active {
 
 .read-more-btn:hover {
     transform: translateX(4px);
-    border-bottom-color: hsla(267, 37%, 73%, 1);
+    border-bottom-color: hsla(344, 53%, 62%, 1);
 }
 
 .read-more-btn::after {
@@ -469,7 +469,7 @@ body.nav-active {
 
 .tool-item:hover {
     transform: translateY(-4px);
-    border-color: hsla(267, 37%, 73%, 1);
+    border-color: hsla(344, 53%, 62%, 1);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.12);
 }
 
@@ -499,7 +499,7 @@ body.nav-active {
 }
 
 .tool-link {
-    color: hsla(267, 37%, 73%, 1);
+    color: hsla(344, 53%, 62%, 1);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.25s ease;
@@ -532,11 +532,11 @@ body.nav-active {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: hsla(267, 37%, 73%, 1);
+    color: hsla(344, 53%, 62%, 1);
     font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid hsla(267, 37%, 73%, 1);
+    border: 2px solid hsla(344, 53%, 62%, 1);
     padding: 16px 32px;
     border-radius: 100px;
     transition: all 0.25s ease;
@@ -545,7 +545,7 @@ body.nav-active {
 }
 
 .back-btn:hover {
-    background-color: hsla(267, 37%, 73%, 1);
+    background-color: hsla(344, 53%, 62%, 1);
     color: white;
     transform: translateY(-4px);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.15);

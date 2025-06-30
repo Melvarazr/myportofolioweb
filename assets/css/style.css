@@ -1280,9 +1280,9 @@ body.nav-active {
 }
 
 .project-card .card-tag {
-  font-size: 1.4 rem;
-  font-weight: 700;
-  text-transform: uppercase;
+    font-size: 1.4 rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .project-card .card-title {
