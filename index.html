@@ -504,26 +504,28 @@
                             </p>
                         </div>
 
-                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" data-reveal="right" id="contactForm">
-                            <!-- Web3Forms Access Key -->
-                            <input type="hidden" name="access_key" value="ecb1d2d0-8920-4726-844c-ef744fd2bd79">
-                            
-                            <!-- Honeypot field for spam protection -->
-                            <input type="checkbox" name="botcheck" id="" style="display: none;">
-                            
-                            <!-- Redirect URL after successful submission (optional) -->
-                            <input type="hidden" name="redirect" value="https://web3forms.com/success">
-                            
-                            <!-- Additional form configuration -->
-                            <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
-                            <input type="hidden" name="from_name" value="Portfolio Contact Form">
-                            
+                        <form class="contact-form" data-reveal="right" id="contactForm">
                             <div class="input-wrapper">
-                                <input type="text" name="name" placeholder="Name *" required class="input-field">
-                                <input type="email" name="email" placeholder="Email *" required class="input-field">
+                                <div class="form-group">
+                                    <input type="text" name="from_name" placeholder="Name *" required class="input-field">
+                                    <div class="error-message">Please enter your name</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="email" name="from_email" placeholder="Email *" required class="input-field">
+                                    <div class="error-message">Please enter a valid email address</div>
+                                </div>
                             </div>
 
-                            <textarea name="message" placeholder="Message *" required class="input-field"></textarea>
+                            <div class="form-group">
+                                <input type="text" name="subject" placeholder="Subject *" required class="input-field">
+                                <div class="error-message">Please enter a subject</div>
+                            </div>
+
+                            <div class="form-group">
+                                <textarea name="message" placeholder="Message *" required class="input-field"></textarea>
+                                <div class="error-message">Please enter your message</div>
+                            </div>
                             
                             <button type="submit" class="btn btn-secondary" id="submitBtn">
                                 <span id="btnText">Send Message</span>
@@ -580,6 +582,143 @@
             typeSpeed: 100,
             backSpeed: 50,
             backDelay: 500,
+        });
+
+        // EmailJS Configuration - YOUR KEYS
+        const EMAIL_CONFIG = {
+            publicKey: 'izPATAvPShMiByFkI',
+            serviceId: 'service_58j4osi',
+            templateId: 'template_jzp8enj'
+        };
+
+        // Initialize EmailJS
+        emailjs.init(EMAIL_CONFIG.publicKey);
+
+        // Form validation
+        function validateForm(formData) {
+            const errors = {};
+            
+            if (!formData.get('from_name').trim()) {
+                errors.from_name = 'Name is required';
+            }
+            
+            if (!formData.get('from_email').trim()) {
+                errors.from_email = 'Email is required';
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.get('from_email'))) {
+                errors.from_email = 'Please enter a valid email address';
+            }
+            
+            if (!formData.get('subject').trim()) {
+                errors.subject = 'Subject is required';
+            }
+            
+            if (!formData.get('message').trim()) {
+                errors.message = 'Message is required';
+            }
+            
+            return errors;
+        }
+
+        // Show form errors
+        function showErrors(errors) {
+            // Clear all previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Show new errors
+            Object.keys(errors).forEach(field => {
+                const input = document.querySelector(`[name="${field}"]`);
+                if (input) {
+                    const formGroup = input.closest('.form-group');
+                    const errorMessage = formGroup.querySelector('.error-message');
+                    
+                    formGroup.classList.add('error');
+                    if (errorMessage) {
+                        errorMessage.textContent = errors[field];
+                    }
+                }
+            });
+        }
+
+        // Show status message
+        function showStatus(type, message) {
+            const status = document.getElementById('formStatus');
+            status.className = `form-status ${type}`;
+            status.textContent = message;
+            status.style.display = 'block';
+            
+            // Auto hide after 5 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    status.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const status = document.getElementById('formStatus');
+            
+            // Validate form
+            const errors = validateForm(formData);
+            if (Object.keys(errors).length > 0) {
+                showErrors(errors);
+                return;
+            }
+            
+            // Clear any previous errors
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error');
+            });
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            btnText.textContent = 'Sending...';
+            
+            showStatus('loading', '📤 Sending your message...');
+            
+            try {
+                // Send email using EmailJS
+                const result = await emailjs.sendForm(
+                    EMAIL_CONFIG.serviceId,
+                    EMAIL_CONFIG.templateId,
+                    this
+                );
+                
+                console.log('SUCCESS!', result.status, result.text);
+                
+                // Show success message
+                showStatus('success', '✅ Message sent successfully! Thank you for reaching out. I will get back to you soon.');
+                
+                // Reset form
+                this.reset();
+                
+                // Optional: Google Analytics tracking
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        event_category: 'Contact',
+                        event_label: 'Contact Form'
+                    });
+                }
+                
+            } catch (error) {
+                console.error('FAILED...', error);
+                
+                // Show error message
+                showStatus('error', '❌ Failed to send message. Please try again or contact me directly via email: elvamelvara@gmail.com');
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                btnText.textContent = 'Send Message';
+            }
         });
 
         document.addEventListener('DOMContentLoaded', function() {
