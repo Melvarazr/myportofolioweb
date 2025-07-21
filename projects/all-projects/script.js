@@ -91,25 +91,67 @@ document.querySelectorAll('.experience-item').forEach(item => {
     });
 });
 
-// PROJECT FILTER FUNCTIONALITY
+// PROJECT FILTER FUNCTIONALITY WITH URL UPDATE
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     const projectListItems = document.querySelectorAll('.projects-grid li');
 
-    // Initialize: Show all projects by default
-    showAllProjects();
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
-
-            const filterValue = button.getAttribute('data-filter');
-            filterProjects(filterValue);
+    // Function to update URL and filter projects
+    function updateFilter(filterValue) {
+        // Update URL hash
+        if (filterValue === 'all') {
+            // Remove hash for "all" filter
+            if (window.location.hash) {
+                window.history.pushState(null, null, window.location.pathname);
+            }
+        } else {
+            // Add hash for specific filter
+            window.history.pushState(null, null, `#${filterValue}`);
+        }
+        
+        // Update active button
+        filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-filter') === filterValue) {
+                btn.classList.add('active');
+            }
         });
+        
+        // Filter projects
+        filterProjects(filterValue);
+        
+        // Update counter
+        setTimeout(updateProjectCounter, 250);
+    }
+
+    // Initialize filter from URL on page load
+    function initializeFilterFromURL() {
+        const hash = window.location.hash.substring(1); // Remove #
+        const filterValue = hash || 'all';
+        
+        // Validate filter value exists in buttons
+        const validFilters = Array.from(filterButtons).map(btn => btn.getAttribute('data-filter'));
+        const finalFilterValue = validFilters.includes(filterValue) ? filterValue : 'all';
+        
+        updateFilter(finalFilterValue);
+    }
+
+    // Initialize: Show projects based on URL
+    initializeFilterFromURL();
+
+    // Add click event listeners to filter buttons
+    filterButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent any default behavior
+            const filterValue = button.getAttribute('data-filter');
+            updateFilter(filterValue);
+        });
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function() {
+        initializeFilterFromURL();
     });
 
     function filterProjects(filterValue) {
@@ -208,12 +250,5 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         filterContainer.parentNode.insertBefore(counterElement, filterContainer.nextSibling);
         updateProjectCounter();
-        
-        // Update counter when filter changes
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                setTimeout(updateProjectCounter, 250);
-            });
-        });
     }
 });
