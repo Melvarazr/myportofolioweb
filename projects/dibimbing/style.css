@@ -352,6 +352,65 @@ body.nav-active {
     border-radius: 12px;
 }
 
+/* Website Link Section Styles */
+.website-section {
+    padding-block: 30px;
+    text-align: center;
+}
+
+.website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, 
+        hsla(267, 37%, 73%, 1) 0%, 
+        hsla(219, 22%, 26%, 1) 100%);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 100px;
+    box-shadow: 0 8px 25px hsla(209, 61%, 65%, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.website-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.website-link:hover::before {
+    left: 100%;
+}
+
+.website-link:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 35px hsla(209, 61%, 65%, 0.4);
+}
+
+.website-icon {
+    font-size: 2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
 .content-section {
     max-width: 800px;
     margin-inline: auto;
