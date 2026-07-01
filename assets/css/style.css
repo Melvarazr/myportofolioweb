@@ -51,7 +51,7 @@ html {
     font-family: 'Manrope', sans-serif;
     font-size: 10px;
     scroll-behavior: smooth;
-    scroll-padding-top: 50px; /* FIX: Tambahan agar judul tidak tertutup header saat navbar diklik */
+    scroll-padding-top: 30px; /* FIX: Tambahan agar judul tidak tertutup header saat navbar diklik */
 }
 
 body{
@@ -1001,7 +1001,7 @@ body.nav-active {
 }
 
 .skills {
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
 }
 
 .skills-container {
@@ -1242,8 +1242,7 @@ body.nav-active {
 }
 
 .project {
-    border-block: 1px solid hsla(222, 23%, 71%, 0.2);
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: hsla(344, 20%, 98%, 1);
 }
 
 .project .title-wrapper {

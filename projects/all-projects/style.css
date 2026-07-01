@@ -388,11 +388,11 @@ body.nav-active {
 
 .project-card-1,
 .project-card-2,
-:is(.project-card-3, .project-card-4) .card-content {
+:is(.project-card-3, .project-card-4, .project-card-5) .card-content {
     padding: 32px;
 }
 
-.project :is(.project-card-3, .project-card-4) {
+.project :is(.project-card-3, .project-card-4, .project-card-5) {
     gap: 0;
 }
 
