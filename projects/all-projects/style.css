@@ -532,10 +532,50 @@ body.nav-active {
     font-weight: 700;
     transition: all 0.3s ease;
     text-decoration: none;
+
+    /* Tambahan agar berbentuk tombol */
+    padding: 10px 24px;
+    border: 2px solid currentColor; /* Otomatis mengikuti warna teks aslimu (ungu, merah, biru) */
+    border-radius: 100px;
+    background-color: transparent;
+    width: max-content;
 }
 
 .project-card .btn-text:is(:hover, :focus-visible) {
     gap: 12px;
+    transform: translateY(-4px); /* Efek tombol terangkat saat di-hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    color: white !important;
+}
+
+/* 1. Dibimbing (Ungu) */
+.project-card a[href="/projects/dibimbing"]:is(:hover, :focus-visible) {
+    background-color: #a07cc5;
+    border-color: #a07cc5;
+}
+
+/* 2. Pahamify / Sistech (Biru) */
+.project-card a[href="/projects/sistech/"]:is(:hover, :focus-visible) {
+    background-color: #6fa8dc;
+    border-color: #6fa8dc;
+}
+
+/* 3. BAS Hiring / Propensi (Biru) */
+.project-card a[href="/projects/propensi/"]:is(:hover, :focus-visible) {
+    background-color: #6fa8dc;
+    border-color: #6fa8dc;
+}
+
+/* 4. ClimED / Sister (Hijau) */
+.project-card a[href="/projects/sister/"]:is(:hover, :focus-visible) {
+    background-color: #81c784;
+    border-color: #81c784;
+}
+
+/* 5. Basis Data / Pacilflix (Merah Muda) */
+.project-card a[href="/projects/basdat/"]:is(:hover, :focus-visible) {
+    background-color: #d07575;
+    border-color: #d07575;
 }
 
 .card-banner {
