@@ -252,3 +252,29 @@ document.addEventListener('DOMContentLoaded', function() {
         updateProjectCounter();
     }
 });
+
+// ==========================================
+// UNDER CONSTRUCTION POPUP LOGIC
+// ==========================================
+const underConstructionLinks = document.querySelectorAll('.under-construction');
+const toastNotification = document.getElementById('toast-notification');
+let toastTimeout;
+
+if (toastNotification) {
+    underConstructionLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah browser lompat ke atas atau pindah halaman
+
+            // Tampilkan notifikasi
+            toastNotification.classList.add('show');
+
+            // Hapus timer sebelumnya jika tombol diklik berkali-kali dengan cepat
+            clearTimeout(toastTimeout);
+
+            // Sembunyikan otomatis setelah 3 detik
+            toastTimeout = setTimeout(() => {
+                toastNotification.classList.remove('show');
+            }, 5000);
+        });
+    });
+}

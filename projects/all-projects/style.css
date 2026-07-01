@@ -388,11 +388,11 @@ body.nav-active {
 
 .project-card-1,
 .project-card-2,
-:is(.project-card-3, .project-card-4, .project-card-5) .card-content {
+:is(.project-card-3, .project-card-4, .project-card-5, .project-card-6) .card-content {
     padding: 32px;
 }
 
-.project :is(.project-card-3, .project-card-4, .project-card-5) {
+.project :is(.project-card-3, .project-card-4, .project-card-5, .project-card-6) {
     gap: 0;
 }
 
@@ -582,6 +582,47 @@ body.nav-active {
 .project-card a[href="/projects/zonaEBT"]:is(:hover, :focus-visible) {
     background-color: #f5a623;
     border-color: #f5a623;
+}
+
+/* 6. TemanTukang (Biru) */
+.project-card a[href="#"]:is(:hover, :focus-visible) {
+    background-color: #6fa8dc;
+    border-color: #6fa8dc;
+}
+
+
+/* ==========================================
+   TOAST NOTIFICATION (UNDER CONSTRUCTION)
+   ========================================== */
+.toast-notification {
+    position: fixed;
+    bottom: -100px; /* Tersembunyi di bawah layar saat awal */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsla(219, 22%, 26%, 0.95); /* Warna biru gelap elegan */
+    color: white;
+    padding: 16px 28px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat muncul */
+    backdrop-filter: blur(5px);
+    width: max-content;
+    max-width: 90vw;
+}
+
+.toast-notification.show {
+    bottom: 40px; /* Posisi saat muncul ke atas */
+}
+
+.toast-notification ion-icon {
+    font-size: 2.4rem;
+    color: #f5a623; /* Warna ikon peringatan kuning/oranye */
 }
 
 .card-banner {
