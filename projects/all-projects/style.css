@@ -578,6 +578,12 @@ body.nav-active {
     border-color: #d07575;
 }
 
+/* 6. ZonaEBT (Hijau) */
+.project-card a[href="/projects/zonaEBT"]:is(:hover, :focus-visible) {
+    background-color: #f5a623;
+    border-color: #f5a623;
+}
+
 .card-banner {
     margin: 0;
     overflow: hidden;
