@@ -51,7 +51,7 @@ html {
     font-family: 'Manrope', sans-serif;
     font-size: 10px;
     scroll-behavior: smooth;
-    scroll-padding-top: 100px; /* FIX: Tambahan agar judul tidak tertutup header saat navbar diklik */
+    scroll-padding-top: 50px; /* FIX: Tambahan agar judul tidak tertutup header saat navbar diklik */
 }
 
 body{
