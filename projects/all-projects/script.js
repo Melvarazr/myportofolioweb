@@ -214,17 +214,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add smooth scrolling to project section when filter is clicked
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const projectsGrid = document.querySelector('.projects-grid');
-            if (projectsGrid) {
-                projectsGrid.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
-            }
-        });
-    });
+    // filterButtons.forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         const projectsGrid = document.querySelector('.projects-grid');
+    //         if (projectsGrid) {
+    //             projectsGrid.scrollIntoView({ 
+    //                 behavior: 'smooth', 
+    //                 block: 'start' 
+    //             });
+    //         }
+    //     });
+    // });
 
     // Counter animation for visible projects
     function updateProjectCounter() {

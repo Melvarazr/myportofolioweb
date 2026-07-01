@@ -78,3 +78,74 @@ document.querySelectorAll('.experience-item').forEach(item => {
       item.style.transform = 'translateY(0) translateX(0) scale(1)';
   });
 });
+
+// ==========================================
+// Contact Form AJAX Submission (Web3Forms)
+// ==========================================
+const form = document.getElementById('contactForm');
+const statusMessage = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+const btnText = document.getElementById('btnText');
+
+if (form) {
+    form.addEventListener('submit', function(e) {
+        // Mencegah halaman refresh/pindah
+        e.preventDefault();
+        
+        // Ubah tampilan tombol saat proses loading
+        btnText.innerHTML = "Sending...";
+        submitBtn.style.opacity = "0.7";
+        submitBtn.style.cursor = "not-allowed";
+        submitBtn.disabled = true;
+
+        // Ambil data dari form
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        // Kirim data ke API Web3Forms
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let json = await response.json();
+            if (response.status == 200) {
+                // Jika sukses
+                statusMessage.innerHTML = "Thanks! Your message has been sent.";
+                statusMessage.style.color = "#4caf50"; // Warna hijau
+                statusMessage.style.display = "block";
+                form.reset(); // Kosongkan isian form
+            } else {
+                // Jika error dari server
+                console.log(response);
+                statusMessage.innerHTML = json.message;
+                statusMessage.style.color = "#f44336"; // Warna merah
+                statusMessage.style.display = "block";
+            }
+        })
+        .catch(error => {
+            // Jika koneksi putus/gagal total
+            console.log(error);
+            statusMessage.innerHTML = "Something went wrong. Please try again later.";
+            statusMessage.style.color = "#f44336";
+            statusMessage.style.display = "block";
+        })
+        .finally(() => {
+            // Kembalikan tombol seperti semula setelah selesai
+            btnText.innerHTML = "Send Message";
+            submitBtn.style.opacity = "1";
+            submitBtn.style.cursor = "pointer";
+            submitBtn.disabled = false;
+            
+            // Hilangkan pesan notifikasi setelah 5 detik
+            setTimeout(() => {
+                statusMessage.style.display = "none";
+            }, 5000);
+        });
+    });
+}
