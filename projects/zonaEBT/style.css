@@ -512,7 +512,7 @@ body.nav-active {
 }
 
 .process-number {
-    background: hsla(123, 38%, 64%, 1);
+    background: hsla(37, 91%, 55%, 1);
     color: white;
     width: 40px;
     height: 40px;
@@ -563,7 +563,7 @@ body.nav-active {
 
 .tool-item:hover {
     transform: translateY(-4px);
-    border-color: hsla(123, 38%, 64%, 1);
+    border-color: hsla(37, 91%, 55%, 1);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.12);
 }
 
@@ -597,7 +597,7 @@ body.nav-active {
 }
 
 .tool-link {
-    color: hsla(123, 38%, 64%, 1);
+    color: hsla(37, 91%, 55%, 1);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.25s ease;
@@ -630,11 +630,11 @@ body.nav-active {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: hsla(123, 38%, 64%, 1);
+    color: hsla(37, 91%, 55%, 1);
     font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid hsla(123, 38%, 64%, 1);
+    border: 2px solid hsla(37, 91%, 55%, 1);
     padding: 16px 32px;
     border-radius: 100px;
     transition: all 0.25s ease;
@@ -643,7 +643,7 @@ body.nav-active {
 }
 
 .back-btn:hover {
-    background-color: hsla(123, 38%, 64%, 1);
+    background-color: hsla(37, 91%, 55%, 1);
     color: white;
     transform: translateY(-4px);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.15);

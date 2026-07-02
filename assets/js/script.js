@@ -27,12 +27,16 @@ window.addEventListener("scroll", function () {
     }
 });
 
+// ==========================================
+// REVEAL ANIMATION PADA SAAT SCROLL
+// ==========================================
 const revealElements = document.querySelectorAll("[data-reveal]");
 const revealDelayElements = document.querySelectorAll("[data-reveal-delay]");
 
 const reveal = function () {
   for (let i = 0, len = revealElements.length; i < len; i++) {
-    if (revealElements[i].getBoundingClientRect().top < window.innerHeight / 1.2) {
+    // Mengecek apakah elemen sudah masuk ke dalam jangkauan layar
+    if (revealElements[i].getBoundingClientRect().top < window.innerHeight / 1.15) {
       revealElements[i].classList.add("revealed");
     }
   }
@@ -43,32 +47,14 @@ for (let i = 0, len = revealDelayElements.length; i < len; i++) {
   revealDelayElements[i].style.animationDelay = revealDelayElements[i].dataset.revealDelay;
 }
 
+// Hanya memicu animasi saat layar di-scroll atau baru pertama diload
 window.addEventListener("scroll", reveal);
 window.addEventListener("load", reveal);
 
-const handleParallax = function() {
-  const scrolled = window.pageYOffset;
-  const parallaxElements = document.querySelectorAll('.experience-item');
-  
-  parallaxElements.forEach((element, index) => {
-      const speed = 0.1 + (index * 0.05);
-      const yPos = -(scrolled * speed);
-      element.style.transform = `translate3d(0, ${yPos}px, 0)`;
-  });
-}
 
-// Smooth scroll reveal
-window.addEventListener('scroll', () => {
-  revealElementOnScroll();
-  requestAnimationFrame(handleParallax);
-});
-
-window.addEventListener('load', revealElementOnScroll);
-
-setTimeout(() => {
-  revealElements.forEach(el => el.classList.add('revealed'));
-}, 500);
-
+// ==========================================
+// EFEK HOVER KARTU EXPERIENCE
+// ==========================================
 document.querySelectorAll('.experience-item').forEach(item => {
   item.addEventListener('mouseenter', () => {
       item.style.transform = 'translateY(-8px) translateX(5px) scale(1.02)';
@@ -89,21 +75,17 @@ const btnText = document.getElementById('btnText');
 
 if (form) {
     form.addEventListener('submit', function(e) {
-        // Mencegah halaman refresh/pindah
         e.preventDefault();
         
-        // Ubah tampilan tombol saat proses loading
         btnText.innerHTML = "Sending...";
         submitBtn.style.opacity = "0.7";
         submitBtn.style.cursor = "not-allowed";
         submitBtn.disabled = true;
 
-        // Ambil data dari form
         const formData = new FormData(form);
         const object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
 
-        // Kirim data ke API Web3Forms
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {
@@ -115,37 +97,55 @@ if (form) {
         .then(async (response) => {
             let json = await response.json();
             if (response.status == 200) {
-                // Jika sukses
                 statusMessage.innerHTML = "Thanks! Your message has been sent.";
-                statusMessage.style.color = "#4caf50"; // Warna hijau
+                statusMessage.style.color = "#4caf50"; 
                 statusMessage.style.display = "block";
-                form.reset(); // Kosongkan isian form
+                form.reset(); 
             } else {
-                // Jika error dari server
                 console.log(response);
                 statusMessage.innerHTML = json.message;
-                statusMessage.style.color = "#f44336"; // Warna merah
+                statusMessage.style.color = "#f44336"; 
                 statusMessage.style.display = "block";
             }
         })
         .catch(error => {
-            // Jika koneksi putus/gagal total
             console.log(error);
             statusMessage.innerHTML = "Something went wrong. Please try again later.";
             statusMessage.style.color = "#f44336";
             statusMessage.style.display = "block";
         })
         .finally(() => {
-            // Kembalikan tombol seperti semula setelah selesai
             btnText.innerHTML = "Send Message";
             submitBtn.style.opacity = "1";
             submitBtn.style.cursor = "pointer";
             submitBtn.disabled = false;
             
-            // Hilangkan pesan notifikasi setelah 5 detik
             setTimeout(() => {
                 statusMessage.style.display = "none";
             }, 5000);
         });
     });
 }
+
+// ==========================================
+// UNDER CONSTRUCTION POPUP LOGIC
+// ==========================================
+document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.under-construction');
+    
+    if (btn) {
+        e.preventDefault(); 
+        
+        const toastNotification = document.getElementById('toast-notification');
+        
+        if (toastNotification) {
+            toastNotification.classList.add('show'); 
+            
+            if (window.toastTimer) clearTimeout(window.toastTimer);
+            
+            window.toastTimer = setTimeout(() => {
+                toastNotification.classList.remove('show');
+            }, 5000);
+        }
+    }
+});

@@ -1236,6 +1236,40 @@ body.nav-active {
     line-height: 1.5;
 }
 
+/* ==========================================
+   TOAST NOTIFICATION (UNDER CONSTRUCTION)
+   ========================================== */
+.toast-notification {
+    position: fixed;
+    bottom: -100px; /* Tersembunyi di bawah layar saat awal */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsla(219, 22%, 26%, 0.95); /* Warna biru gelap elegan */
+    color: white;
+    padding: 16px 28px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat muncul */
+    backdrop-filter: blur(5px);
+    width: max-content;
+    max-width: 90vw;
+}
+
+.toast-notification.show {
+    bottom: 40px; /* Posisi saat muncul ke atas */
+}
+
+.toast-notification ion-icon {
+    font-size: 2.4rem;
+    color: #f5a623; /* Warna ikon peringatan kuning/oranye */
+}
+
 #Project {
     background-color: hsla(344, 20%, 98%, 1);
     padding: 120px 0;
