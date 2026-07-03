@@ -371,25 +371,26 @@ body.nav-active {
 .project-card {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    border-radius: 12px;
+    border-radius: 24px; /* Sudut lebih membulat dan modern */
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                opacity 0.3s ease, 
-                transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi membal halus */
     max-width: 600px;
     margin-inline: auto;
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Efek garis tepi elegan (glass) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Bayangan default yang super halus */
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px hsla(216, 14%, 14%, 0.1);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Bayangan lebih dalam saat kursor diarahkan */
 }
 
-.project-card-1,
-.project-card-2,
-:is(.project-card-3, .project-card-4, .project-card-5, .project-card-6) .card-content {
-    padding: 32px;
+/* Hapus aturan padding kamu yang lama (.project-card-1 dll) dan gunakan ini agar semua seragam: */
+.card-content {
+    padding: 40px 40px 0 40px; /* Ruang lebih lega dan tidak sesak */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .project :is(.project-card-3, .project-card-4, .project-card-5, .project-card-6) {
@@ -496,20 +497,35 @@ body.nav-active {
     color: hsla(220, 12%, 43%, 1);
 }
 
+/* ==========================================
+   MODERN TECH TAGS DENGAN EFEK HOVER
+   ========================================== */
 .project-tech {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px; /* Jarak sedikit dilebarkan agar lebih lega */
     margin-bottom: 24px;
 }
 
 .tech-tag {
-    background-color: hsla(344, 53%, 62%, 0.1);
-    color: hsla(344, 53%, 62%, 1);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
+    background-color: #ffffff; /* Latar putih bersih */
+    color: hsla(219, 22%, 26%, 0.8); /* Warna teks abu-abu kebiruan natural */
+    padding: 8px 16px;
+    border-radius: 12px; /* Sudut membulat gaya modern */
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04); /* Bayangan sangat halus */
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animasi membal */
+    cursor: default; /* Kursor tidak berubah jadi teks saat diarahkan */
+}
+
+/* Efek saat tag disentuh kursor (Hover) */
+.tech-tag:hover {
+    transform: translateY(-4px) scale(1.02); /* Mengambang ke atas dan sedikit membesar */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bayangan menebal */
+    color: hsla(219, 22%, 26%, 1); /* Teks jadi lebih gelap/tajam */
+    border-color: rgba(0, 0, 0, 0.12);
 }
 
 .project-footer {
@@ -517,12 +533,15 @@ body.nav-active {
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
+    margin-bottom: 32px; /* Memberi jarak nafas ke gambar di bawahnya */
+    gap: 16px;
+    flex-wrap: wrap; /* ANTI TOMBOL GEPENG: Akan turun ke bawah jika layar sempit */
 }
 
 .project-date {
-    font-size: 1.3rem;
-    color: hsla(220, 12%, 43%, 0.8);
-    font-weight: 500;
+    font-size: 1.35rem;
+    color: hsla(220, 12%, 43%, 0.9);
+    font-weight: 600;
 }
 
 .project-card .btn-text {
@@ -532,18 +551,20 @@ body.nav-active {
     font-weight: 700;
     transition: all 0.3s ease;
     text-decoration: none;
-
-    /* Tambahan agar berbentuk tombol */
     padding: 10px 24px;
-    border: 2px solid currentColor; /* Otomatis mengikuti warna teks aslimu (ungu, merah, biru) */
+    border: 2px solid currentColor;
     border-radius: 100px;
     background-color: transparent;
     width: max-content;
+    
+    /* Pelindung Tombol */
+    flex-shrink: 0; 
+    white-space: nowrap; 
 }
 
 .project-card .btn-text:is(:hover, :focus-visible) {
     gap: 12px;
-    transform: translateY(-4px); /* Efek tombol terangkat saat di-hover */
+    transform: translateY(-4px); 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     color: white !important;
 }
@@ -628,13 +649,14 @@ body.nav-active {
 .card-banner {
     margin: 0;
     overflow: hidden;
+    border-radius: 16px 16px 0 0; /* Memberi lengkungan manis di dalam kartu */
 }
 
 .card-banner img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .wrapper {

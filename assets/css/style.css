@@ -1818,3 +1818,166 @@ textarea.input-field {
     transform: translateY(-4px);
     box-shadow: 0 8px 30px hsla(216, 14%, 14%, 0.12);
 }
+
+/* ==========================================
+   MODERN GLASS CARD - TEMANTUKANG (REDESIGN)
+   ========================================== */
+.modern-glass-card {
+    background: linear-gradient(145deg, #f0f8ff 0%, #e6f3ff 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px !important;
+    box-shadow: 0 20px 40px rgba(111, 168, 220, 0.15) !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.modern-glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.9) 0%, transparent 60%);
+    z-index: -1;
+}
+
+.modern-glass-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 30px 60px rgba(111, 168, 220, 0.25) !important;
+}
+
+/* Badge Gaya Baru */
+.modern-glass-card .card-badge {
+    display: inline-block;
+    background: rgba(111, 168, 220, 0.15);
+    color: #4a86c6;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(111, 168, 220, 0.3);
+}
+
+/* Tipografi Lebih Rapi */
+.modern-glass-card .card-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #1a2b3c;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.modern-glass-card .card-text {
+    color: #4a5568;
+    font-size: 1.6rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+    text-align: justify;
+}
+
+/* Tag Skill (Pill Bentuk Kapsul) */
+.modern-glass-card .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-block: 24px 32px;
+}
+
+.modern-glass-card .project-tags span {
+    background: white;
+    color: #4a86c6;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    border: 1px solid rgba(111, 168, 220, 0.15);
+    transition: all 0.3s ease;
+}
+
+.modern-glass-card .project-tags span:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(111, 168, 220, 0.2);
+    border-color: #6fa8dc;
+}
+
+/* Tombol Solid Elegan */
+.modern-glass-card .modern-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #6fa8dc !important;
+    color: white !important;
+    padding: 14px 32px !important;
+    border-radius: 100px !important;
+    font-weight: 700;
+    font-size: 1.6rem;
+    box-shadow: 0 8px 20px rgba(111, 168, 220, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    width: max-content;
+    border: none !important;
+}
+
+.modern-glass-card .modern-btn ion-icon {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.modern-glass-card .modern-btn:hover {
+    background: #5b96cb !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 12px 25px rgba(111, 168, 220, 0.5);
+    gap: 14px !important;
+}
+
+/* Animasi Gambar Melayang (Parallax Hover) */
+.modern-glass-card .card-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modern-glass-card .banner-img {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
+.modern-glass-card:hover .banner-img {
+    transform: scale(1.05) translateX(-15px); /* Gambar sedikit nge-zoom dan bergeser mendekat ke teks */
+}
+
+/* Responsivitas untuk layar HP */
+@media (max-width: 991px) {
+    .modern-glass-card .card-banner {
+        padding: 0;
+        margin-top: 20px;
+    }
+    .modern-glass-card:hover .banner-img {
+        transform: scale(1.03) translateY(-10px);
+    }
+}
+
+/* ==========================================
+   FIX: POSISI GAMBAR MODERN GLASS CARD
+   ========================================== */
+@media (min-width: 992px) {
+    /* Memaksa gambar dan teks sejajar di tengah secara vertikal */
+    .project-card.modern-glass-card {
+        align-items: center !important; 
+    }
+    
+    /* Menghapus padding bawah yang berlebihan dari desain lama */
+    .modern-glass-card .card-content {
+        padding-block-end: 40px !important; 
+    }
+    
+    /* Memastikan gambar benar-benar di tengah containernya */
+    .modern-glass-card .card-banner {
+        align-items: center !important;
+        padding-right: 40px !important; /* Memberi nafas di sisi kanan */
+    }
+}
