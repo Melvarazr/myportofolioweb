@@ -136,99 +136,85 @@
 
             <section class="section about" aria-label="about" id="about">
                 <div class="container">
-                    <div class="wrapper">
+                    <div class="wrapper" style="align-items: center;">
                         <div data-reveal="left">
                             <h2 class="h2 section-title">About Me</h2>
-                            <p class="section-text" style="font-size: 17px;">
+                            <p class="section-text" style="font-size: 1.7rem; text-align: justify; margin-bottom: 20px;">
                                 Information Systems graduate specializing in Human-Computer Interaction with experience in Product Management, UX Research, and interaction design. Experienced in translating user and business needs into product strategies, defining requirements, and collaborating with cross-functional teams to deliver user-centered digital solutions. Skilled in product discovery, user research, usability evaluation, and Agile product development, with a passion for building impactful products that create value for both users and businesses.
                             </p>
                         </div>
 
-                        <ul class="progress-list" data-reveal="right">
-                            <li class="progress-item">
-                                <div class="label-wrapper">
-                                    <p>Project/Product Manager</p>
-                                    <span class="span">100 %</span>
+                        <!-- PENGGANTI CORE FOCUS: BENTO STATS -->
+                        <div data-reveal="right" class="bento-wrapper">
+                            <!-- Stat 1 -->
+                            <div class="bento-box theme-pink">
+                                <ion-icon name="briefcase"></ion-icon>
+                                <div class="bento-content">
+                                    <h3 class="bento-value">2</h3>
+                                    <p class="bento-label">Tech Internships</p>
                                 </div>
-
-                                <div class="progress">
-                                    <div class="progress-fill" style="width: 100%; background-color: #c7b1dd;"></div>
+                            </div>
+                            
+                            <!-- Stat 2 -->
+                            <div class="bento-box theme-blue">
+                                <ion-icon name="layers"></ion-icon>
+                                <div class="bento-content">
+                                    <h3 class="bento-value">8+</h3>
+                                    <p class="bento-label">Projects Completed</p>
                                 </div>
-                            </li>
-
-                            <li class="progress-item">
-                                <div class="label-wrapper">
-                                    <p>UI/UX Designer</p>
-                                    <span class="span">90 %</span>
+                            </div>
+                            
+                            <!-- Stat 3 -->
+                            <div class="bento-box theme-green">
+                                <ion-icon name="rocket"></ion-icon>
+                                <div class="bento-content">
+                                    <h3 class="bento-value">Agile</h3>
+                                    <p class="bento-label">Scrum Methodology</p>
                                 </div>
-
-                                <div class="progress">
-                                    <div class="progress-fill" style="width: 90%; background-color: #b0d4c1;"></div>
+                            </div>
+                            
+                            <!-- Stat 4 -->
+                            <div class="bento-box theme-purple">
+                                <ion-icon name="heart"></ion-icon>
+                                <div class="bento-content">
+                                    <h3 class="bento-value">100%</h3>
+                                    <p class="bento-label">User-Centered</p>
                                 </div>
-                            </li>
-
-                            <li class="progress-item">
-                                <div class="label-wrapper">
-                                    <p>Programming</p>
-                                    <span class="span">50 %</span>
-                                </div>
-
-                                <div class="progress">
-                                    <div class="progress-fill" style="width: 50%; background-color: #e3a6b6;"></div>
-                                </div>
-                            </li>
-                        </ul>
+                            </div>
+                        </div>
                     </div>
 
-                    <ul class="grid-list">
+                    <!-- PENGGANTI 4 KARTU MENJADI 3 PILAR MODERN -->
+                    <ul class="grid-list about-grid">
+                        <!-- Pilar 1: PM -->
                         <li data-reveal="bottom" data-reveal-delay="0.25s">
-                            <div class="about-card">
-                                <div class="card-icon">
-                                    <img src="./assets/image/project_manager.png" alt="Project Manager">
-                                </div>
-
-                                <h3 class="h4 card-title">Project Manager</h3>
+                            <div class="pillar-card theme-pink">
+                                <div class="pillar-icon"><ion-icon name="briefcase-outline"></ion-icon></div>
+                                <h3 class="h4 card-title">Product & Project Management</h3>
                                 <p class="card-text">
-                                    Skilled in leading and coordinating projects from conception to delivery. Experienced in stakeholder management, resource allocation, timeline planning, and risk mitigation to ensure successful project outcomes.
+                                    Driving product strategy, managing backlogs, and coordinating cross-functional teams from discovery to delivery to maximize user satisfaction.
                                 </p>
                             </div>
                         </li>
 
+                        <!-- Pilar 2: UI/UX -->
                         <li data-reveal="bottom" data-reveal-delay="0.5s">
-                            <div class="about-card">
-                                <div class="card-icon">
-                                    <img src="./assets/image/product_manager.png" alt="Product Manager">
-                                </div>
-
-                                <h3 class="h4 card-title">Product Manager</h3>
+                            <div class="pillar-card theme-blue">
+                                <div class="pillar-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+                                <h3 class="h4 card-title">UI/UX Design</h3>
                                 <p class="card-text">
-                                    Focused on driving product strategy and delivering user-centered solutions. Experienced in market research, user analytics, product roadmapping, and cross-functional collaboration to maximize product value and user satisfaction.
+                                    Passionate about creating intuitive designs. Experienced in user research, wireframing, and usability testing to deliver functional aesthetic solutions.
                                 </p>
                             </div>
                         </li>
 
+                        <!-- Pilar 3: Tech -->
                         <li data-reveal="bottom" data-reveal-delay="0.75s">
-                            <div class="about-card">
-                                <div class="card-icon">
-                                    <img src="./assets/image/ui/ux_designer.png" alt="UI/UX Designer">
-                                </div>
-
-                                <h3 class="h4 card-title">UI/UX Designer</h3>
+                            <div class="pillar-card theme-green">
+                                <div class="pillar-icon"><ion-icon name="code-slash-outline"></ion-icon></div>
+                                <h3 class="h4 card-title">Tech & Development</h3>
                                 <p class="card-text">
-                                    Passionate about creating intuitive and user-centered designs. Experienced in user research, wireframing, prototyping, and usability testing to deliver functional and aesthetically pleasing solutions.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li data-reveal="bottom" data-reveal-delay="1s">
-                            <div class="about-card">
-                                <div class="card-icon">
-                                    <img src="./assets/image/Programming.png" alt="Programming">
-                                </div>
-
-                                <h3 class="h4 card-title">Programming</h3>
-                                <p class="card-text">
-                                    Proficient in multiple programming languages including Python, JavaScript, and HTML/CSS. Experienced in both front-end and back-end development with a focus on creating efficient and functional solutions.
+                                    Proficient in Python, JavaScript, and HTML/CSS. Experienced in understanding system architecture to bridge the gap between design and engineering.
                                 </p>
                             </div>
                         </li>
@@ -415,45 +401,47 @@
                             <h3 class="h3">Technical Skills</h3>
                             
                             <div class="skills-grid">
+    
                                 <div class="skill-category">
                                     <h4 class="category-title">
                                         <span class="category-icon">📊</span>
-                                        Project/Product Manager
+                                        Product/Project Manager
                                     </h4>
                                     <div class="skills-list">
+                                        <span class="skill-item">Agile & Scrum</span>
+                                        <span class="skill-item">PRD & User Story</span>
+                                        <span class="skill-item">Market Research</span>
+                                        <span class="skill-item">Data Analytics</span>
+                                        <span class="skill-item">OKR & KPI</span>
+                                        <span class="skill-item">Risk Management</span>
                                         <span class="skill-item">Jira</span>
                                         <span class="skill-item">Notion</span>
-                                        <span class="skill-item">Looker Studio</span>
                                         <span class="skill-item">Tableau</span>
-                                        <span class="skill-item">Risk Management</span>
-                                        <span class="skill-item">Product Strategy</span>
-                                        <span class="skill-item">Market Research</span>
-                                        <span class="skill-item">User Analytics</span>
-                                        <span class="skill-item">Product Roadmap</span>
                                     </div>
                                 </div>
 
                                 <div class="skill-category">
                                     <h4 class="category-title">
                                         <span class="category-icon">🎨</span>
-                                        Design & Tools
+                                        UI/UX & Research
                                     </h4>
                                     <div class="skills-list">
-                                        <span class="skill-item">Figma</span>
-                                        <span class="skill-item">draw.io</span>
-                                        <span class="skill-item">Canva</span>
-                                        <span class="skill-item">Prototyping</span>
-                                        <span class="skill-item">Wireframing</span>
                                         <span class="skill-item">User Research</span>
-                                        <span class="skill-item">Design Systems</span>
+                                        <span class="skill-item">Wireframing</span>
+                                        <span class="skill-item">Prototyping</span>
                                         <span class="skill-item">Usability Testing</span>
+                                        <span class="skill-item">Design System</span>
+                                        <span class="skill-item">Customer Journey</span>
+                                        <span class="skill-item">Figma</span>
+                                        <span class="skill-item">Miro</span>
+                                        <span class="skill-item">Maze</span>
                                     </div>
                                 </div>
 
                                 <div class="skill-category">
                                     <h4 class="category-title">
                                         <span class="category-icon">💻</span>
-                                        Programming
+                                        Tech & Development
                                     </h4>
                                     <div class="skills-list">
                                         <span class="skill-item">Python</span>
@@ -462,45 +450,51 @@
                                         <span class="skill-item">SQL</span>
                                         <span class="skill-item">Git</span>
                                         <span class="skill-item">API Integration</span>
+                                        <span class="skill-item">Business Process Modeling</span>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
-
+                        
                         <div class="soft-skills" data-reveal="bottom">
                             <h3 class="h3">Soft Skills</h3>
                             
                             <div class="soft-skills-grid">
+                                <!-- Card 1 -->
                                 <div class="soft-skill-card">
-                                    <img class="soft-skill-icon" src="./assets/image/Creativity.jpg" alt="Creativity">
-                                    <h4 class="soft-skill-name">Creativity</h4>
-                                    <p class="soft-skill-desc">Ability to generate innovative ideas and creative solutions for various challenges</p>
+                                    <div class="icon-box"><ion-icon name="heart-half-outline"></ion-icon></div>
+                                    <h4 class="soft-skill-name">User-Centered Thinking</h4>
+                                    <p class="soft-skill-desc">Empathetic approach to understanding user needs and translating them into impactful, accessible product solutions.</p>
                                 </div>
 
+                                <!-- Card 2 -->
                                 <div class="soft-skill-card">
-                                    <img class="soft-skill-icon" src="./assets/image/TimeManagement.jpg" alt="TimeManagement">
-                                    <h4 class="soft-skill-name">Time Management</h4>
-                                    <p class="soft-skill-desc">Effectively prioritize tasks and manage multiple deadlines to ensure timely project completion</p>
-                                </div>
-
-                                <div class="soft-skill-card">
-                                    <img class="soft-skill-icon" src="./assets/image/TeamWork.png" alt="TeamWork">
-                                    <h4 class="soft-skill-name">Team Work</h4>
-                                    <p class="soft-skill-desc">Collaborate effectively with diverse teams to achieve common goals and deliver successful outcomes</p>
-                                </div>
-
-                                <div class="soft-skill-card">
-                                    <img class="soft-skill-icon" src="./assets/image/ProblemSolving.png" alt="ProblemSolving">
+                                    <div class="icon-box"><ion-icon name="bulb-outline"></ion-icon></div>
                                     <h4 class="soft-skill-name">Problem Solving</h4>
-                                    <p class="soft-skill-desc">Systematic analysis and creative solutions for complex challenges</p>
+                                    <p class="soft-skill-desc">Applying critical thinking and systematic analysis to navigate complex challenges and deliver innovative solutions.</p>
                                 </div>
 
+                                <!-- Card 4 -->
                                 <div class="soft-skill-card">
-                                    <img class="soft-skill-icon" src="./assets/image/Adaptability.png" alt="Adaptability">
-                                    <h4 class="soft-skill-name">Adaptability</h4>
-                                    <p class="soft-skill-desc">Flexibility in adapting to new environments, technologies, and changing project requirements</p>
+                                    <div class="icon-box"><ion-icon name="chatbubbles-outline"></ion-icon></div>
+                                    <h4 class="soft-skill-name">Communication</h4>
+                                    <p class="soft-skill-desc">Clear and articulate communication to bridge the gap between technical constraints and overarching business goals.</p>
                                 </div>
 
+                                <!-- Card 5 -->
+                                <div class="soft-skill-card">
+                                    <div class="icon-box"><ion-icon name="sync-outline"></ion-icon></div>
+                                    <h4 class="soft-skill-name">Adaptability</h4>
+                                    <p class="soft-skill-desc">High flexibility in adjusting to shifting project requirements, new technologies, and fast-paced environments.</p>
+                                </div>
+
+                                <!-- Card 6 -->
+                                <div class="soft-skill-card">
+                                    <div class="icon-box"><ion-icon name="time-outline"></ion-icon></div>
+                                    <h4 class="soft-skill-name">Time Management</h4>
+                                    <p class="soft-skill-desc">Strong discipline and prioritization skills to manage multiple deadlines and ensure timely project delivery.</p>
+                                </div>
                             </div>
                         </div>
                     </div>

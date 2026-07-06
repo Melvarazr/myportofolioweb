@@ -358,6 +358,142 @@ body.nav-active {
 }
 
 
+/* ==========================================
+   MODERN ABOUT ME SECTION
+   ========================================== */
+.bento-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.bento-box {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(0,0,0,0.03);
+    box-shadow: 0 10px 30px hsla(216, 14%, 14%, 0.03);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bento-box ion-icon {
+    font-size: 3.2rem;
+    padding: 14px;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* Pewarnaan Ikon Bento */
+.bento-box.theme-pink ion-icon { background: hsla(344, 53%, 62%, 0.12); color: hsla(344, 53%, 62%, 1); }
+.bento-box.theme-blue ion-icon { background: hsla(210, 100%, 60%, 0.12); color: hsla(210, 100%, 60%, 1); }
+.bento-box.theme-green ion-icon { background: hsla(150, 60%, 50%, 0.12); color: hsla(150, 60%, 50%, 1); }
+.bento-box.theme-purple ion-icon { background: hsla(267, 37%, 73%, 0.12); color: hsla(267, 37%, 73%, 1); }
+
+.bento-value {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: hsla(219, 22%, 26%, 1);
+    line-height: 1.1;
+}
+
+.bento-label {
+    font-size: 1.35rem;
+    color: hsla(220, 12%, 43%, 1);
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+/* Interaksi Hover */
+.bento-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px hsla(216, 14%, 14%, 0.08);
+}
+
+.bento-box:hover ion-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.check-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.check-icon.pink { background: hsla(344, 53%, 62%, 0.15); color: hsla(344, 53%, 62%, 1); }
+.check-icon.blue { background: hsla(210, 100%, 60%, 0.15); color: hsla(210, 100%, 60%, 1); }
+.check-icon.green { background: hsla(150, 60%, 50%, 0.15); color: hsla(150, 60%, 50%, 1); }
+.check-icon.purple { background: hsla(267, 37%, 73%, 0.15); color: hsla(267, 37%, 73%, 1); }
+
+/* Desain 3 Pilar Kartu */
+.about-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.pillar-card {
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 24px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 10px 30px hsla(216, 14%, 14%, 0.03);
+    height: 100%;
+}
+
+.pillar-card.theme-pink { --ptheme: 344, 53%, 62%; }
+.pillar-card.theme-blue { --ptheme: 210, 100%, 60%; }
+.pillar-card.theme-green { --ptheme: 150, 60%, 50%; }
+
+.pillar-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px hsla(var(--ptheme), 0.15);
+    border-color: hsla(var(--ptheme), 0.3);
+}
+
+.pillar-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 24px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    background-color: hsla(var(--ptheme), 0.12);
+    color: hsla(var(--ptheme), 1);
+    transition: all 0.4s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+    background-color: hsla(var(--ptheme), 1);
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 20px hsla(var(--ptheme), 0.25);
+}
+
+.pillar-card .card-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: hsla(219, 22%, 26%, 1);
+}
+
+.pillar-card .card-text {
+    font-size: 1.5rem;
+    color: hsla(220, 12%, 43%, 1);
+    line-height: 1.6;
+}
+
 .about {
     background-color: hsla(344, 20%, 98%, 1);
     padding-block: 120px;
@@ -1018,126 +1154,116 @@ body.nav-active {
     margin-top: 50px;
 }
 
+/* ==========================================
+   MODERN TECHNICAL SKILLS CATEGORIES
+   ========================================== */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
+    gap: 30px;
     margin-top: 30px;
 }
 
+/* 1. MAGIC VARIABLES: Mendefinisikan Warna Tema Tiap Kartu */
+.skill-category:nth-child(1) { --theme: 344, 53%, 62%; } /* Tema Pink - Product */
+.skill-category:nth-child(2) { --theme: 210, 100%, 60%; } /* Tema Biru - UI/UX */
+.skill-category:nth-child(3) { --theme: 150, 60%, 50%; } /* Tema Hijau - Tech */
+
+/* 2. KARTU UTAMA (Modern & Bersih) */
 .skill-category {
-    background-color: hsla(220, 20%, 97%, 1);
-    border-radius: 12px;
-    padding: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-left: 4px solid transparent;
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 32px;
+    border: 1px solid hsla(var(--theme), 0.2); /* Garis tepi mengikuti warna tema */
+    box-shadow: 0 10px 30px hsla(var(--theme), 0.05); /* Bayangan sangat halus */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
-.skill-category:nth-child(1) {
-    border-left-color: hsla(344, 53%, 62%, 1);
-}
-
-.skill-category:nth-child(2) {
-    border-left-color: hsla(210, 100%, 60%, 1);
-}
-
-.skill-category:nth-child(3) {
-    border-left-color: hsla(150, 60%, 50%, 1);
-}
-
-.skill-category:nth-child(4) {
-    border-left-color: hsla(30, 100%, 60%, 1);
+/* Efek Glow Warna di Pojok Kartu */
+.skill-category::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, hsla(var(--theme), 0.08) 0%, transparent 80%);
+    z-index: -1;
 }
 
 .skill-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px hsla(216, 14%, 14%, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px hsla(var(--theme), 0.15); /* Bayangan warna menebal saat di-hover */
+    border-color: hsla(var(--theme), 0.4);
 }
 
+/* 3. JUDUL & IKON KARTU */
 .category-title {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 2.2rem;
+    font-weight: 800;
     color: hsla(219, 22%, 26%, 1);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
 
 .category-icon {
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-}
-
-.skill-category:nth-child(1) .category-icon {
-    background-color: hsla(344, 53%, 62%, 0.1);
-    color: hsla(344, 53%, 62%, 1);
-}
-
-.skill-category:nth-child(2) .category-icon {
-    background-color: hsla(210, 100%, 60%, 0.1);
-    color: hsla(210, 100%, 60%, 1);
-}
-
-.skill-category:nth-child(3) .category-icon {
-    background-color: hsla(150, 60%, 50%, 0.1);
-    color: hsla(150, 60%, 50%, 1);
-}
-
-.skill-category:nth-child(4) .category-icon {
-    background-color: hsla(30, 100%, 60%, 0.1);
-    color: hsla(30, 100%, 60%, 1);
+    font-size: 2rem;
+    background-color: hsla(var(--theme), 0.12); /* Background ikon mengikuti tema */
+    color: hsla(var(--theme), 1);
+    box-shadow: 0 4px 10px hsla(var(--theme), 0.1);
 }
 
 .skills-list {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 24px;
 }
 
+/* 4. TAG SKILL (Efek Hover Dinamis) */
 .skill-item {
-    background: linear-gradient(135deg, 
-        hsla(220, 20%, 97%, 1) 0%, 
-        hsla(0, 0%, 100%, 1) 100%);
-    color: hsla(219, 22%, 26%, 1);
+    background: #ffffff;
+    color: hsla(219, 22%, 26%, 0.85);
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 12px;
     font-size: 1.3rem;
-    font-weight: 600;
-    border: 1px solid hsla(344, 53%, 62%, 0.2);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 700;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
     position: relative;
+    z-index: 1;
     overflow: hidden;
 }
 
 .skill-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, 
-        hsla(344, 53%, 62%, 1) 0%, 
-        hsla(344, 53%, 72%, 1) 100%);
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, hsla(var(--theme), 1) 0%, hsla(var(--theme), 0.8) 100%);
     z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
+/* HOVER MENGIKUTI WARNA TEMA KARTU */
 .skill-item:hover {
-    color: hsla(0, 0%, 100%, 1);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px hsla(344, 53%, 62%, 0.3);
-    border-color: hsla(344, 53%, 62%, 1);
+    color: #ffffff;
+    transform: translateY(-4px) scale(1.02);
+    border-color: transparent;
+    box-shadow: 0 8px 20px hsla(var(--theme), 0.35); /* Glowing dengan warna spesifik! */
 }
 
 .skill-item:hover::before {
-    left: 0;
+    opacity: 1;
 }
 
 /* Progress bars for main skills */
@@ -1180,60 +1306,91 @@ body.nav-active {
     100% { transform: translateX(100%); }
 }
 
-/* Soft Skills */
+/* ==========================================
+   MODERN SOFT SKILLS SECTION
+   ========================================== */
 .soft-skills {
-    background-color: hsla(0, 0%, 100%, 1);
-    border-radius: 16px;
+    background-color: #ffffff;
+    border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 10px 40px hsla(216, 14%, 14%, 0.08);
+    box-shadow: 0 10px 30px hsla(216, 14%, 14%, 0.03);
+    border: 1px solid rgba(0,0,0,0.03);
 }
 
 .soft-skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
     margin-top: 30px;
 }
 
 .soft-skill-card {
-    background: linear-gradient(135deg, 
-        hsla(344, 53%, 62%, 0.05) 0%, 
-        hsla(344, 53%, 62%, 0.02) 100%);
-    border-radius: 12px;
-    padding: 25px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px 24px;
     text-align: center;
-    transition: all 0.3s ease;
-    border: 1px solid hsla(344, 53%, 62%, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Efek Glow Pink Halus di Background saat Hover */
+.soft-skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, hsla(344, 53%, 62%, 0.05) 0%, transparent 100%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .soft-skill-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px hsla(344, 53%, 62%, 0.15);
-    border-color: hsla(344, 53%, 62%, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px hsla(216, 14%, 14%, 0.08);
+    border-color: hsla(344, 53%, 62%, 0.2);
 }
 
-.soft-skill-icon {
-    width: 40px;
-    height: 40px;
+.soft-skill-card:hover::before {
+    opacity: 1;
+}
+
+/* Icon Box Vektor (Pengganti Gambar) */
+.soft-skill-card .icon-box {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 24px;
+    background-color: hsla(344, 53%, 62%, 0.08);
+    color: hsla(344, 53%, 62%, 1);
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 15px;
-    font-size: 24px;
-    color: white;
+    font-size: 3.2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Interaksi Ikon Melompat & Berubah Warna saat Hover */
+.soft-skill-card:hover .icon-box {
+    background-color: hsla(344, 53%, 62%, 1);
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 10px 20px hsla(344, 53%, 62%, 0.25);
 }
 
 .soft-skill-name {
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 800;
     color: hsla(219, 22%, 26%, 1);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .soft-skill-desc {
-    font-size: 1.3rem;
+    font-size: 1.45rem;
     color: hsla(220, 12%, 43%, 1);
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* ==========================================
@@ -1979,5 +2136,21 @@ textarea.input-field {
     .modern-glass-card .card-banner {
         align-items: center !important;
         padding-right: 40px !important; /* Memberi nafas di sisi kanan */
+    }
+}
+
+/* ==========================================
+   FIX: 3 KOLOM ABOUT ME (MENGISI RUANG KOSONG)
+   ========================================== */
+@media (min-width: 992px) {
+    .about .about-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* Responsivitas Layar HP */
+@media (max-width: 575px) {
+    .bento-wrapper {
+        grid-template-columns: 1fr; /* Jadi 1 kolom panjang kalau di HP sempit */
     }
 }

@@ -149,3 +149,43 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+// ==========================================
+// SMOOTH SCROLL & AUTO-CLOSE MOBILE MENU
+// ==========================================
+const navbarLinks = document.querySelectorAll(".navbar-link");
+
+navbarLinks.forEach(link => {
+    link.addEventListener("click", function(e) {
+        // Ambil id target dari atribut href (contoh: "#education")
+        const targetId = this.getAttribute("href");
+        
+        // Pastikan link mengarah ke id bagian di halaman ini
+        if (targetId && targetId.startsWith("#") && targetId.length > 1) {
+            e.preventDefault(); // Mencegah lompatan kasar bawaan browser
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // 1. Tutup menu mobile secara otomatis saat link diklik
+                if (navbar.classList.contains("active")) {
+                    navbar.classList.remove("active");
+                    overlay.classList.remove("active");
+                    document.body.classList.remove("nav-active");
+                }
+
+                // 2. Animasi Smooth Scroll dengan memperhitungkan tinggi Header
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                
+                // Menghitung posisi pas agar judul tidak tertutup header (+ jarak nafas 20px)
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; 
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        }
+    });
+});
