@@ -378,6 +378,94 @@ body.nav-active {
     margin-inline: auto;
     border: 1px solid rgba(255, 255, 255, 0.6); /* Efek garis tepi elegan (glass) */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); /* Bayangan default yang super halus */
+    position: relative; /* Agar badge status bisa diposisikan relatif terhadap kartu */
+}
+
+/* Tombol Ikon Bulat (Netral) */
+.status-badge {
+    position: absolute;
+    top: 36px; 
+    right: 40px; 
+    width: 46px; 
+    height: 46px;
+    background-color: #ffffff; 
+    color: hsla(219, 22%, 26%, 0.6); /* Warna abu-abu natural yang kalem */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Garis tepi super tipis */
+    z-index: 10;
+    cursor: help; 
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.status-badge ion-icon {
+    font-size: 2.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Efek Hover (Berubah Jadi Navy Gelap Premium) */
+.status-badge:hover {
+    background-color: hsla(219, 22%, 26%, 1); /* Warna biru navy gelap */
+    color: #ffffff;
+    transform: scale(1.1) rotate(15deg);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: hsla(219, 22%, 26%, 1);
+}
+
+/* Tooltip Teks (Navy Gelap) */
+.status-badge::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    right: 130%; 
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    background-color: hsla(219, 22%, 26%, 1); 
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+/* Segitiga kecil (Ekor Tooltip) */
+.status-badge::before {
+    content: '';
+    position: absolute;
+    right: 105%; 
+    top: 50%;
+    transform: translateY(-50%) translateX(10px);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent hsla(219, 22%, 26%, 1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    pointer-events: none;
+}
+
+/* Tampilkan Teks Pop-up saat Ikon di-hover */
+.status-badge:hover::after,
+.status-badge:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(0);
+}
+
+.project-card:hover .status-badge {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.15);
+    border-color: rgba(245, 166, 35, 0.5);
 }
 
 .project-card:hover {
@@ -520,12 +608,10 @@ body.nav-active {
     cursor: default; /* Kursor tidak berubah jadi teks saat diarahkan */
 }
 
-/* Efek saat tag disentuh kursor (Hover) */
+/* Efek dasar saat tag disentuh kursor (Hover) */
 .tech-tag:hover {
     transform: translateY(-4px) scale(1.02); /* Mengambang ke atas dan sedikit membesar */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Bayangan menebal */
-    color: hsla(219, 22%, 26%, 1); /* Teks jadi lebih gelap/tajam */
-    border-color: rgba(0, 0, 0, 0.12);
+    color: #ffffff !important; /* Teks otomatis jadi putih agar kontras dengan warna background */
 }
 
 .project-footer {
@@ -569,46 +655,42 @@ body.nav-active {
     color: white !important;
 }
 
+/* ==========================================
+   WARNA HOVER BUTTON & TAG MENGIKUTI TEMA KARTU
+   ========================================== */
+
 /* 1. Dibimbing (Ungu) */
+.project-card:has(a[href="/projects/dibimbing"]) .tech-tag:hover,
 .project-card a[href="/projects/dibimbing"]:is(:hover, :focus-visible) {
-    background-color: #a07cc5;
-    border-color: #a07cc5;
+    background-color: #a07cc5; border-color: #a07cc5; box-shadow: 0 8px 20px rgba(160, 124, 197, 0.4);
 }
 
-/* 2. Pahamify / Sistech (Biru) */
-.project-card a[href="/projects/sistech/"]:is(:hover, :focus-visible) {
-    background-color: #6fa8dc;
-    border-color: #6fa8dc;
-}
-
-/* 3. BAS Hiring / Propensi (Biru) */
+/* 2. TemanTukang, Pahamify, BAS Hiring (Biru) */
+.project-card:has(a[href="#"]) .tech-tag:hover,
+.project-card:has(a[href="/projects/sistech/"]) .tech-tag:hover,
+.project-card:has(a[href="/projects/propensi/"]) .tech-tag:hover,
+.project-card a[href="#"]:is(:hover, :focus-visible),
+.project-card a[href="/projects/sistech/"]:is(:hover, :focus-visible),
 .project-card a[href="/projects/propensi/"]:is(:hover, :focus-visible) {
-    background-color: #6fa8dc;
-    border-color: #6fa8dc;
+    background-color: #6fa8dc; border-color: #6fa8dc; box-shadow: 0 8px 20px rgba(111, 168, 220, 0.4);
 }
 
-/* 4. ClimED / Sister (Hijau) */
+/* 3. ClimED (Hijau) */
+.project-card:has(a[href="/projects/sister/"]) .tech-tag:hover,
 .project-card a[href="/projects/sister/"]:is(:hover, :focus-visible) {
-    background-color: #81c784;
-    border-color: #81c784;
+    background-color: #81c784; border-color: #81c784; box-shadow: 0 8px 20px rgba(129, 199, 132, 0.4);
 }
 
-/* 5. Basis Data / Pacilflix (Merah Muda) */
+/* 4. Basis Data (Merah Muda) */
+.project-card:has(a[href="/projects/basdat/"]) .tech-tag:hover,
 .project-card a[href="/projects/basdat/"]:is(:hover, :focus-visible) {
-    background-color: #d07575;
-    border-color: #d07575;
+    background-color: #d07575; border-color: #d07575; box-shadow: 0 8px 20px rgba(208, 117, 117, 0.4);
 }
 
-/* 6. ZonaEBT (Hijau) */
+/* 5. ZonaEBT (Kuning/Oranye) */
+.project-card:has(a[href="/projects/zonaEBT"]) .tech-tag:hover,
 .project-card a[href="/projects/zonaEBT"]:is(:hover, :focus-visible) {
-    background-color: #f5a623;
-    border-color: #f5a623;
-}
-
-/* 6. TemanTukang (Biru) */
-.project-card a[href="#"]:is(:hover, :focus-visible) {
-    background-color: #6fa8dc;
-    border-color: #6fa8dc;
+    background-color: #f5a623; border-color: #f5a623; box-shadow: 0 8px 20px rgba(245, 166, 35, 0.4);
 }
 
 
