@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Resume / CV — Melvara Zafirah Ramsi, S.Kom</title>
+    <meta name="description"
+        content="Curriculum Vitae of Melvara Zafirah Ramsi, S.Kom — Product & Project Manager, UX Researcher, and UI/UX Designer.">
+    <meta name="theme-color" content="#E26D8A">
+
+    <link rel="icon" type="image/png" href="/assets/image/weblogo.png">
+    <link rel="apple-touch-icon" href="/assets/image/weblogo.png">
+    <link rel="shortcut icon" href="/assets/image/weblogo.png" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+
+    <style>
+        .resume-page {
+            padding-top: 175px !important;
+            padding-bottom: 90px !important;
+        }
+
+        .resume-toolbar {
+            max-width: 920px;
+            margin: 0 auto 32px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .resume-toolbar .btn {
+            padding: 12px 22px;
+            font-size: 1.45rem;
+        }
+
+        .resume-toolbar-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .resume-sheet {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 1.5px solid rgba(34, 34, 59, 0.12);
+            border-radius: 26px;
+            padding: 52px 54px;
+            box-shadow: 0 14px 0 rgba(34, 34, 59, 0.06), 0 24px 48px rgba(34, 34, 59, 0.08);
+        }
+
+        .resume-header {
+            border-bottom: 2px solid rgba(34, 34, 59, 0.1);
+            padding-bottom: 24px;
+            margin-bottom: 30px;
+        }
+
+        .resume-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #22223B;
+            line-height: 1.15;
+            margin-bottom: 6px;
+        }
+
+        .resume-headline {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: hsla(344, 53%, 52%, 1);
+            margin-bottom: 14px;
+        }
+
+        .resume-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            font-size: 1.4rem;
+            color: #4A4E69;
+        }
+
+        .resume-contacts a,
+        .resume-contacts span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #22223B;
+            font-weight: 600;
+        }
+
+        .resume-contacts a:hover {
+            color: hsla(344, 53%, 52%, 1);
+        }
+
+        .resume-block {
+            margin-bottom: 32px;
+        }
+
+        .resume-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .resume-block-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: hsla(344, 53%, 52%, 1);
+            border-bottom: 1.5px solid hsla(344, 53%, 62%, 0.25);
+            padding-bottom: 6px;
+            margin-bottom: 18px;
+        }
+
+        .resume-summary {
+            font-size: 1.5rem;
+            line-height: 1.72;
+            color: #4A4E69;
+        }
+
+        .resume-entry {
+            margin-bottom: 22px;
+        }
+
+        .resume-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .resume-entry-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 3px;
+        }
+
+        .resume-entry-role {
+            font-size: 1.68rem;
+            font-weight: 800;
+            color: #22223B;
+        }
+
+        .resume-entry-date {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #4A4E69;
+        }
+
+        .resume-entry-org {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: #4A4E69;
+            margin-bottom: 8px;
+        }
+
+        .resume-coursework {
+            font-size: 1.4rem;
+            line-height: 1.65;
+            color: #4A4E69;
+            margin-top: 4px;
+        }
+
+        .resume-coursework strong {
+            color: #22223B;
+            font-weight: 700;
+        }
+
+        .resume-bullets {
+            padding-left: 20px;
+            list-style: disc;
+            color: #4A4E69;
+            font-size: 1.45rem;
+            line-height: 1.65;
+        }
+
+        .resume-bullets li {
+            margin-bottom: 5px;
+        }
+
+        .resume-skills-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .resume-skill-row {
+            font-size: 1.45rem;
+            line-height: 1.68;
+            color: #4A4E69;
+        }
+
+        .resume-skill-row strong {
+            color: #22223B;
+            font-weight: 800;
+            margin-right: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .resume-page {
+                padding-top: 135px !important;
+            }
+
+            .resume-sheet {
+                padding: 32px 22px;
+            }
+
+            .resume-name {
+                font-size: 2.6rem;
+            }
+        }
+
+        @media print {
+
+            .header,
+            .footer,
+            .resume-toolbar {
+                display: none !important;
+            }
+
+            .resume-page {
+                padding: 0 !important;
+            }
+
+            .resume-sheet {
+                box-shadow: none !important;
+                border: none !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" data-header>
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/assets/image/logo.png" alt="Logo">
+            </a>
+            <nav class="navbar" data-navbar>
+                <div class="navbar-top">
+                    <a href="/" class="logo">
+                        <img src="/assets/image/logo.png" alt="Logo">
+                    </a>
+                    <button class="nav-close-btn" aria-label="close menu" data-nav-toggler>
+                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+
+                <ul class="navbar-list">
+                    <li><a href="/" class="navbar-link">Home</a></li>
+                    <li><a href="/#about" class="navbar-link">About</a></li>
+                    <li><a href="/#education" class="navbar-link">Education</a></li>
+                    <li><a href="/#work" class="navbar-link">Work</a></li>
+                    <li><a href="/#skills" class="navbar-link">Skills</a></li>
+                    <li><a href="/projects/all-projects/" class="navbar-link">Projects</a></li>
+                    <li><a href="/#contact" class="navbar-link">Contact</a></li>
+                </ul>
+
+                <div class="wrapper">
+                    <a href="mailto:elvamelvara@gmail.com" class="contact-link">elvamelvara@gmail.com</a>
+                    <a href="tel:+628119891905">(+62)8119891905</a>
+                </div>
+
+                <ul class="social-list">
+                    <li><a href="https://instagram.com/melvarazr" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                    <li><a href="https://github.com/Melvarazr" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><ion-icon name="logo-github"></ion-icon></a></li>
+                    <li><a href="https://www.linkedin.com/in/melvarazafirah/" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                    <li><a href="https://wa.me/628119891905" target="_blank" rel="noopener noreferrer"
+                            class="social-link"><ion-icon name="logo-whatsapp"></ion-icon></a></li>
+                </ul>
+            </nav>
+
+            <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+                <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+            </button>
+
+            <div class="overlay" data-nav-toggler data-overlay></div>
+        </div>
+    </header>
+
+    <main>
+        <section class="resume-page" aria-label="curriculum vitae">
+            <div class="container">
+                <div class="resume-toolbar" data-reveal="top">
+                    <a href="/" class="btn btn-secondary">&larr; Back to Portfolio</a>
+                    <div class="resume-toolbar-actions">
+                        <button type="button" class="btn btn-secondary" id="copyEmailBtn">Copy Email</button>
+                        <button type="button" class="btn btn-primary" onclick="window.print()">Print / Save PDF</button>
+                    </div>
+                </div>
+
+                <div class="resume-sheet" data-reveal="bottom">
+                    <!-- Header -->
+                    <div class="resume-header">
+                        <h1 class="resume-name">Melvara Zafirah Ramsi, S.Kom</h1>
+                        <p class="resume-headline">Product &amp; Project Manager &bull; UX Researcher &bull; UI/UX
+                            Designer</p>
+                        <div class="resume-contacts">
+                            <a href="tel:+628119891905">
+                                <ion-icon name="call-outline"></ion-icon> 08119891905
+                            </a>
+                            <a href="mailto:elvamelvara@gmail.com">
+                                <ion-icon name="mail-outline"></ion-icon> elvamelvara@gmail.com
+                            </a>
+                            <a href="https://www.linkedin.com/in/melvarazafirah/" target="_blank"
+                                rel="noopener noreferrer">
+                                <ion-icon name="logo-linkedin"></ion-icon> linkedin.com/in/melvarazafirah/
+                            </a>
+                            <a href="https://github.com/Melvarazr" target="_blank" rel="noopener noreferrer">
+                                <ion-icon name="logo-github"></ion-icon> github.com/Melvarazr
+                            </a>
+                            <span>
+                                <ion-icon name="location-outline"></ion-icon> Jakarta Timur, DKI Jakarta
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- About Me -->
+                    <div class="resume-block">
+                        <h2 class="resume-block-title">About Me</h2>
+                        <p class="resume-summary">
+                            An Information Systems graduate (S.Kom) from Universitas Indonesia specializing in
+                            Product &amp; Project Management, UX Research, and UI/UX Design, further strengthened
+                            through Dibimbing.id's Product &amp; Project Management Bootcamp. Demonstrates strong
+                            competencies in Agile/Scrum methodologies, user experience design, and data analytics,
+                            with hands-on experience using Jira, Figma, Looker Studio, and Tableau for comprehensive
+                            project management and analysis. Proven track record includes serving as UX Researcher
+                            Intern at Vidio dot com, Product Owner Intern at ZonaEBT, Project Manager for the M-Tix
+                            activation rate analysis project, and Lead Designer for BAS Hiring recruitment system,
+                            driving product strategy, cross-functional collaboration, and end-to-end solutions aligned
+                            with business objectives.
+                        </p>
+                    </div>
+
+                    <!-- Work & Internship Experiences -->
+                    <div class="resume-block">
+                        <h2 class="resume-block-title">Work &amp; Internship Experiences</h2>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">UX Researcher Intern</h3>
+                                <span class="resume-entry-date">August &ndash; December, 2025</span>
+                            </div>
+                            <p class="resume-entry-org">Vidio dot com</p>
+                            <ul class="resume-bullets">
+                                <li>Conducted user sentiment analysis using social media and platform-level data to
+                                    identify user pain points related to usability and viewing experience.</li>
+                                <li>Synthesized research findings into insights and actionable recommendations to
+                                    support product and UX decision-making.</li>
+                                <li>Collaborated cross-functionally with Product, Content, and Data teams to validate
+                                    issues, refine hypotheses, and align research outcomes with improvement plans.</li>
+                                <li>Created structured research reports and presentation decks highlighting usability
+                                    gaps, behavioral patterns, and opportunities to enhance user experience.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Product Owner Intern</h3>
+                                <span class="resume-entry-date">August &ndash; September, 2025</span>
+                            </div>
+                            <p class="resume-entry-org">ZonaEBT</p>
+                            <ul class="resume-bullets">
+                                <li>Defined product vision, MVP scope, and roadmap for the Renewable Energy Certificate
+                                    (REC) Calculator aligned with corporate ESG and business goals.</li>
+                                <li>Created user stories, acceptance criteria, and managed a structured product backlog.
+                                </li>
+                                <li>Collaborated with UI/UX designers to build Figma prototypes and conducted Maze
+                                    usability testing to deliver iterative product improvements.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Education -->
+                    <div class="resume-block">
+                        <h2 class="resume-block-title">Education</h2>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Universitas Indonesia</h3>
+                                <span class="resume-entry-date">September, 2022 &ndash; July, 2026</span>
+                            </div>
+                            <p class="resume-entry-org">Bachelor of Information Systems (S.Kom)</p>
+                            <p class="resume-coursework">
+                                <strong>Relevant coursework:</strong> IT Project Management, IS Analysis and Design, IS
+                                Development Project, Human Computer Interaction, Business Management, Business and
+                                Technology Communication, IT Service Management, Intro to AI &amp; Data Science,
+                                Statistics and Probability, Database, IS Management, Enterprise Architecture and
+                                Applications, E-Commerce.
+                            </p>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Dibimbing.id</h3>
+                                <span class="resume-entry-date">March &ndash; September, 2025</span>
+                            </div>
+                            <p class="resume-entry-org">Product &amp; Project Management Bootcamp (Batch 14)</p>
+                            <p class="resume-coursework">
+                                <strong>Relevant coursework:</strong> Product Management Introduction &amp; Business
+                                Model, Business Process &amp; Company Vision, Market Analysis &amp; OKR/KPI Setting,
+                                Quantitative &amp; Qualitative Problem Validation, Customer Journey Mapping &amp;
+                                Ideation, User Flow &amp; Wireframing, Solution Validation &amp; MVP Development, Basic
+                                Business Intelligence &amp; Software Development, Stakeholder Management &amp; PRD
+                                Creation, Project Management Methods &amp; Scrum, Prioritization &amp; Product Release,
+                                Risk Management &amp; Quality Assurance, Go-To-Market Strategy &amp; Growth.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Organization Experiences -->
+                    <div class="resume-block">
+                        <h2 class="resume-block-title">Organization Experiences</h2>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Teaching Assistant of Interaction System, FASILKOM UI</h3>
+                                <span class="resume-entry-date">February &ndash; June, 2025</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Evaluated student assignments and delivered constructive feedback to enhance
+                                    learning outcomes and project quality.</li>
+                                <li>Led consultation sessions to guide student groups through project challenges and
+                                    technical questions.</li>
+                                <li>Facilitated Figma tutorial sessions in practical lab environments, enabling students
+                                    to master design tools and methodologies.</li>
+                                <li>Provided comprehensive feedback on final group presentations to improve students'
+                                    presentation skills and conceptual understanding.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Staff User Experience Academy, COMPFEST 15</h3>
+                                <span class="resume-entry-date">April &ndash; September, 2023</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Prepares curriculum requirements, speakers, and mentors.</li>
+                                <li>Participates in organizing the camp event.</li>
+                                <li>Conducts selection processes and serves as Liaison Officer for the participants.
+                                </li>
+                                <li>Ensures smooth execution of the event series.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Staff Liaison Officer, Wisuda Genap FASILKOM UI</h3>
+                                <span class="resume-entry-date">August &ndash; September, 2023</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Responsible for all matters related to connecting graduates with the organizing
+                                    committee.</li>
+                                <li>Ensures that information is communicated effectively and provides personal
+                                    communication to graduates.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Project Experiences -->
+                    <div class="resume-block">
+                        <h2 class="resume-block-title">Project Experiences</h2>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">M-Tix Activation Rate, Product &amp; Project Management
+                                    &ndash; Dibimbing.id</h3>
+                                <span class="resume-entry-date">March &ndash; September, 2025</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Analyzed drop-offs in the user funnel using real user data and interviews to
+                                    identify key barriers preventing users from converting from installs to paid users.
+                                </li>
+                                <li>Created customer journey canvas, user flows, and wireframes to address identified
+                                    conversion barriers and improve activation rates.</li>
+                                <li>Developed targeted solutions through business process modeling, OKR/KPI setting,
+                                    PRD creation, and executed agile sprint tasks in Jira.</li>
+                                <li>Proposed improvements to payment methods and pricing transparency aimed at reducing
+                                    payment abandonment and boosting user activation rates and satisfaction.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Lead Designer, BAS Hiring (Recruitment IS) &ndash; PT
+                                    Barokah Amanah Sentosa</h3>
+                                <span class="resume-entry-date">February &ndash; June, 2025</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Led design development for an integrated recruitment management system,
+                                    collaborating with cross-functional team including Lead Programmer, Project Manager,
+                                    System Analyst, and Scrum Master.</li>
+                                <li>Created comprehensive design system, typography, wireframes, high-fidelity
+                                    prototypes, and interaction design tailored to company branding and color schemes.
+                                </li>
+                                <li>Applied Scrum methodology and contributed to Product Backlog Items (PBI), Sprint
+                                    Backlog, Product Requirements Documents (PRD), and User Acceptance Testing (UAT).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">System Analyst, ANAUVERSITY (Academic Information System)
+                                </h3>
+                                <span class="resume-entry-date">September &ndash; December, 2024</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Contributed to the development of an integrated academic information system to
+                                    digitalize student registration processes, including tuition payments (UKT), course
+                                    registration (IRS), and grade management.</li>
+                                <li>Conducted requirements analysis, business process modeling (activity, use case, and
+                                    class diagrams), and system architecture design.</li>
+                                <li>Designed key features such as online tuition payment, academic status management,
+                                    special course registration, and automated grade input for lecturers.</li>
+                                <li>Developed UI/UX prototypes and technical diagrams (sequence and state machine
+                                    diagrams) to ensure usability and system efficiency.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Mockup Design, FlipTech Summit 2024 &ndash; Flip UI/UX
+                                    Challenge</h3>
+                                <span class="resume-entry-date">July &ndash; August, 2024</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Conducted comprehensive user research through surveys and competitor analysis to
+                                    understand Flip users' needs and identified key user pain points and behavior.</li>
+                                <li>Created low-fidelity and high-fidelity prototypes using Figma and implemented
+                                    design system principles for interface consistency.</li>
+                                <li>Conducted usability testing with real users and iteratively refined designs based on
+                                    user feedback to optimize satisfaction.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">UI/UX Design, Redesign Pahamify &ndash; Sister in Tech
+                                </h3>
+                                <span class="resume-entry-date">July, 2024</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Redesigned the Pahamify website to enhance user engagement, reorganizing content
+                                    structure for easy access and crafting a visually appealing interface.</li>
+                                <li>Developed wireframes and interactive prototypes in Figma and conducted iterative
+                                    usability tests with real users to improve accessibility and functionality.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">UI/UX Design, ClimED (Air Quality &amp; Carbon Monitoring
+                                    App)</h3>
+                                <span class="resume-entry-date">February &ndash; May, 2024</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Developed ClimED, a mobile application for air quality monitoring, carbon emission
+                                    calculation, and environmental education using a user-centered design approach.</li>
+                                <li>Conducted user interviews, created user personas, mapped user journeys, built
+                                    information architecture, and designed high-fidelity prototypes in Figma.</li>
+                                <li>Performed usability testing with the System Usability Scale (SUS) and collaborated
+                                    in a multidisciplinary team on product documentation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Backend, Databases &amp; EERD &ndash; Basis Data</h3>
+                                <span class="resume-entry-date">January &ndash; May, 2024</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Designed Entity-Relationship Diagrams (EERD), applied normalization techniques, and
+                                    deployed structured PostgreSQL schemas to Supabase with role-based permissions.</li>
+                                <li>Built Django backend systems integrated with PostgreSQL ORM, database triggers,
+                                    authenticated endpoints, CRUD operations, and query/index optimization.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resume-entry">
+                            <div class="resume-entry-top">
+                                <h3 class="resume-entry-role">Web &amp; Mobile Development &ndash; Pemrograman Berbasis
+                                    Platform</h3>
+                                <span class="resume-entry-date">August &ndash; December, 2023</span>
+                            </div>
+                            <ul class="resume-bullets">
+                                <li>Developed full-stack web applications using Django, HTML, CSS, JavaScript, and
+                                    JSON-based APIs with CRUD functionality and responsive UI.</li>
+                                <li>Built cross-platform mobile interfaces using Dart/Flutter and Java for Android,
+                                    integrating Django JSON APIs and deploying to cloud platforms.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="resume-block">
+                        <h2 class="resume-block-title">Skills</h2>
+                        <div class="resume-skills-list">
+                            <p class="resume-skill-row">
+                                <strong>Languages:</strong> Indonesian (Native), English (Intermediate)
+                            </p>
+                            <p class="resume-skill-row">
+                                <strong>Tools:</strong> Figma, draw.io, Jira, Notion, Word, Excel, Tableau, Looker
+                                Studio, Canva, Google Sheets, Google Docs
+                            </p>
+                            <p class="resume-skill-row">
+                                <strong>Hard Skills:</strong> Agile &amp; Scrum Methodologies, Prioritization, Risk and
+                                Mitigation Planning, Python, Business Process Modeling, PRD, User Story, User Journey
+                                Mapping, Customer Journey Canvas, Quantitative &amp; Qualitative Data Analysis, Problem
+                                Validation &amp; Root Cause Analysis, OKR &amp; KPI Setting, Data Visualization, Market
+                                Sizing, Market Research, UAT, UI Design, UX Design, Wireframing, Design System,
+                                Interaction Design, Usability Testing, User Research, Information Architecture, User
+                                Flow
+                                Creation, Typography, Design Thinking, Activity Diagram, Sequence Diagram, Class
+                                Diagram, EERD
+                            </p>
+                            <p class="resume-skill-row">
+                                <strong>Soft Skills:</strong> Collaboration, Teamwork, Creative, Critical Thinking,
+                                Communication, Time Management, Problem Solving, User-Centric Thinking, Adaptive,
+                                Commitment, Discipline, Emotional Intelligence, Empathy, Leadership
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="copyright">&copy; 2026 Melvara Zafirah Ramsi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="/assets/js/script.js"></script>
+    <script>
+        document.getElementById('copyEmailBtn').addEventListener('click', function () {
+            navigator.clipboard.writeText('elvamelvara@gmail.com');
+            const original = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+                this.textContent = original;
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
