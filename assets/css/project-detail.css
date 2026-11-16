@@ -1,3 +1,45 @@
+/* ==========================================
+   THEME VARIABLES (PROJECT DETAIL PAGES)
+   ========================================== */
+:root,
+body.theme-pink {
+    --theme-accent: hsla(344, 53%, 62%, 1);
+    --theme-accent-rgb: 214, 108, 136;
+    --theme-title-end: hsla(344, 53%, 62%, 1);
+    --theme-btn-gradient: linear-gradient(135deg, hsla(344, 53%, 62%, 1) 0%, hsla(219, 22%, 26%, 1) 100%);
+}
+
+body.theme-purple {
+    --theme-accent: hsla(267, 37%, 73%, 1);
+    --theme-accent-rgb: 186, 159, 214;
+    --theme-title-end: hsla(267, 37%, 73%, 1);
+    --theme-btn-gradient: linear-gradient(135deg, hsla(267, 37%, 73%, 1) 0%, hsla(219, 22%, 26%, 1) 100%);
+}
+
+body.theme-blue {
+    --theme-accent: hsla(209, 61%, 65%, 1);
+    --theme-accent-rgb: 111, 168, 220;
+    --theme-title-end: hsla(209, 61%, 65%, 1);
+    --theme-btn-gradient: linear-gradient(135deg, hsla(209, 61%, 65%, 1) 0%, hsla(219, 22%, 26%, 1) 100%);
+}
+
+body.theme-green {
+    --theme-accent: hsla(123, 38%, 64%, 1);
+    --theme-accent-rgb: 129, 199, 132;
+    --theme-title-end: hsla(123, 38%, 64%, 1);
+    --theme-btn-gradient: linear-gradient(135deg, #81c784 0%, #4caf50 100%);
+}
+
+body.theme-amber {
+    --theme-accent: hsla(37, 91%, 55%, 1);
+    --theme-accent-rgb: 245, 166, 35;
+    --theme-title-end: hsla(37, 91%, 55%, 1);
+    --theme-btn-gradient: linear-gradient(135deg, #d6c800 0%, #f5a623 100%);
+}
+
+/* ==========================================
+   RESET & BASE STYLES
+   ========================================== */
 *,
 *::before,
 *::after {
@@ -13,7 +55,7 @@ li {
 a,
 img,
 button,
-ion-icon { 
+ion-icon {
     display: block;
 }
 
@@ -22,7 +64,7 @@ a {
     text-decoration: none;
 }
 
-img { 
+img {
     height: auto;
 }
 
@@ -51,35 +93,39 @@ html {
     font-family: 'Manrope', sans-serif;
     font-size: 10px;
     scroll-behavior: smooth;
+    scroll-padding-top: 30px;
 }
 
-body{
+body {
     background-color: hsla(344, 20%, 98%, 1);
     color: hsla(220, 12%, 43%, 1);
     font-size: 1.6rem;
     line-height: 1.7;
 }
 
-body.nav-active { 
+body.nav-active {
     overflow: hidden;
 }
 
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
     width: 10px;
 }
 
-::-webkit-scrollbar-track { 
+::-webkit-scrollbar-track {
     background-color: hsl(0, 0%, 98%);
 }
 
-::-webkit-scrollbar-thumb { 
+::-webkit-scrollbar-thumb {
     background-color: hsl(0, 0%, 80%);
 }
 
-::-webkit-scrollbar-thumb:hover { 
+::-webkit-scrollbar-thumb:hover {
     background-color: hsl(0, 0%, 70%);
 }
 
+/* ==========================================
+   LAYOUT & TYPOGRAPHY
+   ========================================== */
 .container {
     padding-inline: 16px;
 }
@@ -132,10 +178,10 @@ body.nav-active {
 }
 
 .btn {
-    color: hsla(123, 38%, 64%, 1);
+    color: var(--theme-accent);
     font-size: 1.7rem;
     font-weight: 700;
-    border: 2px solid hsla(123, 38%, 64%, 1);
+    border: 2px solid var(--theme-accent);
     max-width: max-content;
     padding: 12px 28px;
     border-radius: 100px;
@@ -149,7 +195,7 @@ body.nav-active {
 
 .btn-primary,
 .btn-secondary:is(:hover, :focus-visible) {
-    background-color: hsla(123, 38%, 64%, 1);
+    background-color: var(--theme-accent);
     color: hsla(0, 0%, 100%, 1);
 }
 
@@ -160,11 +206,11 @@ body.nav-active {
 .section-title {
     margin-block: 16px;
     font-weight: 700;
-    color: hsla(123, 38%, 64%, 1);
+    color: hsla(219, 22%, 26%, 1);
     margin-bottom: 16px;
-    background: linear-gradient(135deg, 
-        hsla(219, 22%, 26%, 1) 0%, 
-        hsla(123, 38%, 64%, 1) 100%);
+    background: linear-gradient(135deg,
+            hsla(219, 22%, 26%, 1) 0%,
+            var(--theme-title-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -176,6 +222,9 @@ body.nav-active {
     gap: 30px;
 }
 
+/* ==========================================
+   SCROLL REVEAL ANIMATIONS
+   ========================================== */
 [data-reveal] {
     opacity: 0;
     transition: 0.75s ease;
@@ -202,11 +251,14 @@ body.nav-active {
     opacity: 1;
 }
 
+/* ==========================================
+   HEADER & NAVBAR
+   ========================================== */
 .header {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: hsla(336, 71%, 95%);
+    background-color: hsla(336, 71%, 95%, 1);
     width: 100%;
     padding-block: 20px;
     box-shadow: 0 0 20px hsla(216, 14%, 14%, 0.05);
@@ -219,8 +271,13 @@ body.nav-active {
 }
 
 @keyframes slideIn {
-    0% { transform: translateY(-100%);}
-    100% { transform: translateY(0);}
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .header .container {
@@ -238,7 +295,7 @@ body.nav-active {
     position: fixed;
     top: 0;
     left: -300px;
-    background-color: hsla(336, 71%, 95%);
+    background-color: hsla(336, 71%, 95%, 1);
     color: hsla(216, 14%, 14%, 1);
     max-width: 300px;
     width: 100%;
@@ -315,13 +372,16 @@ body.nav-active {
     opacity: 0.8;
 }
 
-.hero .section-text {
-    margin-block: 24px 36px;
-}
-
+/* ==========================================
+   HERO SECTION
+   ========================================== */
 .hero {
     padding-block-start: calc(90px + 80px);
     text-align: center;
+}
+
+.hero .section-text {
+    margin-block: 24px 36px;
 }
 
 .hero-title {
@@ -330,9 +390,9 @@ body.nav-active {
     font-weight: 700;
     color: hsla(219, 22%, 26%, 1);
     margin-bottom: 16px;
-    background: linear-gradient(135deg, 
-        hsla(219, 22%, 26%, 1) 0%, 
-        hsla(123, 38%, 64%, 1) 100%);
+    background: linear-gradient(135deg,
+            hsla(219, 22%, 26%, 1) 0%,
+            var(--theme-title-end) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -357,7 +417,10 @@ body.nav-active {
     border-radius: 12px;
 }
 
-/* Project Links Section */
+/* ==========================================
+   PROJECT LINKS & WEBSITE CTA
+   ========================================== */
+.website-section,
 .project-links {
     padding-block: 30px;
     text-align: center;
@@ -367,22 +430,21 @@ body.nav-active {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 32px;
+    gap: 24px;
 }
 
+.website-link,
 .project-link {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: linear-gradient(135deg, 
-        #81c784 0%, 
-        #4caf50 100%);
+    background: var(--theme-btn-gradient);
     color: white;
     font-size: 1.8rem;
     font-weight: 700;
     padding: 16px 32px;
     border-radius: 100px;
-    box-shadow: 0 8px 25px hsla(209, 61%, 65%, 0.3);
+    box-shadow: 0 8px 25px rgba(var(--theme-accent-rgb), 0.3);
     transition: all 0.3s ease;
     text-decoration: none;
     border: none;
@@ -390,6 +452,7 @@ body.nav-active {
     overflow: hidden;
 }
 
+.website-link::before,
 .project-link::before {
     content: '';
     position: absolute;
@@ -397,27 +460,49 @@ body.nav-active {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.2), 
-        transparent);
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
     transition: left 0.5s ease;
 }
 
+.website-link:hover::before,
 .project-link:hover::before {
     left: 100%;
 }
 
+.website-link:hover,
 .project-link:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 35px hsla(209, 61%, 65%, 0.4);
+    box-shadow: 0 12px 35px rgba(var(--theme-accent-rgb), 0.4);
 }
 
+.website-icon,
 .project-link ion-icon {
     font-size: 2.2rem;
     transition: transform 0.3s ease;
 }
 
+.website-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* ==========================================
+   CONTENT SECTIONS & CARDS
+   ========================================== */
 .content-section {
     max-width: 800px;
     margin-inline: auto;
@@ -433,6 +518,91 @@ body.nav-active {
     gap: 24px;
 }
 
+/* Breakdown Cards (Basdat, Dibimbing) */
+.breakdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.breakdown-item {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px hsla(216, 14%, 14%, 0.08);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--theme-accent);
+}
+
+.breakdown-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px hsla(216, 14%, 14%, 0.12);
+}
+
+.item-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.item-number {
+    background: var(--theme-accent);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.item-title {
+    color: hsla(219, 22%, 26%, 1);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.item-description {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: hsla(220, 12%, 43%, 1);
+}
+
+.read-more-btn {
+    color: var(--theme-accent);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.read-more-btn:hover {
+    transform: translateX(4px);
+    border-bottom-color: var(--theme-accent);
+}
+
+.read-more-btn::after {
+    content: '→';
+    font-size: 1.4rem;
+    transition: transform 0.25s ease;
+}
+
+.read-more-btn:hover::after {
+    transform: translateX(4px);
+}
+
+/* Features List (Propensi, Sister) */
 .features-list {
     display: grid;
     gap: 20px;
@@ -445,7 +615,7 @@ body.nav-active {
     padding: 24px;
     box-shadow: 0 4px 15px hsla(216, 14%, 14%, 0.08);
     transition: all 0.3s ease;
-    border-left: 4px solid hsla(123, 38%, 64%, 1);
+    border-left: 4px solid var(--theme-accent);
     display: flex;
     align-items: flex-start;
     gap: 16px;
@@ -457,7 +627,7 @@ body.nav-active {
 }
 
 .feature-icon {
-    background: hsla(123, 38%, 64%, 1);
+    background: var(--theme-accent);
     color: white;
     width: 48px;
     height: 48px;
@@ -488,6 +658,42 @@ body.nav-active {
     color: hsla(220, 12%, 43%, 1);
 }
 
+/* Improvements List (Sistech) */
+.improvements-list {
+    display: grid;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.improvement-item {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 15px hsla(216, 14%, 14%, 0.08);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--theme-accent);
+}
+
+.improvement-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.12);
+}
+
+.improvement-title {
+    color: hsla(219, 22%, 26%, 1);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.improvement-description {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: hsla(220, 12%, 43%, 1);
+}
+
+/* Process Overview List (Sistech, Sister, ZonaEBT) */
 .process-list {
     display: grid;
     gap: 20px;
@@ -500,7 +706,7 @@ body.nav-active {
     padding: 24px;
     box-shadow: 0 4px 15px hsla(216, 14%, 14%, 0.08);
     transition: all 0.3s ease;
-    border-left: 4px solid hsla(123, 38%, 64%, 1);
+    border-left: 4px solid var(--theme-accent);
     display: flex;
     align-items: flex-start;
     gap: 16px;
@@ -512,7 +718,7 @@ body.nav-active {
 }
 
 .process-number {
-    background: hsla(123, 38%, 64%, 1);
+    background: var(--theme-accent);
     color: white;
     width: 40px;
     height: 40px;
@@ -544,6 +750,7 @@ body.nav-active {
     color: hsla(220, 12%, 43%, 1);
 }
 
+/* Tools Grid */
 .tools-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -563,14 +770,8 @@ body.nav-active {
 
 .tool-item:hover {
     transform: translateY(-4px);
-    border-color: hsla(123, 38%, 64%, 1);
+    border-color: var(--theme-accent);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.12);
-}
-
-.tool-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
 
 .tool-icon {
@@ -581,6 +782,12 @@ body.nav-active {
     align-items: center;
     justify-content: center;
     font-size: 24px;
+}
+
+.tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .tool-name {
@@ -596,30 +803,9 @@ body.nav-active {
     line-height: 1.4;
 }
 
-.tool-link {
-    color: hsla(123, 38%, 64%, 1);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.25s ease;
-}
-
-.tool-link:hover {
-    text-decoration: underline;
-}
-
-.footer {
-    padding-block: 40px;
-    background-color: hsla(344, 20%, 98%, 1);
-}
-
-.copyright {
-    margin-block-end: 12px;
-}
-
-.footer .social-link {
-    color: hsla(219, 22%, 26%, 1);
-}
-
+/* ==========================================
+   BACK BUTTON & FOOTER
+   ========================================== */
 .back-section {
     margin-top: 60px;
     text-align: center;
@@ -630,11 +816,11 @@ body.nav-active {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    color: hsla(123, 38%, 64%, 1);
+    color: var(--theme-accent);
     font-size: 1.8rem;
     font-weight: 700;
     text-decoration: none;
-    border: 2px solid hsla(123, 38%, 64%, 1);
+    border: 2px solid var(--theme-accent);
     padding: 16px 32px;
     border-radius: 100px;
     transition: all 0.25s ease;
@@ -643,7 +829,7 @@ body.nav-active {
 }
 
 .back-btn:hover {
-    background-color: hsla(123, 38%, 64%, 1);
+    background-color: var(--theme-accent);
     color: white;
     transform: translateY(-4px);
     box-shadow: 0 8px 25px hsla(216, 14%, 14%, 0.15);
@@ -659,6 +845,22 @@ body.nav-active {
     transform: translateX(-4px);
 }
 
+.footer {
+    padding-block: 40px;
+    background-color: hsla(344, 20%, 98%, 1);
+}
+
+.copyright {
+    margin-block-end: 12px;
+}
+
+.footer .social-link {
+    color: hsla(219, 22%, 26%, 1);
+}
+
+/* ==========================================
+   MEDIA QUERIES
+   ========================================== */
 @media (min-width: 575px) {
     .container {
         max-width: 540px;
@@ -671,7 +873,7 @@ body.nav-active {
     .container {
         max-width: 720px;
     }
-    
+
     .section-text {
         font-size: 2rem;
     }
@@ -681,22 +883,34 @@ body.nav-active {
         justify-content: space-between;
         align-items: center;
     }
-    
-    .links-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    .copyright {
+        margin-block-end: 0;
+    }
+
+    .breakdown-item {
+        padding: 24px;
+    }
+
+    .item-title {
+        font-size: 2rem;
+    }
+
+    .item-description {
+        font-size: 1.6rem;
     }
 }
 
 @media (min-width: 992px) {
-    .container { 
-        max-width: 960px; 
+    .container {
+        max-width: 960px;
     }
 
     .nav-open-btn,
     .navbar-top,
     .navbar .wrapper,
-    .overlay { 
-        display: none; 
+    .overlay {
+        display: none;
     }
 
     .navbar,
@@ -717,8 +931,8 @@ body.nav-active {
         transition: 0.25s ease;
     }
 
-    .navbar-link:is(:hover, :focus-visible) { 
-        color: hsla(344, 53%, 62%, 1); 
+    .navbar-link:is(:hover, :focus-visible) {
+        color: hsla(344, 53%, 62%, 1);
     }
 
     .navbar .social-link {
@@ -745,19 +959,25 @@ body.nav-active {
     .hero-title {
         font-size: calc(3.6rem + 1.5vw);
     }
+
+    .hero-subtitle {
+        font-size: 2.2rem;
+    }
 }
 
 @media (min-width: 1200px) {
+
     .container,
-    .header { 
-        max-width: 1140px; 
+    .header {
+        max-width: 1140px;
     }
 }
 
 @media (min-width: 1400px) {
+
     .container,
-    .header { 
-        max-width: 1320px; 
+    .header {
+        max-width: 1320px;
     }
 
     .hero .section-text {
