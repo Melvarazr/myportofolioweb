@@ -376,55 +376,190 @@ body.nav-active {
 }
 
 /* ==========================================
-   MODERN ABOUT ME SECTION
+   MODERN 3D ABOUT ME SECTION
    ========================================== */
+.about {
+    background-color: hsla(344, 20%, 98%, 1);
+}
+
+.about .wrapper {
+    display: grid;
+    gap: 36px;
+    margin-block-end: 56px;
+}
+
+/* Editorial Bio Card */
+.about-bio-card {
+    background: linear-gradient(150deg, #ffffff 0%, hsla(344, 60%, 97%, 0.82) 100%);
+    border-radius: 26px;
+    padding: 34px 36px;
+    border: 1.5px solid hsla(344, 53%, 62%, 0.22);
+    box-shadow:
+        0 12px 30px hsla(216, 14%, 14%, 0.05),
+        0 1px 0 rgba(255, 255, 255, 0.95) inset;
+}
+
+.about-bio-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    color: hsla(219, 22%, 26%, 1);
+    border: 1px solid hsla(219, 22%, 26%, 0.14);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.about-bio-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: hsla(344, 53%, 62%, 1);
+    flex-shrink: 0;
+}
+
+.about-bio-card .section-title {
+    margin-block-end: 18px;
+}
+
+.about-bio-text {
+    position: relative;
+    padding-left: 16px;
+    font-size: 1.55rem;
+    line-height: 1.72;
+    color: hsla(220, 12%, 43%, 1);
+    text-align: justify;
+    margin-bottom: 14px;
+}
+
+.about-bio-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: 4px;
+    background: hsla(344, 53%, 62%, 0.55);
+}
+
+.about-focus-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed hsla(344, 53%, 62%, 0.25);
+}
+
+.about-chip {
+    background-color: #ffffff;
+    color: hsla(219, 22%, 26%, 0.9);
+    border: 1px solid hsla(344, 53%, 62%, 0.24);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.about-chip:hover {
+    background-color: hsla(344, 53%, 62%, 1);
+    color: #ffffff;
+    border-color: hsla(344, 53%, 62%, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px hsla(344, 53%, 62%, 0.28);
+}
+
+/* 3D Floating Bento Stats */
 .bento-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 18px;
+    perspective: 1200px;
 }
 
 .bento-box {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 24px;
+    --b-theme: 344, 53%, 62%;
+    --b-soft: 344, 60%, 97%;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    background: linear-gradient(150deg, #ffffff 0%, hsla(var(--b-soft), 0.8) 100%);
+    border-radius: 24px;
+    padding: 26px 22px;
     display: flex;
     align-items: center;
     gap: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 10px 30px hsla(216, 14%, 14%, 0.03);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1.5px solid hsla(var(--b-theme), 0.22);
+    box-shadow:
+        0 12px 28px hsla(216, 14%, 14%, 0.05),
+        0 1px 0 rgba(255, 255, 255, 0.95) inset;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s ease,
+        border-color 0.3s ease;
 }
 
-.bento-box ion-icon {
-    font-size: 3.2rem;
-    padding: 14px;
+.bento-box.is-tilting {
+    transition:
+        transform 0.08s ease-out,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.bento-box.theme-pink {
+    --b-theme: 344, 53%, 62%;
+    --b-soft: 344, 60%, 97%;
+}
+
+.bento-box.theme-blue {
+    --b-theme: 210, 100%, 56%;
+    --b-soft: 210, 100%, 96%;
+}
+
+.bento-box.theme-green {
+    --b-theme: 150, 60%, 45%;
+    --b-soft: 150, 55%, 96%;
+}
+
+.bento-box.theme-purple {
+    --b-theme: 267, 45%, 62%;
+    --b-soft: 267, 50%, 97%;
+}
+
+.bento-icon-wrap {
+    width: 56px;
+    height: 56px;
     border-radius: 16px;
-    transition: transform 0.3s ease;
+    background: linear-gradient(135deg,
+            hsla(var(--b-theme), 1) 0%,
+            hsla(var(--b-theme), 0.78) 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.7rem;
+    flex-shrink: 0;
+    box-shadow:
+        0 8px 16px hsla(var(--b-theme), 0.3),
+        0 3px 0 hsla(var(--b-theme), 0.55);
+    transform: translateZ(22px);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.bento-box.theme-pink ion-icon {
-    background: hsla(344, 53%, 62%, 0.12);
-    color: hsla(344, 53%, 62%, 1);
-}
-
-.bento-box.theme-blue ion-icon {
-    background: hsla(210, 100%, 60%, 0.12);
-    color: hsla(210, 100%, 60%, 1);
-}
-
-.bento-box.theme-green ion-icon {
-    background: hsla(150, 60%, 50%, 0.12);
-    color: hsla(150, 60%, 50%, 1);
-}
-
-.bento-box.theme-purple ion-icon {
-    background: hsla(267, 37%, 73%, 0.12);
-    color: hsla(267, 37%, 73%, 1);
+.bento-content {
+    transform: translateZ(16px);
 }
 
 .bento-value {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: hsla(219, 22%, 26%, 1);
     line-height: 1.1;
@@ -438,91 +573,158 @@ body.nav-active {
 }
 
 .bento-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px hsla(216, 14%, 14%, 0.08);
+    border-color: hsla(var(--b-theme), 0.55);
+    box-shadow:
+        5px 5px 0px hsla(var(--b-theme), 0.16),
+        10px 10px 0px hsla(var(--b-theme), 0.08),
+        0 22px 38px hsla(var(--b-theme), 0.18);
 }
 
-.bento-box:hover ion-icon {
-    transform: scale(1.1) rotate(5deg);
+.bento-box:hover .bento-icon-wrap {
+    transform: translateZ(34px) rotate(-6deg) scale(1.08);
 }
 
+/* 3D Isometric Elevated Pillar Cards */
 .about-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    gap: 28px;
+    perspective: 1400px;
 }
 
 .pillar-card {
-    background: #ffffff;
-    padding: 40px 32px;
-    border-radius: 24px;
-    text-align: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    box-shadow: 0 10px 30px hsla(216, 14%, 14%, 0.03);
+    --ptheme: 344, 53%, 62%;
+    --ptheme-soft: 344, 60%, 97%;
+    position: relative;
+    background: linear-gradient(150deg, #ffffff 0%, hsla(var(--ptheme-soft), 0.78) 100%);
+    padding: 34px 30px;
+    border-radius: 26px;
+    text-align: left;
+    border: 1.5px solid hsla(var(--ptheme), 0.22);
+    box-shadow:
+        0 12px 30px hsla(216, 14%, 14%, 0.05),
+        0 1px 0 rgba(255, 255, 255, 0.95) inset;
     height: 100%;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.35s ease;
 }
 
 .pillar-card.theme-pink {
     --ptheme: 344, 53%, 62%;
+    --ptheme-soft: 344, 60%, 97%;
 }
 
 .pillar-card.theme-blue {
-    --ptheme: 210, 100%, 60%;
+    --ptheme: 210, 100%, 56%;
+    --ptheme-soft: 210, 100%, 96%;
 }
 
 .pillar-card.theme-green {
-    --ptheme: 150, 60%, 50%;
+    --ptheme: 150, 60%, 45%;
+    --ptheme-soft: 150, 55%, 96%;
+}
+
+.pillar-sheen {
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(115deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.65) 50%,
+            transparent 100%);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    transition: left 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 1;
+}
+
+.pillar-card:hover .pillar-sheen {
+    left: 160%;
 }
 
 .pillar-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px hsla(var(--ptheme), 0.15);
-    border-color: hsla(var(--ptheme), 0.3);
+    transform: translate3d(-4px, -8px, 16px) rotateX(1.5deg) rotateY(-1.5deg);
+    border-color: hsla(var(--ptheme), 0.55);
+    box-shadow:
+        6px 6px 0px hsla(var(--ptheme), 0.16),
+        12px 12px 0px hsla(var(--ptheme), 0.08),
+        0 24px 44px hsla(var(--ptheme), 0.18);
+}
+
+.pillar-top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 2;
+}
+
+.pillar-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ffffff;
+    color: hsla(219, 22%, 26%, 1);
+    border: 1px solid hsla(219, 22%, 26%, 0.14);
+    padding: 5px 14px;
+    border-radius: 100px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.pillar-step::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: hsla(var(--ptheme), 1);
 }
 
 .pillar-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 24px;
-    border-radius: 20px;
+    width: 56px;
+    height: 56px;
+    margin: 0;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.5rem;
-    background-color: hsla(var(--ptheme), 0.12);
-    color: hsla(var(--ptheme), 1);
-    transition: all 0.4s ease;
+    font-size: 2.8rem;
+    background: linear-gradient(135deg,
+            hsla(var(--ptheme), 1) 0%,
+            hsla(var(--ptheme), 0.78) 100%);
+    color: #ffffff;
+    box-shadow:
+        0 8px 16px hsla(var(--ptheme), 0.3),
+        0 3px 0 hsla(var(--ptheme), 0.55);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .pillar-card:hover .pillar-icon {
-    background-color: hsla(var(--ptheme), 1);
-    color: #ffffff;
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 10px 20px hsla(var(--ptheme), 0.25);
+    transform: translateY(-4px) rotate(-6deg) scale(1.08);
 }
 
 .pillar-card .card-title {
-    font-size: 2rem;
+    font-size: 2.05rem;
     font-weight: 800;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     color: hsla(219, 22%, 26%, 1);
+    position: relative;
+    z-index: 2;
 }
 
 .pillar-card .card-text {
     font-size: 1.5rem;
     color: hsla(220, 12%, 43%, 1);
-    line-height: 1.6;
-}
-
-.about {
-    background-color: hsla(344, 20%, 98%, 1);
-}
-
-.about .wrapper {
-    display: grid;
-    gap: 50px;
-    margin-block-end: 70px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 2;
 }
 
 /* ==========================================
@@ -1852,6 +2054,10 @@ textarea.input-field {
         padding-block: 80px;
     }
 
+    .about-bio-card {
+        padding: 26px 22px;
+    }
+
     .bento-wrapper {
         grid-template-columns: 1fr;
     }
@@ -2071,12 +2277,9 @@ textarea.input-field {
     }
 
     .about .wrapper {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1.05fr 0.95fr;
         align-items: center;
-    }
-
-    .about .grid-list {
-        grid-template-columns: repeat(4, 1fr);
+        gap: 44px;
     }
 
     .about .about-grid {
@@ -2151,8 +2354,8 @@ textarea.input-field {
         max-width: 1140px;
     }
 
-    .about .grid-list {
-        gap: 50px;
+    .about .about-grid {
+        gap: 32px;
     }
 
     .contact-card {
@@ -2176,10 +2379,6 @@ textarea.input-field {
     }
 
     .about .wrapper {
-        gap: 100px;
-    }
-
-    .about .grid-list {
-        gap: 60px;
+        gap: 64px;
     }
 }

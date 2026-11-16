@@ -122,47 +122,68 @@
             <section class="section about" aria-label="about" id="about">
                 <div class="container">
                     <div class="wrapper" style="align-items: center;">
-                        <div data-reveal="left">
+                        <div class="about-bio-card" data-reveal="left">
+                            <div class="about-bio-badge">
+                                <span>Information Systems &bull; Universitas Indonesia</span>
+                            </div>
+
                             <h2 class="h2 section-title">About Me</h2>
-                            <p class="section-text"
-                                style="font-size: 1.7rem; text-align: justify; margin-bottom: 20px;">
+
+                            <p class="about-bio-text">
                                 Information Systems graduate specializing in Human-Computer Interaction with experience
                                 in Product Management, UX Research, and interaction design. Experienced in translating
                                 user and business needs into product strategies, defining requirements, and
                                 collaborating with cross-functional teams to deliver user-centered digital solutions.
+                            </p>
+
+                            <p class="about-bio-text">
                                 Skilled in product discovery, user research, usability evaluation, and Agile product
                                 development, with a passion for building impactful products that create value for both
                                 users and businesses.
                             </p>
+
+                            <div class="about-focus-chips">
+                                <span class="about-chip">Product Discovery</span>
+                                <span class="about-chip">UX Research</span>
+                                <span class="about-chip">Agile Delivery</span>
+                            </div>
                         </div>
 
                         <div data-reveal="right" data-reveal-delay="0.08s" class="bento-wrapper">
-                            <div class="bento-box theme-pink">
-                                <ion-icon name="briefcase"></ion-icon>
+                            <div class="bento-box theme-pink" data-3d-tilt>
+                                <div class="bento-icon-wrap">
+                                    <ion-icon name="briefcase"></ion-icon>
+                                </div>
                                 <div class="bento-content">
                                     <h3 class="bento-value">2</h3>
                                     <p class="bento-label">Tech Internships</p>
                                 </div>
                             </div>
 
-                            <div class="bento-box theme-blue">
-                                <ion-icon name="layers"></ion-icon>
+                            <div class="bento-box theme-blue" data-3d-tilt>
+                                <div class="bento-icon-wrap">
+                                    <ion-icon name="layers"></ion-icon>
+                                </div>
                                 <div class="bento-content">
                                     <h3 class="bento-value">8+</h3>
                                     <p class="bento-label">Projects Completed</p>
                                 </div>
                             </div>
 
-                            <div class="bento-box theme-green">
-                                <ion-icon name="rocket"></ion-icon>
+                            <div class="bento-box theme-green" data-3d-tilt>
+                                <div class="bento-icon-wrap">
+                                    <ion-icon name="rocket"></ion-icon>
+                                </div>
                                 <div class="bento-content">
                                     <h3 class="bento-value">Agile</h3>
                                     <p class="bento-label">Scrum Methodology</p>
                                 </div>
                             </div>
 
-                            <div class="bento-box theme-purple">
-                                <ion-icon name="heart"></ion-icon>
+                            <div class="bento-box theme-purple" data-3d-tilt>
+                                <div class="bento-icon-wrap">
+                                    <ion-icon name="heart"></ion-icon>
+                                </div>
                                 <div class="bento-content">
                                     <h3 class="bento-value">100%</h3>
                                     <p class="bento-label">User-Centered</p>
@@ -173,36 +194,48 @@
 
                     <ul class="grid-list about-grid">
                         <li data-reveal="bottom" data-reveal-delay="0.08s">
-                            <div class="pillar-card theme-pink">
-                                <div class="pillar-icon"><ion-icon name="briefcase-outline"></ion-icon></div>
+                            <article class="pillar-card theme-pink">
+                                <div class="pillar-sheen" aria-hidden="true"></div>
+                                <div class="pillar-top-row">
+                                    <span class="pillar-step">01 &bull; Strategy</span>
+                                    <div class="pillar-icon"><ion-icon name="briefcase-outline"></ion-icon></div>
+                                </div>
                                 <h3 class="h4 card-title">Product & Project Management</h3>
                                 <p class="card-text">
                                     Driving product strategy, managing backlogs, and coordinating cross-functional teams
                                     from discovery to delivery to maximize user satisfaction.
                                 </p>
-                            </div>
+                            </article>
                         </li>
 
                         <li data-reveal="bottom" data-reveal-delay="0.16s">
-                            <div class="pillar-card theme-blue">
-                                <div class="pillar-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+                            <article class="pillar-card theme-blue">
+                                <div class="pillar-sheen" aria-hidden="true"></div>
+                                <div class="pillar-top-row">
+                                    <span class="pillar-step">02 &bull; Design</span>
+                                    <div class="pillar-icon"><ion-icon name="color-palette-outline"></ion-icon></div>
+                                </div>
                                 <h3 class="h4 card-title">UI/UX Design</h3>
                                 <p class="card-text">
                                     Passionate about creating intuitive designs. Experienced in user research,
                                     wireframing, and usability testing to deliver functional aesthetic solutions.
                                 </p>
-                            </div>
+                            </article>
                         </li>
 
                         <li data-reveal="bottom" data-reveal-delay="0.24s">
-                            <div class="pillar-card theme-green">
-                                <div class="pillar-icon"><ion-icon name="code-slash-outline"></ion-icon></div>
+                            <article class="pillar-card theme-green">
+                                <div class="pillar-sheen" aria-hidden="true"></div>
+                                <div class="pillar-top-row">
+                                    <span class="pillar-step">03 &bull; Engineering</span>
+                                    <div class="pillar-icon"><ion-icon name="code-slash-outline"></ion-icon></div>
+                                </div>
                                 <h3 class="h4 card-title">Tech & Development</h3>
                                 <p class="card-text">
                                     Proficient in Python, JavaScript, and HTML/CSS. Experienced in understanding system
                                     architecture to bridge the gap between design and engineering.
                                 </p>
-                            </div>
+                            </article>
                         </li>
                     </ul>
                 </div>

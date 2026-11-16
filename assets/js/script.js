@@ -141,13 +141,15 @@ window.addEventListener("resize", updateAll3DTimelines);
 updateAll3DTimelines();
 
 /**
- * 3D PERSPECTIVE TILT CARDS (TECHNICAL SKILLS)
- * Mengikuti arah kursor pada perangkat pointer halus dan mereset mulus saat keluar
+ * 3D PERSPECTIVE TILT CARDS (ABOUT BENTO STATS & TECHNICAL SKILLS)
+ * Mengikuti arah kursor pada perangkat pointer halus dengan sudut proporsional
  */
 const tiltCards = document.querySelectorAll("[data-3d-tilt]");
 
 tiltCards.forEach((card) => {
     let rafId = null;
+    const defaultMaxTilt = card.classList.contains("bento-box") ? 8 : 12;
+    const maxTilt = parseFloat(card.dataset.tiltMax) || defaultMaxTilt;
 
     card.addEventListener("pointerenter", (e) => {
         if (e.pointerType !== "mouse") return;
@@ -163,8 +165,8 @@ tiltCards.forEach((card) => {
             const relX = (e.clientX - rect.left) / rect.width - 0.5;
             const relY = (e.clientY - rect.top) / rect.height - 0.5;
 
-            const rotateX = (-relY * 12).toFixed(2);
-            const rotateY = (relX * 12).toFixed(2);
+            const rotateX = (-relY * maxTilt).toFixed(2);
+            const rotateY = (relX * maxTilt).toFixed(2);
 
             card.style.setProperty("--tilt-x", `${rotateX}deg`);
             card.style.setProperty("--tilt-y", `${rotateY}deg`);
