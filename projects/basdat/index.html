@@ -6,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Melvara - Basis Data Project</title>
-    <meta name="title" content="Melvara - Basis Data Project">
-    <meta name="description" content="Ini Project Basis Data Melvara Zafirah Ramsi">
+    <title>Melvara - PacilFlix Database System Design</title>
+    <meta name="title" content="Melvara - PacilFlix Database System Design">
+    <meta name="description"
+        content="Portofolio Project Basis Data Melvara Zafirah Ramsi - PacilFlix Database System Design">
 
     <link rel="shortcut icon" href="/assets/image/weblogo.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
 
     <link rel="stylesheet" href="/assets/css/project-detail.css">
 </head>
@@ -41,7 +42,7 @@
                     <li><a href="/#education" class="navbar-link">Education</a></li>
                     <li><a href="/#work" class="navbar-link">Work</a></li>
                     <li><a href="/#skills" class="navbar-link">Skills</a></li>
-                    <li><a href="/#project" class="navbar-link">Projects</a></li>
+                    <li><a href="/#project" class="navbar-link active">Projects</a></li>
                     <li><a href="/#contact" class="navbar-link">Contact</a></li>
                 </ul>
 
@@ -72,71 +73,131 @@
 
     <main>
         <article>
-            <section class="section hero" aria-label="home">
+            <!-- Hero Section -->
+            <section class="section hero" aria-label="project overview">
                 <div class="container">
-                    <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.5s">PacilFlix: Database System
-                        Design for Streaming Platform</h1>
-                    <p class="section-text" data-reveal="top" data-reveal-delay="0.75s">
+                    <nav class="project-breadcrumb" aria-label="Breadcrumb" data-reveal="top">
+                        <a href="/projects/all-projects/">All Projects</a>
+                        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                        <span>PacilFlix Database</span>
+                    </nav>
+
+                    <div class="hero-category-pill" data-reveal="top" data-reveal-delay="0.04s">
+                        <span>DEVELOPMENT &bull; CASE STUDY</span>
+                    </div>
+
+                    <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.08s">
+                        PacilFlix: Database System Design for Streaming Platform
+                    </h1>
+
+                    <p class="section-text" data-reveal="top" data-reveal-delay="0.12s">
                         Academic team project to design a comprehensive database system for a streaming platform.
-                        Created complete Entity Relationship diagrams and relational schema to handle users, content
-                        management, subscriptions, and streaming analytics.
+                        Created complete Enhanced Entity Relationship diagrams and relational schema to handle users,
+                        content management, subscriptions, and streaming analytics.
                     </p>
-                    <div class="hero-image" data-reveal="top" data-reveal-delay="1s">
+
+                    <div class="hero-tags" data-reveal="top" data-reveal-delay="0.16s">
+                        <span class="hero-tag">Data Modelling</span>
+                        <span class="hero-tag">SQL</span>
+                        <span class="hero-tag">Relational Schema</span>
+                        <span class="hero-tag">EER &amp; ERD</span>
+                    </div>
+
+                    <div class="hero-image" data-reveal="bottom" data-reveal-delay="0.2s">
                         <img src="/assets/image/basdat.png" alt="PacilFlix Database Design" class="hero-img">
                     </div>
                 </div>
             </section>
 
+            <!-- 3D Bento Metadata Strip -->
+            <section class="section meta-section" aria-label="project details">
+                <div class="container">
+                    <div class="content-section">
+                        <div class="project-meta-grid">
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
+                                <div class="meta-icon">
+                                    <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Duration</span>
+                                <strong class="meta-value">Feb – Mar 2024</strong>
+                                <span class="meta-sub">2 Months Sprint</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
+                                <div class="meta-icon">
+                                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Team Size</span>
+                                <strong class="meta-value">4 Members</strong>
+                                <span class="meta-sub">Collaborative Design</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
+                                <div class="meta-icon">
+                                    <ion-icon name="school-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Course</span>
+                                <strong class="meta-value">Basis Data</strong>
+                                <span class="meta-sub">Fasilkom UI</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
+                                <div class="meta-icon">
+                                    <ion-icon name="server-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Deliverables</span>
+                                <strong class="meta-value">EER &amp; Schema</strong>
+                                <span class="meta-sub">Normalized Models</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Overview Section -->
             <section id="about" class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Overview</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Background</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Overview</h2>
                         </div>
                         <div class="content-body">
-                            <p class="section-text" data-reveal="right" data-reveal-delay="0.75s">
-                                Worked as part of a 4-member team to design a database system for PacilFlix streaming
-                                platform. Created Enhanced Entity Relationship (EER) diagrams and mapped them to
-                                relational models. Designed main entities like USER, CONTENT, TRANSACTION, and EPISODE
-                                with their attributes and relationships. Used draw.io tools for database visualization
-                                and worked together with team members to create a complete database schema. Applied
-                                database concepts like entity relationships, primary keys, and foreign keys to build a
-                                working database design.
-                            </p>
+                            <div class="overview-card" data-reveal="bottom" data-reveal-delay="0.08s">
+                                <p class="section-text">
+                                    Worked as part of a 4-member team to design a database system for PacilFlix
+                                    streaming platform. Created Enhanced Entity Relationship (EER) diagrams and mapped
+                                    them to relational models. Designed main entities like <strong>USER</strong>,
+                                    <strong>CONTENT</strong>, <strong>TRANSACTION</strong>, and <strong>EPISODE</strong>
+                                    with their attributes and relationships. Used draw.io tools for database
+                                    visualization and worked together with team members to create a complete database
+                                    schema. Applied database concepts like entity relationships, primary keys, and
+                                    foreign keys to build a working database design.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Project Breakdown Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Details</h2>
-                        </div>
-                        <div class="content-body">
-                            <p class="section-text" data-reveal="right" data-reveal-delay="0.75s">Duration: February -
-                                March 2024 (2 months)</p>
-                            <p class="section-text" data-reveal="right" data-reveal-delay="0.75s">Team Size: 4 members
-                            </p>
-                            <p class="section-text" data-reveal="right" data-reveal-delay="0.75s">Course: Basis Data</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section">
-                <div class="container">
-                    <div class="content-section">
-                        <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Project Breakdown
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Key Stages</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Project Breakdown
                             </h2>
                         </div>
                         <div class="content-body">
-                            <div class="breakdown-list" data-reveal="right" data-reveal-delay="0.5s">
-                                <div class="breakdown-item" data-reveal="right" data-reveal-delay="0.5s">
+                            <div class="breakdown-list">
+                                <div class="breakdown-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.06s">
                                     <div class="item-header">
-                                        <div class="item-number">1</div>
+                                        <div class="item-number">01</div>
                                         <h3 class="item-title">Enhanced Entity Relationship (EER) Modeling</h3>
                                     </div>
                                     <p class="item-description">
@@ -147,13 +208,15 @@
                                         components.
                                     </p>
                                     <a href="https://drive.google.com/file/d/1hUR2SLRLkEvU5pfmhoKXr4PEzNNcIf5D/view?usp=sharing"
-                                        target="_blank" rel="noopener noreferrer" class="read-more-btn">Read more:
-                                        Enhanced Entity Relationship (EER) Modeling</a>
+                                        target="_blank" rel="noopener noreferrer" class="read-more-btn">
+                                        <span>View EER Diagram Document</span>
+                                        <ion-icon name="open-outline" aria-hidden="true"></ion-icon>
+                                    </a>
                                 </div>
 
-                                <div class="breakdown-item" data-reveal="right" data-reveal-delay="0.5s">
+                                <div class="breakdown-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
                                     <div class="item-header">
-                                        <div class="item-number">2</div>
+                                        <div class="item-number">02</div>
                                         <h3 class="item-title">Relational Database Schema Design</h3>
                                     </div>
                                     <p class="item-description">
@@ -163,8 +226,10 @@
                                         table specifications and constraints.
                                     </p>
                                     <a href="https://drive.google.com/file/d/1zAo-au7STLRCl5xRzasp4A2HL52nlb3p/view?usp=sharing"
-                                        target="_blank" rel="noopener noreferrer" class="read-more-btn">Read more:
-                                        Relational Database Schema Design</a>
+                                        target="_blank" rel="noopener noreferrer" class="read-more-btn">
+                                        <span>View Relational Schema Document</span>
+                                        <ion-icon name="open-outline" aria-hidden="true"></ion-icon>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -172,28 +237,34 @@
                 </div>
             </section>
 
+            <!-- Tools Used Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Tools Used</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Workspace</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Tools Used</h2>
                         </div>
                         <div class="content-body">
                             <div class="tools-grid">
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1s">
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.06s">
                                     <div class="tool-icon">
                                         <img src="/assets/image/draw.io.jpeg" alt="draw.io">
                                     </div>
                                     <div class="tool-name">draw.io</div>
-                                    <div class="tool-description">Flowcharts, diagrams, and process mapping</div>
+                                    <div class="tool-description">EER diagrams, entity relationships, and relational
+                                        schema mapping</div>
                                 </div>
 
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1.25s">
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
                                     <div class="tool-icon">
                                         <img src="/assets/image/docs.png" alt="Google Docs">
                                     </div>
                                     <div class="tool-name">Google Docs</div>
-                                    <div class="tool-description">Documentation and requirements writing</div>
+                                    <div class="tool-description">Technical documentation, table specs, and constraint
+                                        definitions</div>
                                 </div>
                             </div>
                         </div>
@@ -202,14 +273,14 @@
             </section>
 
             <div class="back-section">
-                <a href="/projects/all-projects/" class="back-btn">Back to Projects</a>
+                <a href="/projects/all-projects/" class="back-btn">Back to All Projects</a>
             </div>
         </article>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p class="copyright">@ 2025 MelvaraZafirahRamsi. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Melvara Zafirah Ramsi. All rights reserved.</p>
             <ul class="social-list">
                 <li><a href="https://instagram.com/melvarazr" target="_blank" rel="noopener noreferrer"
                         class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>

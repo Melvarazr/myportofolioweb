@@ -14,7 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -41,7 +41,7 @@
                     <li><a href="/#education" class="navbar-link">Education</a></li>
                     <li><a href="/#work" class="navbar-link">Work</a></li>
                     <li><a href="/#skills" class="navbar-link">Skills</a></li>
-                    <li><a href="/#project" class="navbar-link">Projects</a></li>
+                    <li><a href="/#project" class="navbar-link active">Projects</a></li>
                     <li><a href="/#contact" class="navbar-link">Contact</a></li>
                 </ul>
 
@@ -74,8 +74,11 @@
         <!-- Projects Hero Section -->
         <section class="projects-hero">
             <div class="container">
-                <h1 class="h1 section-title" data-reveal="top">All Projects</h1>
-                <p class="section-text" data-reveal="top" data-reveal-delay="0.25s">
+                <div class="hero-eyebrow" data-reveal="top">
+                    <span>Portfolio Archive</span>
+                </div>
+                <h1 class="h1 section-title" data-reveal="top" data-reveal-delay="0.06s">All Projects</h1>
+                <p class="section-text" data-reveal="top" data-reveal-delay="0.12s">
                     Explore my complete portfolio of projects spanning product/project management, UI/UX design, and
                     development work. Each project represents a unique challenge and learning experience in my journey.
                 </p>
@@ -85,14 +88,17 @@
         <!-- Projects Section -->
         <section class="projects-section">
             <div class="container">
-                <!-- Filter Buttons -->
-                <div class="filter-buttons" data-reveal="bottom" data-reveal-delay="0.5s">
-                    <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="product/project-management">Product/Project
-                        Management</button>
-                    <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
-                    <button class="filter-btn" data-filter="development">Development</button>
-                    <button class="filter-btn" data-filter="case-study">Case Studies</button>
+                <!-- Filter Toolbar -->
+                <div class="projects-toolbar" data-reveal="bottom" data-reveal-delay="0.16s">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="product/project-management">Product/Project
+                            Management</button>
+                        <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
+                        <button class="filter-btn" data-filter="development">Development</button>
+                        <button class="filter-btn" data-filter="case-study">Case Studies</button>
+                    </div>
+                    <div class="project-counter" id="projectCounter" aria-live="polite">7 Projects</div>
                 </div>
 
                 <!-- Projects Grid -->
@@ -100,21 +106,27 @@
 
                     <!-- Project 7 - TemanTukang -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-6" data-category="product/project-management ui-ux"
-                            style="background-color: #f0f8ff;">
-                            <div class="card-glare"></div>
-                            <div class="status-badge" data-tooltip="Coming Soon">
-                                <ion-icon name="construct-outline"></ion-icon>
-                            </div>
+                        <article class="project-card theme-blue" data-category="product/project-management ui-ux">
+                            <div class="card-glare" aria-hidden="true"></div>
 
                             <div class="card-content">
-                                <p class="card-tag" style="color: #6fa8dc;">UI/UX Design</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">UI/UX DESIGN</span>
+                                    <div class="card-meta-right">
+                                        <span class="project-date">Feb 2026 - Jul 2026</span>
+                                        <div class="status-badge" data-tooltip="Coming Soon">
+                                            <ion-icon name="construct-outline"></ion-icon>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <h3 class="h3 card-title">TemanTukang</h3>
                                 <p class="card-text">
                                     An integrated handyman service platform developed as a final thesis project.
                                     Designed and managed the end-to-end product lifecycle, connecting users with
                                     reliable local handymen through a seamless interface and efficient booking flow.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">Product Management</span>
                                     <span class="tech-tag">UI/UX Design</span>
@@ -125,41 +137,42 @@
                                     <span class="tech-tag">User Research</span>
                                     <span class="tech-tag">System Design</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">February 2026 - July 2026</span>
-                                    <a href="javascript:void(0);" class="btn-text under-construction"
-                                        style="color: #6fa8dc;">
+                                    <a href="javascript:void(0);" class="btn-text under-construction">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/temantukang.png" alt="TemanTukang App" width="650" height="370"
                                     loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                     <!-- Project 6 - ZonaEBT -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-7" data-category="ui-ux product/project-management"
-                            style="background-color: #fff8e1;">
-                            <div class="card-glare"></div>
+                        <article class="project-card theme-orange" data-category="ui-ux product/project-management">
+                            <div class="card-glare" aria-hidden="true"></div>
+
                             <div class="card-content">
-                                <p class="card-tag" style="color: #f5a623;">PRODUCT/PROJECT MANAGEMENT</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">PRODUCT/PROJECT MANAGEMENT</span>
+                                    <span class="project-date">Aug 2025 - Sep 2025</span>
+                                </div>
+
                                 <h3 class="h3 card-title">ZonaEBT</h3>
                                 <p class="card-text">
                                     Renewable Energy Certificates (REC) play an important role in helping companies
-                                    achieve their sustainability and ESG goals. However, estimating REC requirements and
-                                    understanding the certification process can be challenging due to complex
-                                    calculations and limited user-friendly digital tools. Existing solutions often focus
-                                    on either energy simulation or certificate purchasing, requiring users to switch
-                                    between different platforms. As part of my Product Owner internship at ZonaEBT, I
-                                    worked on developing a REC Calculator that simplifies REC calculation, provides
-                                    transparent cost estimates, and streamlines the certificate purchasing process
-                                    through a single platform.
+                                    achieve their sustainability and ESG goals. As part of my Product Owner internship
+                                    at ZonaEBT, I worked on developing a REC Calculator that simplifies REC calculation,
+                                    provides transparent cost estimates, and streamlines the certificate purchasing
+                                    process through a single platform.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">Product Discovery</span>
                                     <span class="tech-tag">Competitor Analysis</span>
@@ -172,29 +185,34 @@
                                     <span class="tech-tag">Usability Testing</span>
                                     <span class="tech-tag">Cross-functional Collaboration</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">August 2025 - September 2025</span>
-                                    <a href="/projects/zonaEBT/" class="btn-text" style="color: #f5a623;">
+                                    <a href="/projects/zonaEBT/" class="btn-text">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/zonaebt.png" alt="ZonaEBT Project" width="650" height="370"
                                     loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                     <!-- Project 1 - M-Tix Cinema 21 -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-1"
-                            data-category="product/project-management ui-ux case-study"
-                            style="background-color: #f8f5fb;">
-                            <div class="card-glare"></div>
+                        <article class="project-card theme-purple"
+                            data-category="product/project-management ui-ux case-study">
+                            <div class="card-glare" aria-hidden="true"></div>
+
                             <div class="card-content">
-                                <p class="card-tag" style="color: #a07cc5;">PRODUCT/PROJECT MANAGEMENT</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">PRODUCT/PROJECT MANAGEMENT</span>
+                                    <span class="project-date">Mar 2025 - Aug 2025</span>
+                                </div>
+
                                 <h3 class="h3 card-title">Dibimbing.id</h3>
                                 <p class="card-text">
                                     M-Tix is Cinema 21's official mobile app for booking movie tickets online, launched
@@ -203,6 +221,7 @@
                                     weren't completing their first ticket purchase, which meant lost revenue and wasted
                                     marketing efforts.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">Data Analysis</span>
                                     <span class="tech-tag">Business Process Modelling</span>
@@ -215,38 +234,42 @@
                                     <span class="tech-tag">User Testing</span>
                                     <span class="tech-tag">Agile Methodology</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">March 2025 - August 2025</span>
-                                    <a href="/projects/dibimbing/" class="btn-text" style="color: #a07cc5;">
+                                    <a href="/projects/dibimbing/" class="btn-text">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/project_dibimbing.png" alt="M-Tix Cinema 21" width="650"
                                     height="370" loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                     <!-- Project 3 - BAS Hiring -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-3"
-                            data-category="product/project-management ui-ux development"
-                            style="background-color: #f0f8ff;">
-                            <div class="card-glare"></div>
+                        <article class="project-card theme-blue"
+                            data-category="product/project-management ui-ux development">
+                            <div class="card-glare" aria-hidden="true"></div>
+
                             <div class="card-content">
-                                <p class="card-tag" style="color: #6fa8dc;">DEVELOPMENT</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">DEVELOPMENT</span>
+                                    <span class="project-date">Feb 2025 - Jun 2025</span>
+                                </div>
+
                                 <h3 class="h3 card-title">BAS Hiring</h3>
                                 <p class="card-text">
                                     BAS Hiring is an integrated recruitment management system designed to streamline and
                                     optimize the hiring process for PT Barokah Amanah Sentosa. This system automates
                                     recruitment workflows, including account management, candidate application
-                                    processing, job posting, and outsourcing service requests. The platform enables
-                                    recruiters, general managers, and candidates to interact efficiently through various
-                                    dashboards, notifications, and real-time updates.
+                                    processing, job posting, and outsourcing service requests.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">Wireframing</span>
                                     <span class="tech-tag">Agile Methodology</span>
@@ -256,34 +279,40 @@
                                     <span class="tech-tag">User Interface Design</span>
                                     <span class="tech-tag">Design System</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">February 2025 - June 2025</span>
-                                    <a href="/projects/propensi/" class="btn-text" style="color: #6fa8dc;">
+                                    <a href="/projects/propensi/" class="btn-text">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/bas-hiring.png" alt="BAS Hiring" width="650" height="370"
                                     loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                     <!-- Project 2 - Sistech -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-4" data-category="ui-ux"
-                            style="background-color: #f0f8ff;">
-                            <div class="card-glare"></div>
+                        <article class="project-card theme-blue" data-category="ui-ux">
+                            <div class="card-glare" aria-hidden="true"></div>
+
                             <div class="card-content">
-                                <p class="card-tag" style="color: #6fa8dc;">UI/UX DESIGN</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">UI/UX DESIGN</span>
+                                    <span class="project-date">July 2024</span>
+                                </div>
+
                                 <h3 class="h3 card-title">Pahamify</h3>
                                 <p class="card-text">
                                     Redesigned Pahamify's educational platform interface to improve user experience for
                                     Indonesian high school students. Enhanced navigation, visual hierarchy, and
                                     accessibility through user research and iterative design testing.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">User Interface Design</span>
                                     <span class="tech-tag">User Experience Design</span>
@@ -291,34 +320,40 @@
                                     <span class="tech-tag">Usability Testing</span>
                                     <span class="tech-tag">Wireframing</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">July 2024</span>
-                                    <a href="/projects/sistech/" class="btn-text" style="color: #6fa8dc;">
+                                    <a href="/projects/sistech/" class="btn-text">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/pahamify-sistech.png" alt="Pahamify Sistech" width="650"
                                     height="370" loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                     <!-- Project 4 - Sister Platform -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-5" data-category="ui-ux"
-                            style="background-color:#f5fdf5;">
-                            <div class="card-glare"></div>
+                        <article class="project-card theme-green" data-category="ui-ux">
+                            <div class="card-glare" aria-hidden="true"></div>
+
                             <div class="card-content">
-                                <p class="card-tag" style="color: #81c784;">UI/UX DESIGN</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">UI/UX DESIGN</span>
+                                    <span class="project-date">Feb 2024 - May 2024</span>
+                                </div>
+
                                 <h3 class="h3 card-title">ClimED</h3>
                                 <p class="card-text">
                                     ClimED is a mobile application designed to increase public awareness on climate
                                     change and air quality issues. The app empowers users to monitor real-time air
                                     quality, track their carbon footprint, and connect with environmental communities.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">Mobile App Design</span>
                                     <span class="tech-tag">User Research</span>
@@ -327,38 +362,41 @@
                                     <span class="tech-tag">User Interface Design</span>
                                     <span class="tech-tag">User Experience Design</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">February 2024 - May 2024</span>
-                                    <a href="/projects/sister/" class="btn-text" style="color: #81c784;">
+                                    <a href="/projects/sister/" class="btn-text">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/climed-sister.png" alt="ClimED App" width="650" height="370"
                                     loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                     <!-- Project 5 - Pacilflix -->
                     <li class="card-3d-wrapper">
-                        <div class="project-card project-card-2" data-category="development case-study"
-                            style="background-color: #fdf2f2;">
-                            <div class="card-glare"></div>
+                        <article class="project-card theme-pink" data-category="development case-study">
+                            <div class="card-glare" aria-hidden="true"></div>
+
                             <div class="card-content">
-                                <p class="card-tag" style="color: #d07575;">DEVELOPMENT</p>
+                                <div class="card-meta-row">
+                                    <span class="card-badge">DEVELOPMENT</span>
+                                    <span class="project-date">Feb 2024 - Mar 2024</span>
+                                </div>
+
                                 <h3 class="h3 card-title">Basis Data</h3>
                                 <p class="card-text">
                                     Worked as part of a 4-member team to design a database system for PacilFlix
                                     streaming platform. Created Enhanced Entity Relationship (EER) diagrams and mapped
-                                    them to relational models. Designed main entities like USER, CONTENT, TRANSACTION,
-                                    and EPISODE with their attributes and relationships. Used draw.io tools for database
-                                    visualization and worked together with team members to create a complete database
-                                    schema. Applied database concepts like entity relationships, primary keys, and
-                                    foreign keys to build a working database design.
+                                    them to relational models, complete with primary keys, foreign keys, and relational
+                                    schemas.
                                 </p>
+
                                 <div class="project-tech">
                                     <span class="tech-tag">Data Modelling Techniques</span>
                                     <span class="tech-tag">SQL</span>
@@ -367,25 +405,27 @@
                                     <span class="tech-tag">ERD</span>
                                     <span class="tech-tag">Business Process Understanding</span>
                                 </div>
+
                                 <div class="project-footer">
-                                    <span class="project-date">February 2024 - March 2024</span>
-                                    <a href="/projects/basdat/" class="btn-text" style="color: #d07575;">
+                                    <a href="/projects/basdat/" class="btn-text">
                                         <span class="span">View Project</span>
                                         <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
                             </div>
+
                             <figure class="card-banner">
                                 <img src="/assets/image/basdat.png" alt="Basis Data" width="650" height="370"
                                     loading="lazy" class="w-100">
                             </figure>
-                        </div>
+                        </article>
                     </li>
 
                 </ul>
-            </div>
-            <div class="back-section">
-                <a href="/#project" class="back-btn">Back to Projects</a>
+
+                <div class="back-section">
+                    <a href="/#project" class="back-btn">Back to Home</a>
+                </div>
             </div>
         </section>
     </main>
@@ -399,7 +439,7 @@
     <footer class="footer">
         <div class="container">
             <p class="copyright">
-                @ 2025 MelvaraZafirahRamsi. All rights reserved.
+                &copy; 2026 Melvara Zafirah Ramsi. All rights reserved.
             </p>
 
             <ul class="social-list">

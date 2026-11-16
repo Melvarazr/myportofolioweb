@@ -6,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Melvara - Sister Project</title>
-    <meta name="title" content="Melvara - Sister Project">
-    <meta name="description" content="Ini Project Sister Melvara Zafirah Ramsi">
+    <title>Melvara - ClimED Air Quality & Carbon Monitoring (Sister)</title>
+    <meta name="title" content="Melvara - ClimED Air Quality & Carbon Monitoring (Sister)">
+    <meta name="description"
+        content="Portofolio Project Sister Melvara Zafirah Ramsi - ClimED Air Quality & Carbon Emission Monitoring App">
 
     <link rel="shortcut icon" href="/assets/image/weblogo.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
 
     <link rel="stylesheet" href="/assets/css/project-detail.css">
 </head>
@@ -41,7 +42,7 @@
                     <li><a href="/#education" class="navbar-link">Education</a></li>
                     <li><a href="/#work" class="navbar-link">Work</a></li>
                     <li><a href="/#skills" class="navbar-link">Skills</a></li>
-                    <li><a href="/#project" class="navbar-link">Projects</a></li>
+                    <li><a href="/#project" class="navbar-link active">Projects</a></li>
                     <li><a href="/#contact" class="navbar-link">Contact</a></li>
                 </ul>
 
@@ -72,105 +73,189 @@
 
     <main>
         <article>
-            <section class="section hero" aria-label="home">
+            <!-- Hero Section -->
+            <section class="section hero" aria-label="project overview">
                 <div class="container">
-                    <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.5s">ClimED</h1>
-                    <p class="hero-subtitle" data-reveal="top" data-reveal-delay="0.75s">Air Quality & Carbon Emission
-                        Monitoring App</p>
-                    <div class="hero-image" data-reveal="top" data-reveal-delay="1s">
+                    <nav class="project-breadcrumb" aria-label="Breadcrumb" data-reveal="top">
+                        <a href="/projects/all-projects/">All Projects</a>
+                        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                        <span>ClimED</span>
+                    </nav>
+
+                    <div class="hero-category-pill" data-reveal="top" data-reveal-delay="0.04s">
+                        <span>MOBILE UI/UX &bull; SUSTAINABILITY</span>
+                    </div>
+
+                    <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.08s">
+                        ClimED: Air Quality &amp; Carbon Emission Monitoring App
+                    </h1>
+
+                    <p class="section-text" data-reveal="top" data-reveal-delay="0.12s">
+                        A user-centered mobile application designed to empower everyday commuters and environmental
+                        advocates to track real-time air quality (AQI), calculate personal carbon footprints, and
+                        connect with local green communities.
+                    </p>
+
+                    <div class="hero-tags" data-reveal="top" data-reveal-delay="0.16s">
+                        <span class="hero-tag">Mobile UI/UX</span>
+                        <span class="hero-tag">User Research</span>
+                        <span class="hero-tag">SUS Testing</span>
+                        <span class="hero-tag">Interactive Prototype</span>
+                        <span class="hero-tag">Climate Tech</span>
+                    </div>
+
+                    <div class="hero-image" data-reveal="bottom" data-reveal-delay="0.2s">
                         <img src="/assets/image/climed-sister.png" alt="ClimED Project" class="hero-img">
                     </div>
                 </div>
             </section>
 
-            <section class="section project-links">
+            <!-- Primary Links -->
+            <section class="section project-links" aria-label="project deliverables">
                 <div class="container">
                     <a href="https://www.figma.com/proto/AnYWIERCNd7uUoz8b6j5bO/ClimED?page-id=1%3A3&node-id=146-7676&viewport=-1467%2C4840%2C0.73&t=l2YeGhkioGr32MMK-1&scaling=scale-down&starting-point-node-id=146%3A7676"
-                        target="_blank" rel="noopener noreferrer" class="project-link figma" data-reveal="top"
-                        data-reveal-delay="0.5s">
+                        target="_blank" rel="noopener noreferrer" class="project-link figma" data-reveal="bottom"
+                        data-reveal-delay="0.04s">
                         <ion-icon name="logo-figma"></ion-icon>
-                        Figma Design
+                        <span>Interactive Prototype</span>
                     </a>
 
                     <a href="https://drive.google.com/file/d/1KvMCxxd8yG8Eqr9kj9mHWuEvmVDqa2xh/view?usp=sharing"
-                        target="_blank" rel="noopener noreferrer" class="project-link document" data-reveal="top"
-                        data-reveal-delay="0.75s">
+                        target="_blank" rel="noopener noreferrer" class="project-link document" data-reveal="bottom"
+                        data-reveal-delay="0.08s">
                         <ion-icon name="document-text-outline"></ion-icon>
-                        Project Document
+                        <span>Project Document</span>
                     </a>
                 </div>
             </section>
 
+            <!-- 3D Bento Metadata Strip -->
+            <section class="section meta-section" aria-label="project highlights">
+                <div class="container">
+                    <div class="content-section">
+                        <div class="project-meta-grid">
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
+                                <div class="meta-icon">
+                                    <ion-icon name="leaf-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Domain</span>
+                                <strong class="meta-value">Climate Tech</strong>
+                                <span class="meta-sub">AQI &amp; Carbon Tracking</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
+                                <div class="meta-icon">
+                                    <ion-icon name="apps-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Core Modules</span>
+                                <strong class="meta-value">5 Eco Features</strong>
+                                <span class="meta-sub">EcoCalc &amp; GeoCarbon</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
+                                <div class="meta-icon">
+                                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">User Research</span>
+                                <strong class="meta-value">6 Interviews</strong>
+                                <span class="meta-sub">Persona &amp; Journey Map</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
+                                <div class="meta-icon">
+                                    <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Validation</span>
+                                <strong class="meta-value">SUS Testing</strong>
+                                <span class="meta-sub">Iterative UX Refinement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Description Section -->
             <section id="about" class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Project
-                                Description</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Overview</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Project Description
+                            </h2>
                         </div>
                         <div class="content-body">
-                            <p class="section-text" data-reveal="right" data-reveal-delay="0.75s">
-                                ClimED is a mobile application designed to increase public awareness on climate change
-                                and air quality issues. The app empowers users to monitor real-time air quality (AQI),
-                                track their personal carbon footprint, access educational articles, and connect with
-                                local environmental communities. ClimED aims to deliver an inclusive and intuitive
-                                experience for all user segments, from environmental enthusiasts to everyday commuters.
-                            </p>
+                            <div class="overview-card" data-reveal="bottom" data-reveal-delay="0.08s">
+                                <p class="section-text">
+                                    <strong>ClimED</strong> is a mobile application designed to increase public
+                                    awareness on climate change and air quality issues. The app empowers users to
+                                    monitor real-time air quality (<strong>AQI</strong>), track their personal carbon
+                                    footprint, access educational articles, and connect with local environmental
+                                    communities. ClimED delivers an inclusive and intuitive experience for all user
+                                    segments, from environmental enthusiasts to everyday commuters.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Key Features Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Key Features</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Capabilities</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Key Features</h2>
                         </div>
                         <div class="content-body">
                             <div class="features-list">
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="0.5s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
                                     <div class="feature-icon"><ion-icon name="cloud-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Real-time Air Quality Monitoring</h3>
                                         <p class="feature-description">View up-to-date AQI and PM2.5 data for any
-                                            location, with detailed explanations and health recommendations.</p>
+                                            location, complete with detailed explanations and actionable health
+                                            recommendations.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="0.75s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
                                     <div class="feature-icon"><ion-icon name="leaf-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Carbon Emission Calculator (EcoCalc)</h3>
                                         <p class="feature-description">Track personal carbon footprint from daily
-                                            activities such as traveling, shopping, and electricity usage.</p>
+                                            activities such as commuting, shopping, and household electricity usage.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
                                     <div class="feature-icon"><ion-icon name="analytics-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">GeoCarbon Insights</h3>
                                         <p class="feature-description">Explore carbon emission statistics by country and
-                                            year, visualized through interactive charts.</p>
+                                            year, visualized through clean interactive charts.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1.25s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
                                     <div class="feature-icon"><ion-icon name="people-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Environmental Community Hub</h3>
                                         <p class="feature-description">Discover, join, and donate to environmental
-                                            organizations. Bookmark favorite communities for future access.</p>
+                                            organizations, with quick bookmarking for favorite communities.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1.5s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.2s">
                                     <div class="feature-icon"><ion-icon name="book-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Educational Articles</h3>
-                                        <p class="feature-description">Access and save educational content on
-                                            environmental topics, including a “Liked Articles” section.</p>
+                                        <p class="feature-description">Access and save curated educational content on
+                                            sustainability topics, including a dedicated “Liked Articles” library.</p>
                                     </div>
                                 </div>
                             </div>
@@ -179,59 +264,63 @@
                 </div>
             </section>
 
+            <!-- Process Overview Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Process Overview
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Design Workflow</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Process Overview
                             </h2>
                         </div>
                         <div class="content-body">
                             <div class="process-list">
-                                <div class="process-item" data-reveal="right" data-reveal-delay="0.5s">
-                                    <div class="process-number">1</div>
+                                <div class="process-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
+                                    <div class="process-number">01</div>
                                     <div class="process-content">
-                                        <h3 class="process-title">User Research & Persona Development</h3>
+                                        <h3 class="process-title">User Research &amp; Persona Development</h3>
                                         <p class="process-description">Conducted interviews with 6 target users to
                                             identify pain points, motivations, and expectations regarding air quality
-                                            monitoring and eco-friendly lifestyles</p>
+                                            monitoring and eco-friendly lifestyles.</p>
                                     </div>
                                 </div>
 
-                                <div class="process-item" data-reveal="right" data-reveal-delay="0.75s">
-                                    <div class="process-number">2</div>
+                                <div class="process-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
+                                    <div class="process-number">02</div>
                                     <div class="process-content">
-                                        <h3 class="process-title">Journey Mapping & Value Proposition</h3>
+                                        <h3 class="process-title">Journey Mapping &amp; Value Proposition</h3>
                                         <p class="process-description">Created user journey maps and value proposition
-                                            canvas to define key flows and product vision</p>
+                                            canvas to define key flows and product vision.</p>
                                     </div>
                                 </div>
 
-                                <div class="process-item" data-reveal="right" data-reveal-delay="1s">
-                                    <div class="process-number">3</div>
+                                <div class="process-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
+                                    <div class="process-number">03</div>
                                     <div class="process-content">
-                                        <h3 class="process-title">Information Architecture & Wireframing</h3>
+                                        <h3 class="process-title">Information Architecture &amp; Wireframing</h3>
                                         <p class="process-description">Built intuitive site maps and low-fidelity
-                                            wireframes to organize main features and user flows</p>
+                                            wireframes to organize main features and user flows.</p>
                                     </div>
                                 </div>
 
-                                <div class="process-item" data-reveal="right" data-reveal-delay="1.25s">
-                                    <div class="process-number">4</div>
+                                <div class="process-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
+                                    <div class="process-number">04</div>
                                     <div class="process-content">
                                         <h3 class="process-title">High-Fidelity Prototyping</h3>
                                         <p class="process-description">Developed interactive prototypes in Figma,
-                                            focusing on accessibility, visual hierarchy, and user-centric design</p>
+                                            focusing on accessibility, visual hierarchy, and user-centric design.</p>
                                     </div>
                                 </div>
 
-                                <div class="process-item" data-reveal="right" data-reveal-delay="1.5s">
-                                    <div class="process-number">5</div>
+                                <div class="process-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.2s">
+                                    <div class="process-number">05</div>
                                     <div class="process-content">
-                                        <h3 class="process-title">Usability Testing & Iteration</h3>
+                                        <h3 class="process-title">Usability Testing &amp; Iteration</h3>
                                         <p class="process-description">Ran usability tests and collected System
-                                            Usability Scale (SUS) feedback. Incorporated user feedback to refine
-                                            navigation, clarify feature names, and improve visual clarity</p>
+                                            Usability Scale (SUS) feedback to refine navigation, clarify feature names,
+                                            and improve visual clarity.</p>
                                     </div>
                                 </div>
                             </div>
@@ -240,31 +329,38 @@
                 </div>
             </section>
 
+            <!-- Tools Used Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.25s">Tools Used</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Workspace</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Tools Used</h2>
                         </div>
                         <div class="content-body">
                             <div class="tools-grid">
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="0.5s">
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
                                     <div class="tool-icon"><img src="/assets/image/figma.png" alt="Figma"></div>
                                     <div class="tool-name">Figma</div>
-                                    <div class="tool-description">Design & prototyping for user interfaces and
+                                    <div class="tool-description">Design &amp; prototyping for user interfaces and
                                         wireframes</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="0.75s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
                                     <div class="tool-icon"><img src="/assets/image/canva.png" alt="Canva"></div>
                                     <div class="tool-name">Canva</div>
                                     <div class="tool-description">Visual design and presentation materials</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
                                     <div class="tool-icon"><img src="/assets/image/gforms.png" alt="Google Forms"></div>
                                     <div class="tool-name">Google Forms</div>
                                     <div class="tool-description">Data collection and survey distribution</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1.25s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
                                     <div class="tool-icon"><img src="/assets/image/draw.io.jpeg" alt="Draw.io"></div>
                                     <div class="tool-name">Draw.io</div>
                                     <div class="tool-description">Diagramming and flowchart creation</div>
@@ -276,14 +372,14 @@
             </section>
 
             <div class="back-section">
-                <a href="/projects/all-projects/" class="back-btn">Back to Projects</a>
+                <a href="/projects/all-projects/" class="back-btn">Back to All Projects</a>
             </div>
         </article>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p class="copyright">@ 2025 MelvaraZafirahRamsi. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Melvara Zafirah Ramsi. All rights reserved.</p>
             <ul class="social-list">
                 <li><a href="https://instagram.com/melvarazr" target="_blank" rel="noopener noreferrer"
                         class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>

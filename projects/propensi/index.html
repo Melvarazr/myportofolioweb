@@ -6,15 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Melvara - BAS Hiring Project</title>
-    <meta name="title" content="Melvara - BAS Hiring Project">
-    <meta name="description" content="Ini Project BAS Hiring Melvara Zafirah Ramsi">
+    <title>Melvara - BAS Hiring Recruitment Information System</title>
+    <meta name="title" content="Melvara - BAS Hiring Recruitment Information System">
+    <meta name="description"
+        content="Portofolio Project BAS Hiring Melvara Zafirah Ramsi - Integrated Recruitment Information System">
 
     <link rel="shortcut icon" href="/assets/image/weblogo.png" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
 
     <link rel="stylesheet" href="/assets/css/project-detail.css">
 </head>
@@ -41,7 +42,7 @@
                     <li><a href="/#education" class="navbar-link">Education</a></li>
                     <li><a href="/#work" class="navbar-link">Work</a></li>
                     <li><a href="/#skills" class="navbar-link">Skills</a></li>
-                    <li><a href="/#project" class="navbar-link">Projects</a></li>
+                    <li><a href="/#project" class="navbar-link active">Projects</a></li>
                     <li><a href="/#contact" class="navbar-link">Contact</a></li>
                 </ul>
 
@@ -72,106 +73,190 @@
 
     <main>
         <article>
-            <section class="section hero" aria-label="home">
+            <!-- Hero Section -->
+            <section class="section hero" aria-label="project overview">
                 <div class="container">
-                    <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.5s">BAS Hiring: Recruitment
-                        Information System</h1>
-                    <div class="hero-image" data-reveal="top" data-reveal-delay="1s">
+                    <nav class="project-breadcrumb" aria-label="Breadcrumb" data-reveal="top">
+                        <a href="/projects/all-projects/">All Projects</a>
+                        <ion-icon name="chevron-forward-outline" aria-hidden="true"></ion-icon>
+                        <span>BAS Hiring</span>
+                    </nav>
+
+                    <div class="hero-category-pill" data-reveal="top" data-reveal-delay="0.04s">
+                        <span>DEVELOPMENT &bull; ENTERPRISE WEB APP</span>
+                    </div>
+
+                    <h1 class="h1 hero-title" data-reveal="top" data-reveal-delay="0.08s">
+                        BAS Hiring: Recruitment Information System
+                    </h1>
+
+                    <p class="section-text" data-reveal="top" data-reveal-delay="0.12s">
+                        An end-to-end recruitment and outsourcing management web application built for PT Barokah
+                        Amanah Sentosa, connecting recruiters, general managers, vendors, and candidates in one
+                        streamlined platform.
+                    </p>
+
+                    <div class="hero-tags" data-reveal="top" data-reveal-delay="0.16s">
+                        <span class="hero-tag">MongoDB</span>
+                        <span class="hero-tag">Express.js</span>
+                        <span class="hero-tag">React.js</span>
+                        <span class="hero-tag">Node.js</span>
+                        <span class="hero-tag">System Design</span>
+                    </div>
+
+                    <div class="hero-image" data-reveal="bottom" data-reveal-delay="0.2s">
                         <img src="/assets/image/bas-hiring.png" alt="BAS Hiring Recruitment System" class="hero-img">
                     </div>
                 </div>
             </section>
 
-            <section class="section website-section">
+            <!-- Primary Website CTA -->
+            <section class="section website-section" aria-label="live website link">
                 <div class="container">
                     <a href="https://bas-hiring.vercel.app/" target="_blank" rel="noopener noreferrer"
-                        class="website-link" data-reveal="top" data-reveal-delay="0.5s">
+                        class="website-link" data-reveal="bottom" data-reveal-delay="0.05s">
                         <ion-icon name="globe-outline" class="website-icon"></ion-icon>
-                        Visit Website
+                        <span>Visit Live Website</span>
                     </a>
                 </div>
             </section>
 
-            <section id="about" class="section">
+            <!-- 3D Bento Metadata Strip -->
+            <section class="section meta-section" aria-label="project highlights">
                 <div class="container">
                     <div class="content-section">
-                        <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Project
-                                Description</h2>
-                        </div>
-                        <div class="content-body">
-                            <p class="section-text" data-reveal="right" data-reveal-delay="0.75s">
-                                BAS Hiring is an integrated recruitment management system designed to streamline and
-                                optimize the hiring process for PT Barokah Amanah Sentosa. This system automates
-                                recruitment workflows, including account management, candidate application processing,
-                                job posting, and outsourcing service requests. The platform enables recruiters, general
-                                managers, and candidates to interact efficiently through various dashboards,
-                                notifications, and real-time updates.
-                            </p>
+                        <div class="project-meta-grid">
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
+                                <div class="meta-icon">
+                                    <ion-icon name="business-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Client Partner</span>
+                                <strong class="meta-value">PT BAS</strong>
+                                <span class="meta-sub">Barokah Amanah Sentosa</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
+                                <div class="meta-icon">
+                                    <ion-icon name="code-slash-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Tech Stack</span>
+                                <strong class="meta-value">MERN Stack</strong>
+                                <span class="meta-sub">Full-Stack Web App</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
+                                <div class="meta-icon">
+                                    <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">User Roles</span>
+                                <strong class="meta-value">4 Multi-Roles</strong>
+                                <span class="meta-sub">Admin, GM, Recruiter, Talent</span>
+                            </div>
+
+                            <div class="meta-bento-card" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
+                                <div class="meta-icon">
+                                    <ion-icon name="grid-outline" aria-hidden="true"></ion-icon>
+                                </div>
+                                <span class="meta-label">Core Modules</span>
+                                <strong class="meta-value">6 Features</strong>
+                                <span class="meta-sub">Hiring &amp; Outsourcing</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
+            <!-- Project Description Section -->
+            <section id="about" class="section">
+                <div class="container">
+                    <div class="content-section">
+                        <div class="content-header">
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Overview</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Project Description
+                            </h2>
+                        </div>
+                        <div class="content-body">
+                            <div class="overview-card" data-reveal="bottom" data-reveal-delay="0.08s">
+                                <p class="section-text">
+                                    <strong>BAS Hiring</strong> is an integrated recruitment management system designed
+                                    to streamline and optimize the hiring process for
+                                    <strong>PT Barokah Amanah Sentosa</strong>. This system automates recruitment
+                                    workflows, including account management, candidate application processing, job
+                                    posting, and outsourcing service requests. The platform enables recruiters, general
+                                    managers, and candidates to interact efficiently through role-based dashboards,
+                                    notifications, and real-time updates.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Features Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Key Features</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Capabilities</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Key Features</h2>
                         </div>
                         <div class="content-body">
                             <div class="features-list">
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="0.5s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
                                     <div class="feature-icon"><ion-icon name="person-circle-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Account Management</h3>
-                                        <p class="feature-description">Admin can manage user accounts, ensuring only
-                                            valid users access the system.</p>
+                                        <p class="feature-description">Admin can manage user accounts and role
+                                            permissions, ensuring only valid users access the system.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="0.75s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.08s">
                                     <div class="feature-icon"><ion-icon name="document-text-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Job Application</h3>
                                         <p class="feature-description">Candidates can apply for jobs through a seamless
-                                            registration and application process.</p>
+                                            registration and application tracking process.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.12s">
                                     <div class="feature-icon"><ion-icon name="analytics-outline"></ion-icon></div>
                                     <div class="feature-content">
-                                        <h3 class="feature-title">Dashboard</h3>
+                                        <h3 class="feature-title">Executive &amp; Operational Dashboard</h3>
                                         <p class="feature-description">Custom dashboards for General Managers, Admins,
-                                            and Recruiters to track data in real-time.</p>
+                                            and Recruiters to monitor hiring metrics in real-time.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1.25s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
                                     <div class="feature-icon"><ion-icon name="notifications-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Notifications</h3>
                                         <p class="feature-description">Real-time notifications for candidates and
-                                            vendors about their application or request status.</p>
+                                            vendors regarding their application or service request status.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1.5s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.2s">
                                     <div class="feature-icon"><ion-icon name="briefcase-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Job Postings</h3>
-                                        <p class="feature-description">Recruiters can publish and manage job listings
-                                            and job applications.</p>
+                                        <p class="feature-description">Recruiters can publish, update, and manage open
+                                            job listings and incoming candidate pipelines.</p>
                                     </div>
                                 </div>
 
-                                <div class="feature-item" data-reveal="right" data-reveal-delay="1.75s">
+                                <div class="feature-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.24s">
                                     <div class="feature-icon"><ion-icon name="people-outline"></ion-icon></div>
                                     <div class="feature-content">
                                         <h3 class="feature-title">Outsourcing Services</h3>
-                                        <p class="feature-description">Integration with vendors to manage outsourcing
-                                            requests.</p>
+                                        <p class="feature-description">Dedicated vendor integration to submit, review,
+                                            and manage corporate outsourcing requests.</p>
                                     </div>
                                 </div>
                             </div>
@@ -180,60 +265,72 @@
                 </div>
             </section>
 
+            <!-- Tools Used Section -->
             <section class="section">
                 <div class="container">
                     <div class="content-section">
                         <div class="content-header">
-                            <h2 class="h2 section-title" data-reveal="right" data-reveal-delay="0.5s">Tools Used</h2>
+                            <div class="section-eyebrow" data-reveal="top">
+                                <span>Tech Stack &amp; Workspace</span>
+                            </div>
+                            <h2 class="h2 section-title" data-reveal="top" data-reveal-delay="0.05s">Tools Used</h2>
                         </div>
                         <div class="content-body">
                             <div class="tools-grid">
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="0.5s">
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.04s">
                                     <div class="tool-icon"><img src="/assets/image/figma.png" alt="Figma"></div>
                                     <div class="tool-name">Figma</div>
-                                    <div class="tool-description">Design & prototyping for user interfaces and
+                                    <div class="tool-description">Design &amp; prototyping for user interfaces and
                                         wireframes</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="0.75s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.07s">
                                     <div class="tool-icon"><img src="/assets/image/canva.png" alt="Canva"></div>
                                     <div class="tool-name">Canva</div>
                                     <div class="tool-description">Visual design and presentation materials</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.1s">
                                     <div class="tool-icon"><img src="/assets/image/draw.io.jpeg" alt="draw.io"></div>
                                     <div class="tool-name">draw.io</div>
                                     <div class="tool-description">Flowcharts, diagrams, and process mapping</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1.25s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.13s">
                                     <div class="tool-icon"><img src="/assets/image/sheets.png" alt="Google Sheets">
                                     </div>
                                     <div class="tool-name">Google Sheets</div>
                                     <div class="tool-description">Data analysis and KPI tracking</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1.5s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.16s">
                                     <div class="tool-icon"><img src="/assets/image/docs.png" alt="Google Docs"></div>
                                     <div class="tool-name">Google Docs</div>
                                     <div class="tool-description">Documentation and requirements writing</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="1.75s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.19s">
                                     <div class="tool-icon"><img src="/assets/image/mongodb.png" alt="MongoDB"></div>
                                     <div class="tool-name">MongoDB</div>
                                     <div class="tool-description">NoSQL database for storing application and user data
                                     </div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="2s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.22s">
                                     <div class="tool-icon"><img src="/assets/image/express.png" alt="Express Js"></div>
                                     <div class="tool-name">Express Js</div>
                                     <div class="tool-description">Backend web framework for Node.js to build APIs and
-                                        server-side applications</div>
+                                        server-side logic</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="2.25s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.25s">
                                     <div class="tool-icon"><img src="/assets/image/react.png" alt="React Js"></div>
                                     <div class="tool-name">React Js</div>
                                     <div class="tool-description">JavaScript library for building user interfaces and
                                         interactive components</div>
                                 </div>
-                                <div class="tool-item" data-reveal="right" data-reveal-delay="2.5s">
+
+                                <div class="tool-item" data-3d-tilt data-reveal="bottom" data-reveal-delay="0.28s">
                                     <div class="tool-icon"><img src="/assets/image/node.png" alt="Node Js"></div>
                                     <div class="tool-name">Node Js</div>
                                     <div class="tool-description">JavaScript runtime environment for executing
@@ -246,14 +343,14 @@
             </section>
 
             <div class="back-section">
-                <a href="/projects/all-projects/" class="back-btn">Back to Projects</a>
+                <a href="/projects/all-projects/" class="back-btn">Back to All Projects</a>
             </div>
         </article>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p class="copyright">@ 2025 MelvaraZafirahRamsi. All rights reserved.</p>
+            <p class="copyright">&copy; 2026 Melvara Zafirah Ramsi. All rights reserved.</p>
             <ul class="social-list">
                 <li><a href="https://instagram.com/melvarazr" target="_blank" rel="noopener noreferrer"
                         class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>

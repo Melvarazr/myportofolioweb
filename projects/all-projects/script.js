@@ -1,12 +1,17 @@
 'use strict';
 
+/**
+ * Helper untuk menambahkan event listener ke sekumpulan elemen
+ */
 const addEventOnElements = function (elements, eventType, callback) {
     for (let i = 0, len = elements.length; i < len; i++) {
         elements[i].addEventListener(eventType, callback);
     }
 };
 
-// Navbar functionality
+/**
+ * MOBILE NAVBAR TOGGLE
+ */
 const navbar = document.querySelector("[data-navbar]");
 const navTogglers = document.querySelectorAll("[data-nav-toggler]");
 const overlay = document.querySelector("[data-overlay]");
@@ -19,7 +24,9 @@ const toggleNavbar = function () {
 
 addEventOnElements(navTogglers, "click", toggleNavbar);
 
-// Header scroll effect
+/**
+ * ACTIVE HEADER SAAT SCROLL
+ */
 const header = document.querySelector("[data-header]");
 window.addEventListener("scroll", function () {
     if (window.scrollY > 100) {
@@ -27,192 +34,212 @@ window.addEventListener("scroll", function () {
     } else {
         header.classList.remove("active");
     }
+}, { passive: true });
+
+/**
+ * REVERSIBLE SNAPPY SCROLL REVEAL (INTERSECTION OBSERVER)
+ */
+const revealElements = document.querySelectorAll("[data-reveal]");
+
+const revealObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            const el = entry.target;
+
+            if (entry.isIntersecting) {
+                const delay = el.dataset.revealDelay || "0s";
+                el.style.transitionDelay = delay;
+                el.classList.add("revealed");
+
+                const delayMs = parseFloat(delay) * 1000 || 0;
+                clearTimeout(el._revealTimer);
+                el._revealTimer = setTimeout(() => {
+                    el.style.transitionDelay = "0s";
+                }, delayMs + 500);
+            } else if (entry.boundingClientRect.top > 0) {
+                clearTimeout(el._revealTimer);
+                el.style.transitionDelay = "0s";
+                el.classList.remove("revealed");
+            }
+        });
+    },
+    {
+        threshold: 0.08,
+        rootMargin: "0px 0px -40px 0px"
+    }
+);
+
+revealElements.forEach((el) => revealObserver.observe(el));
+
+/**
+ * 3D INTERACTIVE TILT & SPECULAR GLARE ENGINE (ANTI-JITTER)
+ */
+const projectCards = document.querySelectorAll(".project-card");
+
+projectCards.forEach((card) => {
+    const maxTilt = 5.5;
+    let rafId = null;
+
+    card.addEventListener("pointerenter", (e) => {
+        if (e.pointerType !== "mouse") return;
+        card.classList.add("is-tilting");
+    });
+
+    card.addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse") return;
+
+        if (rafId) cancelAnimationFrame(rafId);
+
+        rafId = requestAnimationFrame(() => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty("--glare-x", `${((x / rect.width) * 100).toFixed(1)}%`);
+            card.style.setProperty("--glare-y", `${((y / rect.height) * 100).toFixed(1)}%`);
+
+            if (e.target.closest(".btn-text, .status-badge")) {
+                return;
+            }
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -maxTilt;
+            const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+            card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+        });
+    });
+
+    card.addEventListener("pointerleave", () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        card.classList.remove("is-tilting");
+        card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0px)";
+    });
 });
 
-// Reveal animations
-const revealElements = document.querySelectorAll("[data-reveal]");
-const revealDelayElements = document.querySelectorAll("[data-reveal-delay]");
+/**
+ * PROJECT CATEGORY FILTER, URL HASH SYNC & INTEGRATED COUNTER
+ */
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectListItems = document.querySelectorAll(".projects-grid .card-3d-wrapper");
+const projectCounter = document.getElementById("projectCounter");
+let filterTimer = null;
 
-const reveal = function () {
-    for (let i = 0, len = revealElements.length; i < len; i++) {
-        if (revealElements[i].getBoundingClientRect().top < window.innerHeight / 1.15) {
-            revealElements[i].classList.add("revealed");
-        }
-    }
-};
-
-for (let i = 0, len = revealDelayElements.length; i < len; i++) {
-    revealDelayElements[i].style.transitionDelay = revealDelayElements[i].dataset.revealDelay;
-    revealDelayElements[i].style.animationDelay = revealDelayElements[i].dataset.revealDelay;
+function updateProjectCounter(count) {
+    if (!projectCounter) return;
+    projectCounter.textContent = `${count} Project${count !== 1 ? "s" : ""}`;
 }
 
-window.addEventListener("scroll", reveal);
-window.addEventListener("load", reveal);
+function filterProjects(filterValue, instant = false) {
+    clearTimeout(filterTimer);
 
-// ==========================================
-// 3D INTERACTIVE TILT & GLARE ENGINE (ANTI-JITTER)
-// ==========================================
-document.addEventListener('DOMContentLoaded', function () {
-    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    const projectCards = document.querySelectorAll('.project-card');
+    let visibleCount = 0;
+    projectListItems.forEach((listItem) => {
+        const card = listItem.querySelector(".project-card");
+        if (!card) return;
+        const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+        const matches = filterValue === "all" || categories.includes(filterValue);
+        if (matches) visibleCount++;
+    });
 
-    if (!isTouchDevice) {
-        projectCards.forEach(card => {
-            const maxTilt = 5.5;
-            let rafId = null;
+    updateProjectCounter(visibleCount);
 
-            card.addEventListener('mouseenter', () => {
-                card.classList.add('is-tilting');
-            });
+    if (instant) {
+        projectListItems.forEach((listItem) => {
+            const card = listItem.querySelector(".project-card");
+            if (!card) return;
+            const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+            const matches = filterValue === "all" || categories.includes(filterValue);
 
-            card.addEventListener('mousemove', (e) => {
-                if (rafId) cancelAnimationFrame(rafId);
-
-                rafId = requestAnimationFrame(() => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-
-                    // Update cahaya glare tetap halus mengikuti kursor
-                    card.style.setProperty('--glare-x', `${((x / rect.width) * 100).toFixed(1)}%`);
-                    card.style.setProperty('--glare-y', `${((y / rect.height) * 100).toFixed(1)}%`);
-
-                    // Kunci sudut tilt saat kursor berada di atas tombol agar klik & hover 100% stabil
-                    if (e.target.closest('.btn-text, .status-badge')) {
-                        return;
-                    }
-
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-
-                    const rotateX = ((y - centerY) / centerY) * -maxTilt;
-                    const rotateY = ((x - centerX) / centerX) * maxTilt;
-
-                    card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
-                });
-            });
-
-            card.addEventListener('mouseleave', () => {
-                if (rafId) cancelAnimationFrame(rafId);
-                card.classList.remove('is-tilting');
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
+            listItem.style.display = matches ? "block" : "none";
+            listItem.style.opacity = matches ? "1" : "0";
+            listItem.style.transform = "translateY(0)";
         });
+        return;
     }
 
-    // ==========================================
-    // PROJECT FILTER FUNCTIONALITY WITH URL UPDATE
-    // ==========================================
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectListItems = document.querySelectorAll('.projects-grid li');
+    projectListItems.forEach((listItem) => {
+        listItem.style.opacity = "0";
+        listItem.style.transform = "translateY(14px)";
+    });
 
-    function updateFilter(filterValue) {
-        if (filterValue === 'all') {
+    filterTimer = setTimeout(() => {
+        projectListItems.forEach((listItem) => {
+            const card = listItem.querySelector(".project-card");
+            if (!card) return;
+            const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+            const matches = filterValue === "all" || categories.includes(filterValue);
+
+            if (matches) {
+                listItem.style.display = "block";
+                requestAnimationFrame(() => {
+                    listItem.style.opacity = "1";
+                    listItem.style.transform = "translateY(0)";
+                });
+            } else {
+                listItem.style.display = "none";
+            }
+        });
+    }, 200);
+}
+
+function applyFilter(filterValue, updateUrl = true, instant = false) {
+    const validFilters = Array.from(filterButtons).map((btn) => btn.getAttribute("data-filter"));
+    const resolvedFilter = validFilters.includes(filterValue) ? filterValue : "all";
+
+    if (updateUrl) {
+        if (resolvedFilter === "all") {
             if (window.location.hash) {
-                window.history.pushState(null, null, window.location.pathname);
+                window.history.pushState(null, "", window.location.pathname);
             }
         } else {
-            window.history.pushState(null, null, `#${filterValue}`);
+            window.history.pushState(null, "", `#${resolvedFilter}`);
         }
-
-        filterButtons.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.getAttribute('data-filter') === filterValue) {
-                btn.classList.add('active');
-            }
-        });
-
-        filterProjects(filterValue);
-        setTimeout(updateProjectCounter, 250);
     }
 
-    function initializeFilterFromURL() {
-        const hash = window.location.hash.substring(1);
-        const filterValue = hash || 'all';
-        const validFilters = Array.from(filterButtons).map(btn => btn.getAttribute('data-filter'));
-        const finalFilterValue = validFilters.includes(filterValue) ? filterValue : 'all';
-
-        updateFilter(finalFilterValue);
-    }
-
-    initializeFilterFromURL();
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const filterValue = button.getAttribute('data-filter');
-            updateFilter(filterValue);
-        });
+    filterButtons.forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-filter") === resolvedFilter);
     });
 
-    window.addEventListener('popstate', initializeFilterFromURL);
+    filterProjects(resolvedFilter, instant);
+}
 
-    function filterProjects(filterValue) {
-        projectListItems.forEach((listItem) => {
-            const card = listItem.querySelector('.project-card');
-            if (!card) return;
-
-            listItem.style.opacity = '0';
-            listItem.style.transform = 'translateY(20px)';
-
-            setTimeout(() => {
-                const cardCategories = card.getAttribute('data-category') || '';
-                const shouldShow = filterValue === 'all' || cardCategories.includes(filterValue);
-
-                if (shouldShow) {
-                    listItem.style.display = 'block';
-                    setTimeout(() => {
-                        listItem.style.opacity = '1';
-                        listItem.style.transform = 'translateY(0)';
-                    }, 40);
-                } else {
-                    listItem.style.display = 'none';
-                }
-            }, 200);
-        });
-    }
-
-    function updateProjectCounter() {
-        const visibleProjects = document.querySelectorAll('.projects-grid li:not([style*="display: none"])');
-        const counter = document.querySelector('.project-counter');
-
-        if (counter) {
-            counter.textContent = `${visibleProjects.length} Project${visibleProjects.length !== 1 ? 's' : ''}`;
-        }
-    }
-
-    const filterContainer = document.querySelector('.filter-buttons');
-    if (filterContainer) {
-        const counterElement = document.createElement('div');
-        counterElement.className = 'project-counter';
-        counterElement.style.cssText = `
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1.4rem;
-            color: hsla(220, 12%, 43%, 0.8);
-            font-weight: 600;
-        `;
-        filterContainer.parentNode.insertBefore(counterElement, filterContainer.nextSibling);
-        updateProjectCounter();
-    }
+filterButtons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        e.preventDefault();
+        const filterValue = button.getAttribute("data-filter");
+        applyFilter(filterValue, true, false);
+    });
 });
 
-// ==========================================
-// UNDER CONSTRUCTION POPUP LOGIC
-// ==========================================
-const underConstructionLinks = document.querySelectorAll('.under-construction');
-const toastNotification = document.getElementById('toast-notification');
-let toastTimeout;
+window.addEventListener("popstate", () => {
+    const hash = window.location.hash.substring(1);
+    applyFilter(hash || "all", false, false);
+});
 
-if (toastNotification) {
-    underConstructionLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            toastNotification.classList.add('show');
-            clearTimeout(toastTimeout);
-            toastTimeout = setTimeout(() => {
-                toastNotification.classList.remove('show');
+// Inisialisasi awal tanpa animasi kedip saat halaman pertama kali dimuat
+const initialHash = window.location.hash.substring(1);
+applyFilter(initialHash || "all", false, true);
+
+/**
+ * UNDER CONSTRUCTION TOAST NOTIFICATION
+ */
+document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".under-construction");
+
+    if (btn) {
+        e.preventDefault();
+
+        const toastNotification = document.getElementById("toast-notification");
+        if (toastNotification) {
+            toastNotification.classList.add("show");
+
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                toastNotification.classList.remove("show");
             }, 5000);
-        });
-    });
-}
+        }
+    }
+});
