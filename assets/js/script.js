@@ -34,7 +34,7 @@ window.addEventListener("scroll", function () {
     } else {
         header.classList.remove("active");
     }
-});
+}, { passive: true });
 
 /**
  * REVERSIBLE SNAPPY SCROLL REVEAL (INTERSECTION OBSERVER)
@@ -59,7 +59,6 @@ const revealObserver = new IntersectionObserver(
                     el.style.transitionDelay = "0s";
                 }, delayMs + 500);
             } else if (entry.boundingClientRect.top > 0) {
-                // Hanya tutup kembali jika elemen keluar lewat bawah layar (saat scroll ke atas)
                 clearTimeout(el._revealTimer);
                 el.style.transitionDelay = "0s";
                 el.classList.remove("revealed");
@@ -77,36 +76,11 @@ revealElements.forEach((el) => revealObserver.observe(el));
 /**
  * INTERACTIVE 3D TIMELINE (EDUCATION & WORK EXPERIENCE)
  * 1. Mengisi progress rail dan menyalakan node 3D saat di-scroll per timeline
- * 2. Expand/collapse detail saat kartu diklik atau via keyboard
+ * 2. Menyelaraskan tinggi gradasi track (--track-height) dengan tinggi fisik track
+ * 3. Expand/collapse detail saat kartu diklik atau via keyboard
  */
 const timelines3D = document.querySelectorAll("[data-3d-timeline]");
 
-// Expand / Collapse Accordion pada seluruh Kartu Timeline 3D
-document.querySelectorAll("[data-timeline-card]").forEach((card) => {
-    const toggleCard = () => {
-        const isExpanded = card.classList.toggle("is-expanded");
-        card.setAttribute("aria-expanded", String(isExpanded));
-
-        const parentRow = card.closest(".edu-timeline-row");
-        if (parentRow && isExpanded) {
-            parentRow.classList.add("is-active");
-        }
-    };
-
-    card.addEventListener("click", () => {
-        if (window.getSelection().toString().length > 0) return;
-        toggleCard();
-    });
-
-    card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            toggleCard();
-        }
-    });
-});
-
-// Update Scroll Progress Rail & Node Glow secara dinamis untuk setiap timeline
 const updateAll3DTimelines = () => {
     const triggerPoint = window.innerHeight * 0.65;
 
@@ -136,22 +110,37 @@ const updateAll3DTimelines = () => {
     });
 };
 
+// Expand / Collapse Accordion pada seluruh Kartu Timeline 3D
+document.querySelectorAll("[data-timeline-card]").forEach((card) => {
+    const toggleCard = () => {
+        const isExpanded = card.classList.toggle("is-expanded");
+        card.setAttribute("aria-expanded", String(isExpanded));
+
+        const parentRow = card.closest(".edu-timeline-row");
+        if (parentRow && isExpanded) {
+            parentRow.classList.add("is-active");
+        }
+
+        // Hitung ulang tinggi track setelah animasi accordion selesai
+        setTimeout(updateAll3DTimelines, 420);
+    };
+
+    card.addEventListener("click", () => {
+        if (window.getSelection().toString().length > 0) return;
+        toggleCard();
+    });
+
+    card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleCard();
+        }
+    });
+});
+
 window.addEventListener("scroll", updateAll3DTimelines, { passive: true });
 window.addEventListener("resize", updateAll3DTimelines);
 updateAll3DTimelines();
-
-/**
- * EFEK HOVER KARTU EXPERIENCE
- */
-document.querySelectorAll('.experience-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        item.style.transform = 'translateY(-8px) translateX(5px) scale(1.02)';
-    });
-
-    item.addEventListener('mouseleave', () => {
-        item.style.transform = 'translateY(0) translateX(0) scale(1)';
-    });
-});
 
 /**
  * UNDER CONSTRUCTION TOAST NOTIFICATION
@@ -177,26 +166,61 @@ document.addEventListener('click', function (e) {
 });
 
 /**
- * SMOOTH SCROLL & AUTO-CLOSE MOBILE MENU
+ * SMOOTH SCROLL, SCROLL-SPY ACTIVE LINK & AUTO-CLOSE MOBILE MENU
  */
 const navbarLinks = document.querySelectorAll(".navbar-link");
+const sections = document.querySelectorAll("section[id]");
+
+const updateActiveNavLink = () => {
+    const scrollPos = window.scrollY + (header ? header.offsetHeight : 0) + 120;
+    let currentId = "";
+
+    sections.forEach((section) => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+            currentId = section.getAttribute("id");
+        }
+    });
+
+    navbarLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        link.classList.remove("active");
+
+        if (!currentId && href === "#") {
+            link.classList.add("active");
+        } else if (href === `#${currentId}`) {
+            link.classList.add("active");
+        }
+    });
+};
+
+window.addEventListener("scroll", updateActiveNavLink, { passive: true });
+updateActiveNavLink();
 
 navbarLinks.forEach(link => {
     link.addEventListener("click", function (e) {
         const targetId = this.getAttribute("href");
 
-        if (targetId && targetId.startsWith("#") && targetId.length > 1) {
+        if (targetId && targetId.startsWith("#")) {
             e.preventDefault();
 
+            if (navbar.classList.contains("active")) {
+                navbar.classList.remove("active");
+                overlay.classList.remove("active");
+                document.body.classList.remove("nav-active");
+            }
+
+            if (targetId === "#") {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+                return;
+            }
+
             const targetElement = document.querySelector(targetId);
-
             if (targetElement) {
-                if (navbar.classList.contains("active")) {
-                    navbar.classList.remove("active");
-                    overlay.classList.remove("active");
-                    document.body.classList.remove("nav-active");
-                }
-
                 const headerHeight = header ? header.offsetHeight : 0;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
