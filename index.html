@@ -605,17 +605,27 @@
                     </div>
 
                     <div class="skills-container">
-                        <div class="technical-skills" data-reveal="bottom" data-reveal-delay="0.1s">
-                            <h3 class="h3">Technical Skills</h3>
+                        <!-- TECHNICAL SKILLS: 3D PERSPECTIVE TILT DECK -->
+                        <div class="technical-skills-block" data-reveal="bottom" data-reveal-delay="0.1s">
+                            <div class="skills-subhead">
+                                <h3 class="h3">Technical Skills</h3>
+                                <span class="skills-subbadge">3 Core Domains</span>
+                            </div>
 
                             <div class="skills-grid">
-                                <div class="skill-category">
-                                    <h4 class="category-title">
+                                <article class="skill-category theme-pink" data-3d-tilt>
+                                    <div class="skill-card-sheen" aria-hidden="true"></div>
+
+                                    <div class="skill-cat-header">
                                         <span class="category-icon" aria-hidden="true">
                                             <ion-icon name="analytics-outline"></ion-icon>
                                         </span>
-                                        Product/Project Manager
-                                    </h4>
+                                        <div>
+                                            <span class="skill-cat-count">9 Skills</span>
+                                            <h4 class="category-title">Product & Project</h4>
+                                        </div>
+                                    </div>
+
                                     <div class="skills-list">
                                         <span class="skill-item">Agile & Scrum</span>
                                         <span class="skill-item">PRD & User Story</span>
@@ -627,15 +637,21 @@
                                         <span class="skill-item">Notion</span>
                                         <span class="skill-item">Tableau</span>
                                     </div>
-                                </div>
+                                </article>
 
-                                <div class="skill-category">
-                                    <h4 class="category-title">
+                                <article class="skill-category theme-blue" data-3d-tilt>
+                                    <div class="skill-card-sheen" aria-hidden="true"></div>
+
+                                    <div class="skill-cat-header">
                                         <span class="category-icon" aria-hidden="true">
                                             <ion-icon name="color-palette-outline"></ion-icon>
                                         </span>
-                                        UI/UX & Research
-                                    </h4>
+                                        <div>
+                                            <span class="skill-cat-count">9 Skills</span>
+                                            <h4 class="category-title">UI/UX & Research</h4>
+                                        </div>
+                                    </div>
+
                                     <div class="skills-list">
                                         <span class="skill-item">User Research</span>
                                         <span class="skill-item">Wireframing</span>
@@ -647,15 +663,21 @@
                                         <span class="skill-item">Miro</span>
                                         <span class="skill-item">Maze</span>
                                     </div>
-                                </div>
+                                </article>
 
-                                <div class="skill-category">
-                                    <h4 class="category-title">
+                                <article class="skill-category theme-green" data-3d-tilt>
+                                    <div class="skill-card-sheen" aria-hidden="true"></div>
+
+                                    <div class="skill-cat-header">
                                         <span class="category-icon" aria-hidden="true">
                                             <ion-icon name="code-slash-outline"></ion-icon>
                                         </span>
-                                        Tech & Development
-                                    </h4>
+                                        <div>
+                                            <span class="skill-cat-count">7 Skills</span>
+                                            <h4 class="category-title">Tech & Development</h4>
+                                        </div>
+                                    </div>
+
                                     <div class="skills-list">
                                         <span class="skill-item">Python</span>
                                         <span class="skill-item">JavaScript</span>
@@ -665,47 +687,107 @@
                                         <span class="skill-item">API Integration</span>
                                         <span class="skill-item">Business Process Modeling</span>
                                     </div>
-                                </div>
+                                </article>
                             </div>
                         </div>
 
-                        <div class="soft-skills" data-reveal="bottom" data-reveal-delay="0.15s">
-                            <h3 class="h3">Soft Skills</h3>
+                        <!-- SOFT SKILLS: 3D INTERACTIVE FLIP CARDS -->
+                        <div class="soft-skills-block" data-reveal="bottom" data-reveal-delay="0.16s">
+                            <div class="skills-subhead">
+                                <h3 class="h3">Soft Skills</h3>
+                                <span class="skills-subbadge">Hover or Tap to Flip</span>
+                            </div>
 
                             <div class="soft-skills-grid">
-                                <div class="soft-skill-card">
-                                    <div class="icon-box"><ion-icon name="heart-half-outline"></ion-icon></div>
-                                    <h4 class="soft-skill-name">User-Centered Thinking</h4>
-                                    <p class="soft-skill-desc">Empathetic approach to understanding user needs and
-                                        translating them into impactful, accessible product solutions.</p>
+                                <div class="soft-flip-card theme-pink" data-flip-card tabindex="0" role="button"
+                                    aria-label="User-Centered Thinking - Hover or tap to flip">
+                                    <div class="soft-flip-inner">
+                                        <div class="soft-flip-front">
+                                            <div class="icon-box"><ion-icon name="heart-half-outline"></ion-icon></div>
+                                            <h4 class="soft-skill-name">User-Centered Thinking</h4>
+                                            <span class="flip-hint">
+                                                <ion-icon name="sync-outline"></ion-icon> Details
+                                            </span>
+                                        </div>
+                                        <div class="soft-flip-back">
+                                            <h4 class="soft-skill-name-back">User-Centered Thinking</h4>
+                                            <p class="soft-skill-desc">Empathetic approach to understanding user needs
+                                                and translating them into impactful, accessible product solutions.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="soft-skill-card">
-                                    <div class="icon-box"><ion-icon name="bulb-outline"></ion-icon></div>
-                                    <h4 class="soft-skill-name">Problem Solving</h4>
-                                    <p class="soft-skill-desc">Applying critical thinking and systematic analysis to
-                                        navigate complex challenges and deliver innovative solutions.</p>
+                                <div class="soft-flip-card theme-blue" data-flip-card tabindex="0" role="button"
+                                    aria-label="Problem Solving - Hover or tap to flip">
+                                    <div class="soft-flip-inner">
+                                        <div class="soft-flip-front">
+                                            <div class="icon-box"><ion-icon name="bulb-outline"></ion-icon></div>
+                                            <h4 class="soft-skill-name">Problem Solving</h4>
+                                            <span class="flip-hint">
+                                                <ion-icon name="sync-outline"></ion-icon> Details
+                                            </span>
+                                        </div>
+                                        <div class="soft-flip-back">
+                                            <h4 class="soft-skill-name-back">Problem Solving</h4>
+                                            <p class="soft-skill-desc">Applying critical thinking and systematic
+                                                analysis to navigate complex challenges and deliver innovative
+                                                solutions.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="soft-skill-card">
-                                    <div class="icon-box"><ion-icon name="chatbubbles-outline"></ion-icon></div>
-                                    <h4 class="soft-skill-name">Communication</h4>
-                                    <p class="soft-skill-desc">Clear and articulate communication to bridge the gap
-                                        between technical constraints and overarching business goals.</p>
+                                <div class="soft-flip-card theme-purple" data-flip-card tabindex="0" role="button"
+                                    aria-label="Communication - Hover or tap to flip">
+                                    <div class="soft-flip-inner">
+                                        <div class="soft-flip-front">
+                                            <div class="icon-box"><ion-icon name="chatbubbles-outline"></ion-icon></div>
+                                            <h4 class="soft-skill-name">Communication</h4>
+                                            <span class="flip-hint">
+                                                <ion-icon name="sync-outline"></ion-icon> Details
+                                            </span>
+                                        </div>
+                                        <div class="soft-flip-back">
+                                            <h4 class="soft-skill-name-back">Communication</h4>
+                                            <p class="soft-skill-desc">Clear and articulate communication to bridge the
+                                                gap between technical constraints and overarching business goals.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="soft-skill-card">
-                                    <div class="icon-box"><ion-icon name="sync-outline"></ion-icon></div>
-                                    <h4 class="soft-skill-name">Adaptability</h4>
-                                    <p class="soft-skill-desc">High flexibility in adjusting to shifting project
-                                        requirements, new technologies, and fast-paced environments.</p>
+                                <div class="soft-flip-card theme-green" data-flip-card tabindex="0" role="button"
+                                    aria-label="Adaptability - Hover or tap to flip">
+                                    <div class="soft-flip-inner">
+                                        <div class="soft-flip-front">
+                                            <div class="icon-box"><ion-icon name="sync-outline"></ion-icon></div>
+                                            <h4 class="soft-skill-name">Adaptability</h4>
+                                            <span class="flip-hint">
+                                                <ion-icon name="sync-outline"></ion-icon> Details
+                                            </span>
+                                        </div>
+                                        <div class="soft-flip-back">
+                                            <h4 class="soft-skill-name-back">Adaptability</h4>
+                                            <p class="soft-skill-desc">High flexibility in adjusting to shifting project
+                                                requirements, new technologies, and fast-paced environments.</p>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="soft-skill-card">
-                                    <div class="icon-box"><ion-icon name="time-outline"></ion-icon></div>
-                                    <h4 class="soft-skill-name">Time Management</h4>
-                                    <p class="soft-skill-desc">Strong discipline and prioritization skills to manage
-                                        multiple deadlines and ensure timely project delivery.</p>
+                                <div class="soft-flip-card theme-orange" data-flip-card tabindex="0" role="button"
+                                    aria-label="Time Management - Hover or tap to flip">
+                                    <div class="soft-flip-inner">
+                                        <div class="soft-flip-front">
+                                            <div class="icon-box"><ion-icon name="time-outline"></ion-icon></div>
+                                            <h4 class="soft-skill-name">Time Management</h4>
+                                            <span class="flip-hint">
+                                                <ion-icon name="sync-outline"></ion-icon> Details
+                                            </span>
+                                        </div>
+                                        <div class="soft-flip-back">
+                                            <h4 class="soft-skill-name-back">Time Management</h4>
+                                            <p class="soft-skill-desc">Strong discipline and prioritization skills to
+                                                manage multiple deadlines and ensure timely project delivery.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

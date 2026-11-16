@@ -110,7 +110,6 @@ const updateAll3DTimelines = () => {
     });
 };
 
-// Expand / Collapse Accordion pada seluruh Kartu Timeline 3D
 document.querySelectorAll("[data-timeline-card]").forEach((card) => {
     const toggleCard = () => {
         const isExpanded = card.classList.toggle("is-expanded");
@@ -121,7 +120,6 @@ document.querySelectorAll("[data-timeline-card]").forEach((card) => {
             parentRow.classList.add("is-active");
         }
 
-        // Hitung ulang tinggi track setelah animasi accordion selesai
         setTimeout(updateAll3DTimelines, 420);
     };
 
@@ -141,6 +139,66 @@ document.querySelectorAll("[data-timeline-card]").forEach((card) => {
 window.addEventListener("scroll", updateAll3DTimelines, { passive: true });
 window.addEventListener("resize", updateAll3DTimelines);
 updateAll3DTimelines();
+
+/**
+ * 3D PERSPECTIVE TILT CARDS (TECHNICAL SKILLS)
+ * Mengikuti arah kursor pada perangkat pointer halus dan mereset mulus saat keluar
+ */
+const tiltCards = document.querySelectorAll("[data-3d-tilt]");
+
+tiltCards.forEach((card) => {
+    let rafId = null;
+
+    card.addEventListener("pointerenter", (e) => {
+        if (e.pointerType !== "mouse") return;
+        card.classList.add("is-tilting");
+    });
+
+    card.addEventListener("pointermove", (e) => {
+        if (e.pointerType !== "mouse") return;
+
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            const rect = card.getBoundingClientRect();
+            const relX = (e.clientX - rect.left) / rect.width - 0.5;
+            const relY = (e.clientY - rect.top) / rect.height - 0.5;
+
+            const rotateX = (-relY * 12).toFixed(2);
+            const rotateY = (relX * 12).toFixed(2);
+
+            card.style.setProperty("--tilt-x", `${rotateX}deg`);
+            card.style.setProperty("--tilt-y", `${rotateY}deg`);
+        });
+    });
+
+    card.addEventListener("pointerleave", () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        card.classList.remove("is-tilting");
+        card.style.setProperty("--tilt-x", "0deg");
+        card.style.setProperty("--tilt-y", "0deg");
+    });
+});
+
+/**
+ * 3D INTERACTIVE FLIP CARDS (SOFT SKILLS)
+ * Mendukung tap pada mobile/tablet dan keyboard Enter/Space
+ */
+const flipCards = document.querySelectorAll("[data-flip-card]");
+
+flipCards.forEach((card) => {
+    const toggleFlip = () => {
+        card.classList.toggle("is-flipped");
+    };
+
+    card.addEventListener("click", toggleFlip);
+
+    card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggleFlip();
+        }
+    });
+});
 
 /**
  * UNDER CONSTRUCTION TOAST NOTIFICATION
