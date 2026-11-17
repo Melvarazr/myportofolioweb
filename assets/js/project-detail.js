@@ -26,23 +26,28 @@ const toggleNavbar = function () {
 addEventOnElements(navTogglers, "click", toggleNavbar);
 
 /**
- * ACTIVE HEADER SAAT SCROLL
+ * ACTIVE HEADER SAAT SCROLL (THROTTLED VIA RAF)
  */
 const header = document.querySelector("[data-header]");
 if (header) {
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 100) {
-            header.classList.add("active");
-        } else {
-            header.classList.remove("active");
-        }
+    let scrollTicking = false;
+
+    window.addEventListener("scroll", () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            header.classList.toggle("active", window.scrollY > 100);
+            scrollTicking = false;
+        });
     }, { passive: true });
 }
 
 /**
  * REVERSIBLE SNAPPY SCROLL REVEAL (INTERSECTION OBSERVER)
+ * Mengecualikan elemen di dalam .hero karena sudah ditangani animasi CSS heroEntrance
  */
-const revealElements = document.querySelectorAll("[data-reveal]");
+const revealElements = Array.from(document.querySelectorAll("[data-reveal]"))
+    .filter((el) => !el.closest(".hero"));
 
 const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -75,51 +80,55 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((el) => revealObserver.observe(el));
 
 /**
- * 3D INTERACTIVE TILT ENGINE UNTUK BENTO & CONTENT CARDS
+ * 3D INTERACTIVE TILT ENGINE UNTUK BENTO & CONTENT CARDS (DESKTOP POINTER ONLY)
  */
-const tiltCards = document.querySelectorAll(
-    "[data-3d-tilt], .meta-bento-card, .breakdown-item, .feature-item, .improvement-item, .process-item, .tool-item"
-);
+const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-tiltCards.forEach((card) => {
-    const maxTilt = 4.5;
-    let rafId = null;
+if (supportsFinePointer) {
+    const tiltCards = document.querySelectorAll(
+        "[data-3d-tilt], .meta-bento-card, .breakdown-item, .feature-item, .improvement-item, .process-item, .tool-item"
+    );
 
-    card.addEventListener("pointerenter", (e) => {
-        if (e.pointerType !== "mouse") return;
-        card.classList.add("is-tilting");
-    });
+    tiltCards.forEach((card) => {
+        const maxTilt = 4.5;
+        let rafId = null;
 
-    card.addEventListener("pointermove", (e) => {
-        if (e.pointerType !== "mouse") return;
+        card.addEventListener("pointerenter", (e) => {
+            if (e.pointerType !== "mouse") return;
+            card.classList.add("is-tilting");
+        });
 
-        if (rafId) cancelAnimationFrame(rafId);
+        card.addEventListener("pointermove", (e) => {
+            if (e.pointerType !== "mouse") return;
 
-        rafId = requestAnimationFrame(() => {
-            if (e.target.closest(".read-more-btn, a, button")) {
-                return;
-            }
+            if (rafId) cancelAnimationFrame(rafId);
 
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            rafId = requestAnimationFrame(() => {
+                if (e.target.closest(".read-more-btn, a, button")) {
+                    return;
+                }
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-            const rotateX = ((y - centerY) / centerY) * -maxTilt;
-            const rotateY = ((x - centerX) / centerX) * maxTilt;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+                const rotateX = ((y - centerY) / centerY) * -maxTilt;
+                const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+            });
+        });
+
+        card.addEventListener("pointerleave", () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            card.classList.remove("is-tilting");
+            card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
         });
     });
-
-    card.addEventListener("pointerleave", () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        card.classList.remove("is-tilting");
-        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-    });
-});
+}
 
 /**
  * INTERACTIVE UI LIGHTBOX PREVIEW (ZOOM, PAN & GALLERY NAVIGATION)
@@ -213,6 +222,7 @@ function initUiLightbox() {
     let hasDragged = false;
     let startX = 0;
     let startY = 0;
+    let dragRafId = null;
 
     const updateTransform = () => {
         lbImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
@@ -298,7 +308,7 @@ function initUiLightbox() {
         { passive: false }
     );
 
-    // Drag / Pan saat gambar sedang di-zoom
+    // Drag / Pan saat gambar sedang di-zoom (di-batch per frame)
     lbImg.addEventListener("pointerdown", (e) => {
         if (scale <= 1) return;
         e.preventDefault();
@@ -315,11 +325,20 @@ function initUiLightbox() {
         hasDragged = true;
         translateX = e.clientX - startX;
         translateY = e.clientY - startY;
-        updateTransform();
+
+        if (dragRafId) return;
+        dragRafId = requestAnimationFrame(() => {
+            updateTransform();
+            dragRafId = null;
+        });
     });
 
     const stopDrag = () => {
         isDragging = false;
+        if (dragRafId) {
+            cancelAnimationFrame(dragRafId);
+            dragRafId = null;
+        }
         lbImg.classList.remove("is-dragging");
     };
 

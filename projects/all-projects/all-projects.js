@@ -17,6 +17,7 @@ const navTogglers = document.querySelectorAll("[data-nav-toggler]");
 const overlay = document.querySelector("[data-overlay]");
 
 const toggleNavbar = function () {
+    if (!navbar || !overlay) return;
     navbar.classList.toggle("active");
     overlay.classList.toggle("active");
     document.body.classList.toggle("nav-active");
@@ -25,21 +26,28 @@ const toggleNavbar = function () {
 addEventOnElements(navTogglers, "click", toggleNavbar);
 
 /**
- * ACTIVE HEADER SAAT SCROLL
+ * ACTIVE HEADER SAAT SCROLL (THROTTLED VIA RAF)
  */
 const header = document.querySelector("[data-header]");
-window.addEventListener("scroll", function () {
-    if (window.scrollY > 100) {
-        header.classList.add("active");
-    } else {
-        header.classList.remove("active");
-    }
-}, { passive: true });
+if (header) {
+    let scrollTicking = false;
+
+    window.addEventListener("scroll", () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => {
+            header.classList.toggle("active", window.scrollY > 100);
+            scrollTicking = false;
+        });
+    }, { passive: true });
+}
 
 /**
  * REVERSIBLE SNAPPY SCROLL REVEAL (INTERSECTION OBSERVER)
+ * Mengecualikan elemen di dalam .projects-hero karena sudah ditangani animasi CSS heroEntrance
  */
-const revealElements = document.querySelectorAll("[data-reveal]");
+const revealElements = Array.from(document.querySelectorAll("[data-reveal]"))
+    .filter((el) => !el.closest(".projects-hero"));
 
 const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -72,63 +80,76 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((el) => revealObserver.observe(el));
 
 /**
- * 3D INTERACTIVE TILT & SPECULAR GLARE ENGINE (ANTI-JITTER)
+ * 3D INTERACTIVE TILT & SPECULAR GLARE ENGINE (DESKTOP POINTER ONLY)
  */
-const projectCards = document.querySelectorAll(".project-card");
+const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-projectCards.forEach((card) => {
-    const maxTilt = 5.5;
-    let rafId = null;
+if (supportsFinePointer) {
+    const projectCards = document.querySelectorAll(".project-card");
 
-    card.addEventListener("pointerenter", (e) => {
-        if (e.pointerType !== "mouse") return;
-        card.classList.add("is-tilting");
-    });
+    projectCards.forEach((card) => {
+        const maxTilt = 5.5;
+        let rafId = null;
 
-    card.addEventListener("pointermove", (e) => {
-        if (e.pointerType !== "mouse") return;
+        card.addEventListener("pointerenter", (e) => {
+            if (e.pointerType !== "mouse") return;
+            card.classList.add("is-tilting");
+        });
 
-        if (rafId) cancelAnimationFrame(rafId);
+        card.addEventListener("pointermove", (e) => {
+            if (e.pointerType !== "mouse") return;
 
-        rafId = requestAnimationFrame(() => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            if (rafId) cancelAnimationFrame(rafId);
 
-            card.style.setProperty("--glare-x", `${((x / rect.width) * 100).toFixed(1)}%`);
-            card.style.setProperty("--glare-y", `${((y / rect.height) * 100).toFixed(1)}%`);
+            rafId = requestAnimationFrame(() => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
 
-            if (e.target.closest(".btn-text, .status-badge")) {
-                return;
-            }
+                card.style.setProperty("--glare-x", `${((x / rect.width) * 100).toFixed(1)}%`);
+                card.style.setProperty("--glare-y", `${((y / rect.height) * 100).toFixed(1)}%`);
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+                if (e.target.closest(".btn-text, .status-badge")) {
+                    return;
+                }
 
-            const rotateX = ((y - centerY) / centerY) * -maxTilt;
-            const rotateY = ((x - centerX) / centerX) * maxTilt;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
 
-            card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+                const rotateX = ((y - centerY) / centerY) * -maxTilt;
+                const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+                card.style.transform = `rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+            });
+        });
+
+        card.addEventListener("pointerleave", () => {
+            if (rafId) cancelAnimationFrame(rafId);
+            card.classList.remove("is-tilting");
+            card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0px)";
         });
     });
-
-    card.addEventListener("pointerleave", () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        card.classList.remove("is-tilting");
-        card.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0px)";
-    });
-});
+}
 
 /**
  * PROJECT CATEGORY FILTER, AUTO COUNT BADGES & URL HASH SYNC
+ * Pre-cache daftar kategori per kartu agar filtering bebas DOM query berulang
  */
 const filterButtons = document.querySelectorAll(".filter-btn");
-const projectListItems = document.querySelectorAll(".projects-grid .card-3d-wrapper");
 const projectCounter = document.getElementById("projectCounter");
+const cachedProjectItems = Array.from(document.querySelectorAll(".projects-grid .card-3d-wrapper"))
+    .map((wrapper) => {
+        const card = wrapper.querySelector(".project-card");
+        const categories = card
+            ? (card.getAttribute("data-category") || "").trim().split(/\s+/)
+            : [];
+        return { wrapper, categories };
+    });
+
 let filterTimer = null;
 
 function updateFilterBadges() {
-    const totalItems = projectListItems.length;
+    const totalItems = cachedProjectItems.length;
 
     filterButtons.forEach((btn) => {
         const badge = btn.querySelector(".filter-count");
@@ -141,12 +162,9 @@ function updateFilterBadges() {
         }
 
         let count = 0;
-        projectListItems.forEach((listItem) => {
-            const card = listItem.querySelector(".project-card");
-            if (!card) return;
-            const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
-            if (categories.includes(category)) count++;
-        });
+        for (let i = 0; i < totalItems; i++) {
+            if (cachedProjectItems[i].categories.includes(category)) count++;
+        }
 
         badge.textContent = count;
     });
@@ -160,53 +178,42 @@ function updateProjectCounter(visibleCount, totalCount) {
 function filterProjects(filterValue, instant = false) {
     clearTimeout(filterTimer);
 
-    const totalCount = projectListItems.length;
+    const totalCount = cachedProjectItems.length;
     let visibleCount = 0;
 
-    projectListItems.forEach((listItem) => {
-        const card = listItem.querySelector(".project-card");
-        if (!card) return;
-        const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
-        const matches = filterValue === "all" || categories.includes(filterValue);
+    const matchedFlags = cachedProjectItems.map((item) => {
+        const matches = filterValue === "all" || item.categories.includes(filterValue);
         if (matches) visibleCount++;
+        return matches;
     });
 
     updateProjectCounter(visibleCount, totalCount);
 
     if (instant) {
-        projectListItems.forEach((listItem) => {
-            const card = listItem.querySelector(".project-card");
-            if (!card) return;
-            const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
-            const matches = filterValue === "all" || categories.includes(filterValue);
-
-            listItem.style.display = matches ? "block" : "none";
-            listItem.style.opacity = matches ? "1" : "0";
-            listItem.style.transform = "translateY(0)";
+        cachedProjectItems.forEach((item, idx) => {
+            const matches = matchedFlags[idx];
+            item.wrapper.style.display = matches ? "block" : "none";
+            item.wrapper.style.opacity = matches ? "1" : "0";
+            item.wrapper.style.transform = "translateY(0)";
         });
         return;
     }
 
-    projectListItems.forEach((listItem) => {
-        listItem.style.opacity = "0";
-        listItem.style.transform = "translateY(14px)";
+    cachedProjectItems.forEach((item) => {
+        item.wrapper.style.opacity = "0";
+        item.wrapper.style.transform = "translateY(14px)";
     });
 
     filterTimer = setTimeout(() => {
-        projectListItems.forEach((listItem) => {
-            const card = listItem.querySelector(".project-card");
-            if (!card) return;
-            const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
-            const matches = filterValue === "all" || categories.includes(filterValue);
-
-            if (matches) {
-                listItem.style.display = "block";
+        cachedProjectItems.forEach((item, idx) => {
+            if (matchedFlags[idx]) {
+                item.wrapper.style.display = "block";
                 requestAnimationFrame(() => {
-                    listItem.style.opacity = "1";
-                    listItem.style.transform = "translateY(0)";
+                    item.wrapper.style.opacity = "1";
+                    item.wrapper.style.transform = "translateY(0)";
                 });
             } else {
-                listItem.style.display = "none";
+                item.wrapper.style.display = "none";
             }
         });
     }, 200);
