@@ -197,6 +197,26 @@ body.nav-active {
     opacity: 1;
 }
 
+/* Mencegah teks hero berkedip di layar pendek (iPhone SE) akibat threshold scroll */
+.hero [data-reveal],
+.hero [data-reveal].revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: heroEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ==========================================
    HEADER & NAVBAR
    ========================================== */
@@ -326,7 +346,7 @@ body.nav-active {
 /* ==========================================
    HERO SECTION
    ========================================== */
-.hero {
+.section.hero {
     padding-block-start: calc(90px + 50px);
     background-color: hsla(344, 20%, 98%, 1);
 }
@@ -2054,6 +2074,19 @@ textarea.input-field {
         padding-block: 80px;
     }
 
+    .section.hero {
+        padding-block-start: 116px;
+        padding-block-end: 64px;
+    }
+
+    .hero .container {
+        gap: 26px;
+    }
+
+    .hero-banner {
+        max-width: 290px;
+    }
+
     .about-bio-card {
         padding: 26px 22px;
     }
@@ -2266,7 +2299,7 @@ textarea.input-field {
         border-radius: 0;
     }
 
-    .hero {
+    .section.hero {
         padding-block-start: calc(90px + 80px);
     }
 
@@ -2405,9 +2438,7 @@ textarea.input-field {
 :root {
     --paper-base: #f4edef;
     --paper-crease-opacity: 0.62;
-    /* Naikkan ke 0.80 jika ingin lebih kusut/gelap */
     --paper-grain-opacity: 0.45;
-    /* Serat & bercak usang kertas */
 }
 
 body {
