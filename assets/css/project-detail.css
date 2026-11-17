@@ -419,7 +419,7 @@ body.nav-active {
 }
 
 /* ==========================================
-   HERO SECTION (3D SHOWCASE)
+   HERO SECTION (3D SHOWCASE + OPSI 1 EYEBROW)
    ========================================== */
 .hero {
     padding-block: 155px 32px;
@@ -431,6 +431,9 @@ body.nav-active {
     align-items: center;
     justify-content: center;
     gap: 8px;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: hsla(220, 12%, 43%, 0.85);
     margin-bottom: 22px;
 }
 
@@ -449,6 +452,7 @@ body.nav-active {
     opacity: 0.6;
 }
 
+/* Opsi 1: Minimalist Editorial Eyebrow */
 .hero-category-pill {
     display: flex;
     align-items: center;
@@ -1127,7 +1131,7 @@ body.nav-active {
 
     .navbar-list {
         display: flex;
-        gap: 36px;
+        gap: 22px;
         margin-inline: auto;
     }
 
@@ -1159,6 +1163,10 @@ body.nav-active {
         transform: scaleX(1);
     }
 
+    .navbar .social-list {
+        gap: 10px;
+    }
+
     .navbar .social-link {
         color: hsla(219, 22%, 26%, 1);
         font-size: 1.8rem;
@@ -1169,8 +1177,12 @@ body.nav-active {
         max-width: 960px;
         left: 50%;
         transform: translateX(-50%);
-        padding-inline: 16px;
+        padding-inline: 0;
         border-radius: 14px;
+    }
+
+    .header .container {
+        gap: 24px;
     }
 
     .header.active {
@@ -1199,6 +1211,14 @@ body.nav-active {
     .header {
         max-width: 1140px;
     }
+
+    .navbar-list {
+        gap: 36px;
+    }
+
+    .navbar .social-list {
+        gap: 12px;
+    }
 }
 
 @media (min-width: 1400px) {
@@ -1215,9 +1235,7 @@ body.nav-active {
 :root {
     --paper-base: #f4edef;
     --paper-crease-opacity: 0.62;
-    /* Naikkan ke 0.80 jika ingin lebih kusut/gelap */
     --paper-grain-opacity: 0.45;
-    /* Serat & bercak usang kertas */
 }
 
 body {
@@ -1261,12 +1279,11 @@ body::after {
 
 /* Buat seluruh section transparan agar tekstur kertas terlihat penuh */
 .hero,
-.about,
-.education,
-.work-experience,
-.skills,
-.project,
-.contact,
+.meta-section,
+.website-section,
+.project-links,
+.section,
+.back-section,
 .footer {
     background-color: transparent !important;
 }
@@ -1279,17 +1296,221 @@ body::after {
     border: 1px solid hsla(344, 53%, 62%, 0.18);
 }
 
-/* Pertegas bayangan kartu agar kontras di atas kertas kusut */
-.about-bio-card,
-.bento-box,
-.pillar-card,
-.edu-timeline-card,
-.skill-category,
-.soft-flip-front,
-.modern-glass-card,
-.contact-card {
-    box-shadow:
-        0 14px 32px rgba(34, 34, 59, 0.08),
-        0 2px 6px rgba(34, 34, 59, 0.04),
-        0 1px 0 rgba(255, 255, 255, 0.95) inset;
+/* ==========================================
+   INTERACTIVE UI LIGHTBOX PREVIEW
+   ========================================== */
+.hero-image,
+[data-lightbox-wrap] {
+    position: relative;
+    cursor: zoom-in;
+}
+
+.lightbox-hint-badge {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.94);
+    color: hsla(219, 22%, 26%, 1);
+    border: 1.5px solid hsla(var(--theme-accent-hsl), 0.35);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    box-shadow: 0 8px 22px rgba(20, 24, 38, 0.14);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+    pointer-events: none;
+}
+
+.lightbox-hint-badge ion-icon {
+    font-size: 1.65rem;
+    color: var(--theme-accent);
+    transition: color 0.25s ease;
+}
+
+.hero-image:hover .lightbox-hint-badge,
+[data-lightbox-wrap]:hover .lightbox-hint-badge {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal Lightbox Overlay */
+.ui-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(18, 21, 32, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    user-select: none;
+}
+
+.ui-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Top Toolbar */
+.ui-lightbox-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 24px;
+    z-index: 2;
+}
+
+.ui-lightbox-caption {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.ui-lightbox-counter {
+    color: var(--theme-accent);
+    background-color: #ffffff;
+    padding: 2px 9px;
+    border-radius: 100px;
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.ui-lightbox-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ui-lb-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ui-lb-btn:hover {
+    background-color: var(--theme-accent);
+    border-color: var(--theme-accent);
+    transform: translateY(-2px);
+}
+
+.ui-lb-zoom-level {
+    min-width: 54px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* Stage Area */
+.ui-lightbox-stage {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 12px 24px;
+}
+
+.ui-lightbox-img {
+    max-width: min(92vw, 1240px);
+    max-height: 78vh;
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    transform-origin: center center;
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: zoom-in;
+}
+
+.ui-lightbox-img.is-zoomed {
+    cursor: grab;
+}
+
+.ui-lightbox-img.is-dragging {
+    transition: none;
+    cursor: grabbing;
+}
+
+/* Prev / Next Navigation Buttons */
+.ui-lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.ui-lb-nav:hover {
+    background-color: var(--theme-accent);
+    border-color: var(--theme-accent);
+    transform: translateY(-50%) scale(1.06);
+}
+
+.ui-lb-nav.prev {
+    left: 20px;
+}
+
+.ui-lb-nav.next {
+    right: 20px;
+}
+
+.ui-lb-nav.is-hidden {
+    display: none;
+}
+
+/* Bottom Hint */
+.ui-lightbox-footer {
+    text-align: center;
+    padding: 12px 16px 18px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+@media (hover: none) {
+    .lightbox-hint-badge {
+        opacity: 1;
+        transform: translateY(0);
+        bottom: 18px;
+        right: 18px;
+        padding: 6px 12px;
+        font-size: 1.15rem;
+    }
 }

@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="all-projects.css">
 </head>
 
 <body>
@@ -90,15 +90,30 @@
             <div class="container">
                 <!-- Filter Toolbar -->
                 <div class="projects-toolbar" data-reveal="bottom" data-reveal-delay="0.16s">
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">All Projects</button>
-                        <button class="filter-btn" data-filter="product/project-management">Product/Project
-                            Management</button>
-                        <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
-                        <button class="filter-btn" data-filter="development">Development</button>
-                        <button class="filter-btn" data-filter="case-study">Case Studies</button>
+                    <div class="filter-buttons" role="group" aria-label="Filter projects by category">
+                        <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">
+                            <span>All Projects</span>
+                            <span class="filter-count" data-count="all">7</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="product/project-management"
+                            aria-pressed="false">
+                            <span>Product/Project Management</span>
+                            <span class="filter-count" data-count="product/project-management">4</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="ui-ux" aria-pressed="false">
+                            <span>UI/UX Design</span>
+                            <span class="filter-count" data-count="ui-ux">6</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="development" aria-pressed="false">
+                            <span>Development</span>
+                            <span class="filter-count" data-count="development">2</span>
+                        </button>
+                        <button type="button" class="filter-btn" data-filter="case-study" aria-pressed="false">
+                            <span>Case Studies</span>
+                            <span class="filter-count" data-count="case-study">2</span>
+                        </button>
                     </div>
-                    <div class="project-counter" id="projectCounter" aria-live="polite">7 Projects</div>
+                    <div class="project-counter" id="projectCounter" aria-live="polite">Showing 7 of 7 Projects</div>
                 </div>
 
                 <!-- Projects Grid -->
@@ -457,7 +472,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="script.js"></script>
+    <script src="all-projects.js"></script>
 </body>
 
 </html>

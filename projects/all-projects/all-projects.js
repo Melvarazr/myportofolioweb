@@ -120,37 +120,64 @@ projectCards.forEach((card) => {
 });
 
 /**
- * PROJECT CATEGORY FILTER, URL HASH SYNC & INTEGRATED COUNTER
+ * PROJECT CATEGORY FILTER, AUTO COUNT BADGES & URL HASH SYNC
  */
 const filterButtons = document.querySelectorAll(".filter-btn");
 const projectListItems = document.querySelectorAll(".projects-grid .card-3d-wrapper");
 const projectCounter = document.getElementById("projectCounter");
 let filterTimer = null;
 
-function updateProjectCounter(count) {
+function updateFilterBadges() {
+    const totalItems = projectListItems.length;
+
+    filterButtons.forEach((btn) => {
+        const badge = btn.querySelector(".filter-count");
+        if (!badge) return;
+
+        const category = btn.getAttribute("data-filter");
+        if (category === "all") {
+            badge.textContent = totalItems;
+            return;
+        }
+
+        let count = 0;
+        projectListItems.forEach((listItem) => {
+            const card = listItem.querySelector(".project-card");
+            if (!card) return;
+            const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
+            if (categories.includes(category)) count++;
+        });
+
+        badge.textContent = count;
+    });
+}
+
+function updateProjectCounter(visibleCount, totalCount) {
     if (!projectCounter) return;
-    projectCounter.textContent = `${count} Project${count !== 1 ? "s" : ""}`;
+    projectCounter.textContent = `Showing ${visibleCount} of ${totalCount} Project${totalCount !== 1 ? "s" : ""}`;
 }
 
 function filterProjects(filterValue, instant = false) {
     clearTimeout(filterTimer);
 
+    const totalCount = projectListItems.length;
     let visibleCount = 0;
+
     projectListItems.forEach((listItem) => {
         const card = listItem.querySelector(".project-card");
         if (!card) return;
-        const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+        const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
         const matches = filterValue === "all" || categories.includes(filterValue);
         if (matches) visibleCount++;
     });
 
-    updateProjectCounter(visibleCount);
+    updateProjectCounter(visibleCount, totalCount);
 
     if (instant) {
         projectListItems.forEach((listItem) => {
             const card = listItem.querySelector(".project-card");
             if (!card) return;
-            const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+            const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
             const matches = filterValue === "all" || categories.includes(filterValue);
 
             listItem.style.display = matches ? "block" : "none";
@@ -169,7 +196,7 @@ function filterProjects(filterValue, instant = false) {
         projectListItems.forEach((listItem) => {
             const card = listItem.querySelector(".project-card");
             if (!card) return;
-            const categories = (card.getAttribute("data-category") || "").split(/\s+/);
+            const categories = (card.getAttribute("data-category") || "").trim().split(/\s+/);
             const matches = filterValue === "all" || categories.includes(filterValue);
 
             if (matches) {
@@ -200,7 +227,9 @@ function applyFilter(filterValue, updateUrl = true, instant = false) {
     }
 
     filterButtons.forEach((btn) => {
-        btn.classList.toggle("active", btn.getAttribute("data-filter") === resolvedFilter);
+        const isActive = btn.getAttribute("data-filter") === resolvedFilter;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-pressed", String(isActive));
     });
 
     filterProjects(resolvedFilter, instant);
@@ -219,7 +248,8 @@ window.addEventListener("popstate", () => {
     applyFilter(hash || "all", false, false);
 });
 
-// Inisialisasi awal tanpa animasi kedip saat halaman pertama kali dimuat
+// Hitung badge kategori & terapkan filter awal tanpa kedip saat halaman dimuat
+updateFilterBadges();
 const initialHash = window.location.hash.substring(1);
 applyFilter(initialHash || "all", false, true);
 
