@@ -2205,7 +2205,7 @@ textarea.input-field {
 
     .navbar-list {
         display: flex;
-        gap: 36px;
+        gap: 22px;
         margin-inline: auto;
     }
 
@@ -2237,6 +2237,10 @@ textarea.input-field {
         transform: scaleX(1);
     }
 
+    .navbar .social-list {
+        gap: 10px;
+    }
+
     .navbar .social-link {
         color: hsla(219, 22%, 26%, 1);
         font-size: 1.8rem;
@@ -2247,8 +2251,12 @@ textarea.input-field {
         max-width: 960px;
         left: 50%;
         transform: translateX(-50%);
-        padding-inline: 16px;
+        padding-inline: 0;
         border-radius: 14px;
+    }
+
+    .header .container {
+        gap: 24px;
     }
 
     .header.active {
@@ -2354,6 +2362,14 @@ textarea.input-field {
         max-width: 1140px;
     }
 
+    .navbar-list {
+        gap: 36px;
+    }
+
+    .navbar .social-list {
+        gap: 12px;
+    }
+
     .about .about-grid {
         gap: 32px;
     }
@@ -2381,4 +2397,89 @@ textarea.input-field {
     .about .wrapper {
         gap: 64px;
     }
+}
+
+/* ==========================================
+   CRUMPLED & DISTRESSED PAPER BACKGROUND
+   ========================================== */
+:root {
+    --paper-base: #f4edef;
+    --paper-crease-opacity: 0.62;
+    /* Naikkan ke 0.80 jika ingin lebih kusut/gelap */
+    --paper-grain-opacity: 0.45;
+    /* Serat & bercak usang kertas */
+}
+
+body {
+    position: relative;
+    z-index: 0;
+    background-color: var(--paper-base);
+    background-image:
+        radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.65) 0%, transparent 45%),
+        radial-gradient(circle at 84% 48%, rgba(190, 172, 178, 0.22) 0%, transparent 52%),
+        radial-gradient(circle at 25% 85%, rgba(182, 164, 170, 0.24) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(255, 252, 253, 0.4) 0%, rgba(226, 214, 218, 0.35) 100%);
+}
+
+/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Seamless Tile) */
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    opacity: var(--paper-crease-opacity);
+    mix-blend-mode: multiply;
+    background-repeat: repeat;
+    background-size: 460px 460px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cfilter id='crumple' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='5' seed='14' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23ffffff' surfaceScale='3.8' result='light'%3E%3CfeDistantLight azimuth='45' elevation='52'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='460' height='460' filter='url(%23crumple)'/%3E%3C/svg%3E");
+}
+
+/* Layer 2: Serat Kertas Kasar & Efek Lecek / Usang */
+body::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: var(--paper-grain-opacity);
+    mix-blend-mode: multiply;
+    background-repeat: repeat;
+    background-size: 320px 320px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='distress' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' seed='9' stitchTiles='stitch' result='grain'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.36  0 0 0 0 0.28  0 0 0 0 0.31  0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23distress)'/%3E%3C/svg%3E");
+}
+
+/* Buat seluruh section transparan agar tekstur kertas terlihat penuh */
+.hero,
+.about,
+.education,
+.work-experience,
+.skills,
+.project,
+.contact,
+.footer {
+    background-color: transparent !important;
+}
+
+/* Navbar sedikit transparan dengan efek frosted paper */
+.header {
+    background-color: hsla(336, 71%, 96%, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid hsla(344, 53%, 62%, 0.18);
+}
+
+/* Pertegas bayangan kartu agar kontras di atas kertas kusut */
+.about-bio-card,
+.bento-box,
+.pillar-card,
+.edu-timeline-card,
+.skill-category,
+.soft-flip-front,
+.modern-glass-card,
+.contact-card {
+    box-shadow:
+        0 14px 32px rgba(34, 34, 59, 0.08),
+        0 2px 6px rgba(34, 34, 59, 0.04),
+        0 1px 0 rgba(255, 255, 255, 0.95) inset;
 }
