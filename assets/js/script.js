@@ -65,6 +65,7 @@ revealElements.forEach((el) => revealObserver.observe(el));
  * CACHE METRIK SECTION & TRACK TIMELINE (ANTI LAYOUT THRASHING)
  */
 const header = document.querySelector("[data-header]");
+const backTopBtn = document.querySelector("[data-back-top-btn]");
 const navbarLinks = document.querySelectorAll(".navbar-link");
 const sections = document.querySelectorAll("section[id]");
 const timelines3D = Array.from(document.querySelectorAll("[data-3d-timeline]")).map((timeline) => ({
@@ -98,7 +99,7 @@ const measureLayoutMetrics = () => {
 };
 
 /**
- * BATCHED UPDATE UNTUK ACTIVE HEADER, 3D TIMELINE & SCROLL-SPY NAVBAR
+ * BATCHED UPDATE UNTUK ACTIVE HEADER, BACK-TO-TOP, 3D TIMELINE & SCROLL-SPY NAVBAR
  */
 const updateOnScroll = () => {
     const scrollY = window.scrollY;
@@ -109,7 +110,12 @@ const updateOnScroll = () => {
         header.classList.toggle("active", scrollY > 100);
     }
 
-    // 2. Batch Read seluruh posisi timeline sebelum melakukan DOM Write
+    // 2. Back to Top Button
+    if (backTopBtn) {
+        backTopBtn.classList.toggle("is-visible", scrollY > 450);
+    }
+
+    // 3. Batch Read seluruh posisi timeline sebelum melakukan DOM Write
     const timelineMeasurements = timelines3D.map((item) => {
         if (!item.progressEl) return null;
         const rect = item.el.getBoundingClientRect();
@@ -133,7 +139,7 @@ const updateOnScroll = () => {
         });
     });
 
-    // 3. Scroll-Spy Active Link menggunakan nilai ter-cache (zero DOM read)
+    // 4. Scroll-Spy Active Link menggunakan nilai ter-cache (zero DOM read)
     const scrollPos = scrollY + cachedHeaderHeight + 120;
     let currentId = "";
 
@@ -287,6 +293,32 @@ flipCards.forEach((card) => {
 });
 
 /**
+ * TOAST NOTIFICATION HELPER
+ */
+function triggerToast(message, isSuccess = false, duration = 5000) {
+    const toastNotification = document.getElementById("toast-notification");
+    if (!toastNotification) return;
+
+    const icon = toastNotification.querySelector("ion-icon");
+    const text = toastNotification.querySelector("p");
+
+    toastNotification.classList.toggle("is-success", isSuccess);
+    if (icon) {
+        icon.setAttribute("name", isSuccess ? "checkmark-circle" : "information-circle");
+    }
+    if (text && message) {
+        text.textContent = message;
+    }
+
+    toastNotification.classList.add("show");
+
+    if (window.toastTimer) clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => {
+        toastNotification.classList.remove("show");
+    }, duration);
+}
+
+/**
  * UNDER CONSTRUCTION TOAST NOTIFICATION
  */
 document.addEventListener("click", function (e) {
@@ -294,20 +326,78 @@ document.addEventListener("click", function (e) {
 
     if (btn) {
         e.preventDefault();
-
-        const toastNotification = document.getElementById("toast-notification");
-
-        if (toastNotification) {
-            toastNotification.classList.add("show");
-
-            if (window.toastTimer) clearTimeout(window.toastTimer);
-
-            window.toastTimer = setTimeout(() => {
-                toastNotification.classList.remove("show");
-            }, 5000);
-        }
+        triggerToast(
+            "Case study coming soon! In the meantime, please feel free to explore my 'All Projects' page.",
+            false,
+            5000
+        );
     }
 });
+
+/**
+ * COPY EMAIL & PHONE NUMBER
+ */
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text);
+    }
+
+    return new Promise((resolve, reject) => {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+
+        try {
+            const ok = document.execCommand("copy");
+            document.body.removeChild(textarea);
+            ok ? resolve() : reject();
+        } catch (err) {
+            document.body.removeChild(textarea);
+            reject(err);
+        }
+    });
+}
+
+document.querySelectorAll("[data-copy-text]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+        const text = btn.getAttribute("data-copy-text");
+        const label = btn.getAttribute("data-copy-label") || "Contact";
+        if (!text) return;
+
+        try {
+            await copyToClipboard(text);
+            const actionIcon = btn.querySelector(".copy-action-icon");
+            btn.classList.add("is-copied");
+            if (actionIcon) actionIcon.setAttribute("name", "checkmark-outline");
+
+            clearTimeout(btn._copyResetTimer);
+            btn._copyResetTimer = setTimeout(() => {
+                btn.classList.remove("is-copied");
+                if (actionIcon) actionIcon.setAttribute("name", "copy-outline");
+            }, 2000);
+
+            triggerToast(`${label} copied: ${text}`, true, 3500);
+        } catch (err) {
+            triggerToast(`Failed to copy ${label.toLowerCase()}: ${text}`, false, 4000);
+        }
+    });
+});
+
+/**
+ * BACK TO TOP BUTTON
+ */
+if (backTopBtn) {
+    backTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
 
 /**
  * SMOOTH SCROLL & AUTO-CLOSE MOBILE MENU
