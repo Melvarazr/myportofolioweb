@@ -171,6 +171,26 @@ body.nav-active {
     opacity: 1;
 }
 
+/* Mencegah teks hero berkedip di layar pendek akibat threshold scroll */
+.projects-hero [data-reveal],
+.projects-hero [data-reveal].revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: heroEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* ==========================================
    HEADER & NAVBAR
    ========================================== */
@@ -387,6 +407,7 @@ body.nav-active {
     transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     cursor: pointer;
     font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .filter-btn:hover {
@@ -460,7 +481,7 @@ body.nav-active {
 }
 
 .card-3d-wrapper {
-    perspective: 1400px;
+    contain: layout style;
     transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -479,7 +500,6 @@ body.nav-active {
         0 12px 30px hsla(216, 14%, 14%, 0.05),
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
     position: relative;
-    will-change: transform;
     transition:
         transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -516,15 +536,7 @@ body.nav-active {
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.project-card:hover {
-    border-color: hsla(var(--card-accent), 0.55);
-    box-shadow:
-        6px 6px 0px hsla(var(--card-accent), 0.16),
-        12px 12px 0px hsla(var(--card-accent), 0.08),
-        0 24px 44px hsla(var(--card-accent), 0.18);
-}
-
-/* Specular Light Glare Overlay */
+/* Specular Light Glare Overlay (Desktop Only) */
 .card-glare {
     position: absolute;
     inset: 0;
@@ -538,8 +550,36 @@ body.nav-active {
     transition: opacity 0.3s ease;
 }
 
-.project-card:hover .card-glare {
-    opacity: 1;
+@media (hover: hover) and (pointer: fine) {
+    .card-3d-wrapper {
+        perspective: 1400px;
+    }
+
+    .project-card {
+        will-change: transform;
+    }
+
+    .project-card:hover {
+        border-color: hsla(var(--card-accent), 0.55);
+        box-shadow:
+            6px 6px 0px hsla(var(--card-accent), 0.16),
+            12px 12px 0px hsla(var(--card-accent), 0.08),
+            0 24px 44px hsla(var(--card-accent), 0.18);
+    }
+
+    .project-card:hover .card-glare {
+        opacity: 1;
+    }
+
+    .project-card:hover .card-banner img {
+        transform: scale(1.04);
+    }
+}
+
+@media (hover: none) {
+    .card-glare {
+        display: none;
+    }
 }
 
 .card-content {
@@ -775,42 +815,49 @@ body.nav-active {
     transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.project-card:hover .card-banner img {
-    transform: scale(1.04);
-}
-
 /* ==========================================
    TOAST NOTIFICATION (UNDER CONSTRUCTION)
    ========================================== */
 .toast-notification {
     position: fixed;
-    bottom: -100px;
+    bottom: 24px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, calc(100% + 40px));
     background-color: hsla(219, 22%, 26%, 0.95);
     color: white;
-    padding: 16px 28px;
-    border-radius: 50px;
+    padding: 14px 24px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
+    line-height: 1.45;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        opacity 0.3s ease,
+        visibility 0.3s ease;
     backdrop-filter: blur(5px);
     width: max-content;
     max-width: 90vw;
 }
 
 .toast-notification.show {
-    bottom: 40px;
+    transform: translate(-50%, 0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 
 .toast-notification ion-icon {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     color: #f5a623;
+    flex-shrink: 0;
 }
 
 /* ==========================================
@@ -1062,31 +1109,35 @@ body {
         linear-gradient(180deg, rgba(255, 252, 253, 0.4) 0%, rgba(226, 214, 218, 0.35) 100%);
 }
 
-/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Seamless Tile) */
+/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Fixed agar tidak re-render saat filter berubah) */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    height: 100lvh;
     z-index: -2;
     pointer-events: none;
     opacity: var(--paper-crease-opacity);
     mix-blend-mode: multiply;
     background-repeat: repeat;
     background-size: 460px 460px;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cfilter id='crumple' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='5' seed='14' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23ffffff' surfaceScale='3.8' result='light'%3E%3CfeDistantLight azimuth='45' elevation='52'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='460' height='460' filter='url(%23crumple)'/%3E%3C/svg%3E");
 }
 
 /* Layer 2: Serat Kertas Kasar & Efek Lecek / Usang */
 body::after {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    height: 100lvh;
     z-index: -1;
     pointer-events: none;
     opacity: var(--paper-grain-opacity);
     mix-blend-mode: multiply;
     background-repeat: repeat;
     background-size: 320px 320px;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='distress' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' seed='9' stitchTiles='stitch' result='grain'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.36  0 0 0 0 0.28  0 0 0 0 0.31  0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23distress)'/%3E%3C/svg%3E");
 }
 
@@ -1111,4 +1162,37 @@ body::after {
         0 14px 32px rgba(34, 34, 59, 0.08),
         0 2px 6px rgba(34, 34, 59, 0.04),
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
+}
+
+/* ==========================================
+   LOW-END MOBILE PERFORMANCE OVERRIDES
+   ========================================== */
+@media (max-width: 767px) {
+
+    /* 1. Ringankan tekstur kertas & hemat VRAM */
+    body::before {
+        mix-blend-mode: normal;
+        opacity: 0.28;
+    }
+
+    body::after {
+        display: none;
+    }
+
+    /* 2. Matikan blur real-time pada fixed navbar & toast */
+    .header {
+        background-color: hsla(336, 71%, 96%, 0.96);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .toast-notification {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    /* 3. Lepas memori GPU dari elemen yang sudah selesai reveal */
+    [data-reveal].revealed {
+        will-change: auto;
+    }
 }

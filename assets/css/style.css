@@ -608,7 +608,6 @@ body.nav-active {
 .about-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 28px;
-    perspective: 1400px;
 }
 
 .pillar-card {
@@ -625,7 +624,6 @@ body.nav-active {
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
     height: 100%;
     overflow: hidden;
-    transform-style: preserve-3d;
     transition:
         transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -663,17 +661,31 @@ body.nav-active {
     z-index: 1;
 }
 
-.pillar-card:hover .pillar-sheen {
-    left: 160%;
-}
+@media (hover: hover) and (pointer: fine) {
+    .about-grid {
+        perspective: 1400px;
+    }
 
-.pillar-card:hover {
-    transform: translate3d(-4px, -8px, 16px) rotateX(1.5deg) rotateY(-1.5deg);
-    border-color: hsla(var(--ptheme), 0.55);
-    box-shadow:
-        6px 6px 0px hsla(var(--ptheme), 0.16),
-        12px 12px 0px hsla(var(--ptheme), 0.08),
-        0 24px 44px hsla(var(--ptheme), 0.18);
+    .pillar-card {
+        transform-style: preserve-3d;
+    }
+
+    .pillar-card:hover .pillar-sheen {
+        left: 160%;
+    }
+
+    .pillar-card:hover {
+        transform: translate3d(-4px, -8px, 16px) rotateX(1.5deg) rotateY(-1.5deg);
+        border-color: hsla(var(--ptheme), 0.55);
+        box-shadow:
+            6px 6px 0px hsla(var(--ptheme), 0.16),
+            12px 12px 0px hsla(var(--ptheme), 0.08),
+            0 24px 44px hsla(var(--ptheme), 0.18);
+    }
+
+    .pillar-card:hover .pillar-icon {
+        transform: translateY(-4px) rotate(-6deg) scale(1.08);
+    }
 }
 
 .pillar-top-row {
@@ -726,10 +738,6 @@ body.nav-active {
     transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.pillar-card:hover .pillar-icon {
-    transform: translateY(-4px) rotate(-6deg) scale(1.08);
-}
-
 .pillar-card .card-title {
     font-size: 2.05rem;
     font-weight: 800;
@@ -762,7 +770,6 @@ body.nav-active {
     display: flex;
     flex-direction: column;
     gap: 44px;
-    perspective: 1400px;
 }
 
 /* Garis Track & Scroll Progress Rail */
@@ -896,7 +903,7 @@ body.nav-active {
     }
 }
 
-/* Kartu 3D Isometric Depth Timeline */
+/* Kartu 3D Isometric Depth Timeline (diisolasi agar ringan saat accordion bergerak) */
 .edu-timeline-card {
     --edu-accent: 210, 100%, 56%;
     --edu-accent-soft: 210, 100%, 96%;
@@ -910,7 +917,9 @@ body.nav-active {
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
     cursor: pointer;
     overflow: hidden;
-    transform-style: preserve-3d;
+    contain: layout style;
+    transform-style: flat;
+    -webkit-tap-highlight-color: transparent;
     transition:
         transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
@@ -942,16 +951,6 @@ body.nav-active {
     --edu-accent-soft: 28, 85%, 96%;
 }
 
-/* 3D Layered Elevation saat Hover */
-.edu-timeline-card:hover {
-    transform: translate3d(-4px, -8px, 18px) rotateX(1.5deg) rotateY(-1.5deg);
-    border-color: hsla(var(--edu-accent), 0.55);
-    box-shadow:
-        6px 6px 0px hsla(var(--edu-accent), 0.18),
-        13px 13px 0px hsla(var(--edu-accent), 0.09),
-        0 26px 48px hsla(var(--edu-accent), 0.18);
-}
-
 /* Kilau Diagonal */
 .edu-card-sheen {
     position: absolute;
@@ -969,8 +968,59 @@ body.nav-active {
     z-index: 1;
 }
 
-.edu-timeline-card:hover .edu-card-sheen {
-    left: 160%;
+/* Efek 3D Tilt, Sheen & Triple Shadow HANYA aktif di Laptop/PC (bukan layar sentuh HP) */
+@media (hover: hover) and (pointer: fine) {
+    .edu-3d-timeline {
+        perspective: 1400px;
+    }
+
+    .edu-timeline-card {
+        transform-style: preserve-3d;
+    }
+
+    .edu-timeline-card:hover {
+        transform: translate3d(-4px, -8px, 18px) rotateX(1.5deg) rotateY(-1.5deg);
+        border-color: hsla(var(--edu-accent), 0.55);
+        box-shadow:
+            6px 6px 0px hsla(var(--edu-accent), 0.18),
+            13px 13px 0px hsla(var(--edu-accent), 0.09),
+            0 26px 48px hsla(var(--edu-accent), 0.18);
+    }
+
+    .edu-timeline-card:hover .edu-card-sheen {
+        left: 160%;
+    }
+
+    .edu-timeline-card:hover .edu-3d-icon {
+        transform: translateY(-4px) rotate(-6deg) scale(1.07);
+        box-shadow:
+            0 14px 26px hsla(var(--edu-accent), 0.42),
+            0 5px 0 hsla(var(--edu-accent), 0.7);
+    }
+
+    .edu-timeline-card:hover .edu-toggle-indicator {
+        background-color: hsla(var(--edu-accent), 1);
+        color: #ffffff;
+    }
+}
+
+/* Di layar sentuh (HP/Tablet), matikan transform hover & percepat accordion agar 60 FPS */
+@media (hover: none) {
+    .edu-timeline-card:hover {
+        transform: none;
+        box-shadow:
+            0 14px 32px rgba(34, 34, 59, 0.08),
+            0 2px 6px rgba(34, 34, 59, 0.04),
+            0 1px 0 rgba(255, 255, 255, 0.95) inset;
+    }
+
+    .edu-card-sheen {
+        display: none;
+    }
+
+    .edu-details-collapse {
+        transition: grid-template-rows 0.26s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s ease;
+    }
 }
 
 .edu-card-header {
@@ -1006,13 +1056,6 @@ body.nav-active {
         0 8px 18px hsla(var(--edu-accent), 0.32),
         0 3px 0 hsla(var(--edu-accent), 0.6);
     transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease;
-}
-
-.edu-timeline-card:hover .edu-3d-icon {
-    transform: translateY(-4px) rotate(-6deg) scale(1.07);
-    box-shadow:
-        0 14px 26px hsla(var(--edu-accent), 0.42),
-        0 5px 0 hsla(var(--edu-accent), 0.7);
 }
 
 .edu-badges-row {
@@ -1106,11 +1149,6 @@ body.nav-active {
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.25s ease, color 0.25s ease;
 }
 
-.edu-timeline-card:hover .edu-toggle-indicator {
-    background-color: hsla(var(--edu-accent), 1);
-    color: #ffffff;
-}
-
 .edu-timeline-card.is-expanded .edu-toggle-indicator {
     transform: rotate(180deg);
 }
@@ -1153,6 +1191,7 @@ body.nav-active {
 
 .edu-details-inner {
     overflow: hidden;
+    min-height: 0;
 }
 
 .edu-timeline-card .achievements {
@@ -2463,32 +2502,49 @@ body {
         linear-gradient(180deg, rgba(255, 252, 253, 0.4) 0%, rgba(226, 214, 218, 0.35) 100%);
 }
 
-/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Seamless Tile) */
+/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Fixed agar tidak re-render saat accordion gerak) */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    height: 100lvh;
     z-index: -2;
     pointer-events: none;
     opacity: var(--paper-crease-opacity);
     mix-blend-mode: multiply;
     background-repeat: repeat;
     background-size: 460px 460px;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cfilter id='crumple' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='5' seed='14' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23ffffff' surfaceScale='3.8' result='light'%3E%3CfeDistantLight azimuth='45' elevation='52'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='460' height='460' filter='url(%23crumple)'/%3E%3C/svg%3E");
 }
 
 /* Layer 2: Serat Kertas Kasar & Efek Lecek / Usang */
 body::after {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    height: 100lvh;
     z-index: -1;
     pointer-events: none;
     opacity: var(--paper-grain-opacity);
     mix-blend-mode: multiply;
     background-repeat: repeat;
     background-size: 320px 320px;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='distress' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' seed='9' stitchTiles='stitch' result='grain'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.36  0 0 0 0 0.28  0 0 0 0 0.31  0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23distress)'/%3E%3C/svg%3E");
+}
+
+/* Ringankan beban GPU di HP: matikan mix-blend-mode dan sesuaikan opacity */
+@media (max-width: 767px) {
+    body::before {
+        mix-blend-mode: normal;
+        opacity: 0.28;
+    }
+
+    body::after {
+        mix-blend-mode: normal;
+        opacity: 0.22;
+    }
 }
 
 /* Buat seluruh section transparan agar tekstur kertas terlihat penuh */
@@ -2524,4 +2580,71 @@ body::after {
         0 14px 32px rgba(34, 34, 59, 0.08),
         0 2px 6px rgba(34, 34, 59, 0.04),
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
+}
+
+/* ==========================================
+   LOW-END MOBILE PERFORMANCE OVERRIDES
+   ========================================== */
+@media (max-width: 767px) {
+
+    /* 1. Matikan blur real-time pada fixed navbar & toast */
+    .header {
+        background-color: hsla(336, 71%, 96%, 0.96);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .toast-notification {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    /* 2. Cukup 1 layer tekstur kertas di mobile agar hemat VRAM */
+    body::after {
+        display: none;
+    }
+
+    /* 3. Lepas memori GPU dari will-change & 3D context yang tidak dipakai di HP */
+    .btn,
+    [data-reveal].revealed {
+        will-change: auto;
+    }
+
+    .bento-wrapper,
+    .bento-box,
+    .skills-grid,
+    .skill-category {
+        perspective: none;
+        transform-style: flat;
+    }
+
+    .bento-icon-wrap,
+    .bento-content,
+    .skill-cat-header,
+    .skills-list {
+        transform: none;
+    }
+
+    /* 4. Matikan animasi pulse tak terbatas pada node timeline */
+    .edu-timeline-row:hover .edu-3d-node .node-ring,
+    .edu-timeline-row.is-active .edu-3d-node .node-ring {
+        animation: none;
+        opacity: 0.45;
+        transform: scale(1.2);
+    }
+
+    /* 5. Ganti filter drop-shadow berat pada gambar proyek dengan box-shadow */
+    .modern-glass-card .banner-img {
+        filter: none;
+        border-radius: 16px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 6. Tunda rendering section bawah hingga mendekati viewport */
+    .skills,
+    .project,
+    .contact {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 700px;
+    }
 }

@@ -197,7 +197,6 @@ body.nav-active {
     padding: 12px 28px;
     border-radius: 100px;
     transition: 0.25s ease;
-    will-change: transform;
 }
 
 .btn:is(:hover, :focus-visible) {
@@ -284,6 +283,26 @@ body.nav-active {
 [data-reveal].revealed {
     transform: translate(0, 0);
     opacity: 1;
+}
+
+/* Mencegah teks hero berkedip di layar pendek akibat threshold scroll */
+.hero [data-reveal],
+.hero [data-reveal].revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: heroEntrance 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ==========================================
@@ -540,11 +559,13 @@ body.nav-active {
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 
-.hero-image:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        10px 10px 0px hsla(var(--theme-accent-hsl), 0.18),
-        0 26px 52px hsla(var(--theme-accent-hsl), 0.16);
+@media (hover: hover) and (pointer: fine) {
+    .hero-image:hover {
+        transform: translateY(-4px);
+        box-shadow:
+            10px 10px 0px hsla(var(--theme-accent-hsl), 0.18),
+            0 26px 52px hsla(var(--theme-accent-hsl), 0.16);
+    }
 }
 
 .hero-img {
@@ -577,11 +598,10 @@ body.nav-active {
     gap: 4px;
     position: relative;
     overflow: hidden;
+    contain: layout style;
     box-shadow:
         0 10px 24px hsla(216, 14%, 14%, 0.04),
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
-    transform-style: preserve-3d;
-    will-change: transform;
     transition:
         transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -601,15 +621,22 @@ body.nav-active {
     pointer-events: none;
 }
 
-.meta-bento-card:hover {
-    border-color: hsla(var(--theme-accent-hsl), 0.55);
-    box-shadow:
-        5px 5px 0px hsla(var(--theme-accent-hsl), 0.16),
-        0 18px 34px hsla(var(--theme-accent-hsl), 0.14);
-}
+@media (hover: hover) and (pointer: fine) {
+    .meta-bento-card {
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
 
-.meta-bento-card:hover::after {
-    transform: translateX(120%);
+    .meta-bento-card:hover {
+        border-color: hsla(var(--theme-accent-hsl), 0.55);
+        box-shadow:
+            5px 5px 0px hsla(var(--theme-accent-hsl), 0.16),
+            0 18px 34px hsla(var(--theme-accent-hsl), 0.14);
+    }
+
+    .meta-bento-card:hover::after {
+        transform: translateX(120%);
+    }
 }
 
 .meta-icon {
@@ -767,11 +794,10 @@ body.nav-active {
     padding: 32px;
     position: relative;
     overflow: hidden;
+    contain: layout style;
     box-shadow:
         0 12px 28px hsla(216, 14%, 14%, 0.05),
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
-    transform-style: preserve-3d;
-    will-change: transform;
     transition:
         transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -794,22 +820,33 @@ body.nav-active {
     pointer-events: none;
 }
 
-.breakdown-item:hover,
-.feature-item:hover,
-.improvement-item:hover,
-.process-item:hover {
-    border-color: hsla(var(--theme-accent-hsl), 0.55);
-    box-shadow:
-        6px 6px 0px hsla(var(--theme-accent-hsl), 0.16),
-        12px 12px 0px hsla(var(--theme-accent-hsl), 0.08),
-        0 22px 42px hsla(var(--theme-accent-hsl), 0.16);
-}
+@media (hover: hover) and (pointer: fine) {
 
-.breakdown-item:hover::after,
-.feature-item:hover::after,
-.improvement-item:hover::after,
-.process-item:hover::after {
-    transform: translateX(120%);
+    .breakdown-item,
+    .feature-item,
+    .improvement-item,
+    .process-item {
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
+
+    .breakdown-item:hover,
+    .feature-item:hover,
+    .improvement-item:hover,
+    .process-item:hover {
+        border-color: hsla(var(--theme-accent-hsl), 0.55);
+        box-shadow:
+            6px 6px 0px hsla(var(--theme-accent-hsl), 0.16),
+            12px 12px 0px hsla(var(--theme-accent-hsl), 0.08),
+            0 22px 42px hsla(var(--theme-accent-hsl), 0.16);
+    }
+
+    .breakdown-item:hover::after,
+    .feature-item:hover::after,
+    .improvement-item:hover::after,
+    .process-item:hover::after {
+        transform: translateX(120%);
+    }
 }
 
 [data-3d-tilt].is-tilting {
@@ -952,22 +989,28 @@ body.nav-active {
     text-align: center;
     position: relative;
     overflow: hidden;
+    contain: layout style;
     box-shadow:
         0 10px 24px hsla(216, 14%, 14%, 0.04),
         0 1px 0 rgba(255, 255, 255, 0.95) inset;
-    transform-style: preserve-3d;
-    will-change: transform;
     transition:
         transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
         box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
         border-color 0.3s ease;
 }
 
-.tool-item:hover {
-    border-color: hsla(var(--theme-accent-hsl), 0.55);
-    box-shadow:
-        5px 5px 0px hsla(var(--theme-accent-hsl), 0.16),
-        0 18px 34px hsla(var(--theme-accent-hsl), 0.14);
+@media (hover: hover) and (pointer: fine) {
+    .tool-item {
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
+
+    .tool-item:hover {
+        border-color: hsla(var(--theme-accent-hsl), 0.55);
+        box-shadow:
+            5px 5px 0px hsla(var(--theme-accent-hsl), 0.16),
+            0 18px 34px hsla(var(--theme-accent-hsl), 0.14);
+    }
 }
 
 .tool-icon {
@@ -1249,31 +1292,35 @@ body {
         linear-gradient(180deg, rgba(255, 252, 253, 0.4) 0%, rgba(226, 214, 218, 0.35) 100%);
 }
 
-/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Seamless Tile) */
+/* Layer 1: Lipatan & Lekukan 3D Kertas Kusut (Fixed agar hemat GPU) */
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    height: 100lvh;
     z-index: -2;
     pointer-events: none;
     opacity: var(--paper-crease-opacity);
     mix-blend-mode: multiply;
     background-repeat: repeat;
     background-size: 460px 460px;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='460' viewBox='0 0 460 460'%3E%3Cfilter id='crumple' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.015' numOctaves='5' seed='14' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23ffffff' surfaceScale='3.8' result='light'%3E%3CfeDistantLight azimuth='45' elevation='52'/%3E%3C/feDiffuseLighting%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='460' height='460' filter='url(%23crumple)'/%3E%3C/svg%3E");
 }
 
 /* Layer 2: Serat Kertas Kasar & Efek Lecek / Usang */
 body::after {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
+    height: 100lvh;
     z-index: -1;
     pointer-events: none;
     opacity: var(--paper-grain-opacity);
     mix-blend-mode: multiply;
     background-repeat: repeat;
     background-size: 320px 320px;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='distress' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' seed='9' stitchTiles='stitch' result='grain'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.36  0 0 0 0 0.28  0 0 0 0 0.31  0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23distress)'/%3E%3C/svg%3E");
 }
 
@@ -1512,5 +1559,45 @@ body::after {
         right: 18px;
         padding: 6px 12px;
         font-size: 1.15rem;
+    }
+}
+
+/* ==========================================
+   LOW-END MOBILE PERFORMANCE OVERRIDES
+   ========================================== */
+@media (max-width: 767px) {
+
+    /* 1. Ringankan tekstur kertas & hemat VRAM */
+    body::before {
+        mix-blend-mode: normal;
+        opacity: 0.28;
+    }
+
+    body::after {
+        display: none;
+    }
+
+    /* 2. Matikan blur real-time pada fixed navbar & lightbox overlay */
+    .header {
+        background-color: hsla(336, 71%, 96%, 0.96);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .ui-lightbox {
+        background-color: rgba(18, 21, 32, 0.96);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    /* 3. Lepas memori GPU dari elemen yang sudah selesai reveal */
+    [data-reveal].revealed {
+        will-change: auto;
+    }
+
+    /* 4. Tunda rendering section bawah hingga mendekati viewport */
+    .content-section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 600px;
     }
 }
